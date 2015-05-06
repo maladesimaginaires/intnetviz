@@ -96,7 +96,10 @@
 				})
 				.on("click", function() {
 					trans();
+					whichstep = !whichstep
 			   });
+
+			var whichstep = true;
 
 			//Coulour transition
 			var trans = function() {
@@ -104,8 +107,19 @@
 					.transition()
 				    .duration(1000)
 					.style("fill", function(d) {
-						if (d.step[1]) {return "#1f77b4";} else {return "#ff7f0e";}
-					} 
+						if (whichstep) {
+							if (d.step[1]) {
+								return "#1f77b4";}
+							else {
+								return "#ff7f0e";}
+						}
+						else {
+							if (d.step[0]) {
+								return "#1f77b4";}
+							else {
+								return "#ff7f0e";}
+						}
+					}
 				);
 			} 
 
