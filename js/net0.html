@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<title>Network transition</title>
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-		<script src="d3.min.js" charset="utf-8"></script>
+		<script src="../include/d3.min.js" charset="utf-8"></script>
 		<style type="text/css">
 			/* No style rules here yet */
 		</style>
@@ -16,6 +16,19 @@
 			//Width and height
 			var w = 500;
 			var h = 300;
+
+			// Import data
+
+
+// var personnages = d3.tsv("../data/moliere/l_ecole_des_femmes_personnages.txt")
+// 					.row(function(d) { return {key: d.key, value: +d.value}; })
+// 					.get(function(error, rows) { console.log(rows); });
+
+			d3.tsv("../data/moliere/l_ecole_des_femmes_personnages.txt", function(my_row) {
+				//construire liste persos y.c init dataset.nodes, mais tout ça dans un autre callback
+				//foreach perso
+					//if my_row.perso == "1": d.perso.step.push(true) else false
+			});
 
 			//Original data
 			var dataset = {
