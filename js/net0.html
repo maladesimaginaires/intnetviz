@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<title>Network transition</title>
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-		<script src="../include/d3.min.js" charset="utf-8"></script>
+		<script src="d3.min.js" charset="utf-8"></script>
 		<style type="text/css">
 			/* No style rules here yet */
 		</style>
@@ -20,16 +20,16 @@
 			//Original data
 			var dataset = {
 				nodes: [
-					{ name: "Adam", 	x: 300, y: 200, fixed: true, step: [ true, false]},
-					{ name: "Bob" , 	x: 325, y: 140, fixed: true, step: [ true, false]},
-					{ name: "Carrie" , 	x: 265, y: 150, fixed: true, step: [ true, false]},
-					{ name: "Donovan", 	x: 325, y: 250, fixed: true, step: [ true,  true]},
-					{ name: "Edward" , 	x: 265, y: 250, fixed: true, step: [ true,  true]},
-					{ name: "Felicity", x: 280, y: 100, fixed: true, step: [false, false]},
-					{ name: "George" , 	x: 130, y: 145, fixed: true, step: [false,  true]},
-					{ name: "Hannah" , 	x: 165, y:  95,	fixed: true, step: [false,  true]},
-					{ name: "Iris"   , 	x: 225, y:  80,	fixed: true, step: [false,  true]},
-					{ name: "Jerry"  , 	x: 265, y:  45,	fixed: true, step: [ true,  true]}
+					{ name: "Adam", 	x: 300, y: 200, fixed: true, step: [ true, false, true]},
+					{ name: "Bob" , 	x: 325, y: 140, fixed: true, step: [ true, false, false]},
+					{ name: "Carrie" , 	x: 265, y: 150, fixed: true, step: [ true, false, true]},
+					{ name: "Donovan", 	x: 325, y: 250, fixed: true, step: [ true,  true, false]},
+					{ name: "Edward" , 	x: 265, y: 250, fixed: true, step: [ true,  true, true]},
+					{ name: "Felicity", x: 280, y: 100, fixed: true, step: [false, false, false]},
+					{ name: "George" , 	x: 130, y: 145, fixed: true, step: [false,  true, true]},
+					{ name: "Hannah" , 	x: 165, y:  95,	fixed: true, step: [false,  true, false]},
+					{ name: "Iris"   , 	x: 225, y:  80,	fixed: true, step: [false,  true, true]},
+					{ name: "Jerry"  , 	x: 265, y:  45,	fixed: true, step: [ true,  true, false]}
 				],
 				edges: [
 					{ source: 0, target: 1 },
@@ -37,7 +37,6 @@
 					{ source: 0, target: 3 },
 					{ source: 0, target: 4 },
 					{ source: 1, target: 5 },
-					{ source: 2, target: 5 },
 					{ source: 2, target: 5 },
 					{ source: 3, target: 4 },
 					{ source: 5, target: 8 },
@@ -57,6 +56,19 @@
 								 .charge([-300])
 								 .start();
 
+			//Every time the simulation "ticks", this will be called
+			force.on("tick", function() {
+
+				edges.attr("x1", function(d) { return d.source.x; })
+					 .attr("y1", function(d) { return d.source.y; })
+					 .attr("x2", function(d) { return d.target.x; })
+					 .attr("y2", function(d) { return d.target.y; });
+			
+				nodes.attr("cx", function(d) { return d.x; })
+					 .attr("cy", function(d) { return d.y; });
+	
+			});
+
 			//Set the colours
 			var colors = d3.scale.category10();
 
@@ -74,6 +86,9 @@
 				.style("stroke", "#ccc")
 				.style("stroke-width", 1);
 			
+			// Variable de contrôle de la transition
+			var whichstep = 0;
+
 			//Create nodes as circles
 			var nodes = svg.selectAll("circle")
 				.data(dataset.nodes)
@@ -84,33 +99,19 @@
 					if (d.step[0]) {return "#1f77b4";} else {return "#ff7f0e";}
 				})
 				.on("click", function() {
+					whichstep++;
+					if (whichstep === dataset.nodes[0].step.length) {whichstep = 0};
 					trans();
-					whichstep = !whichstep
 			   });
-
-			// Variable de contrôle de la transition
-			var whichstep = true;
 
 			//Coulour transition
 			var trans = function() {
 				svg.selectAll("circle")
 					.transition()
-				    .duration(1000)
+					.duration(1000)
 					.style("fill", function(d) {
-						if (whichstep) {
-							if (d.step[1]) {
-								return "#1f77b4";}
-							else {
-								return "#ff7f0e";}
-						}
-						else {
-							if (d.step[0]) {
-								return "#1f77b4";}
-							else {
-								return "#ff7f0e";}
-						}
-					}
-				);
+						if (d.step[whichstep]) {return "#1f77b4";} else {return "#ff7f0e";}
+					});
 			} 
 
 		</script>
