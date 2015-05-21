@@ -24,22 +24,34 @@
 // 					.row(function(d) { return {key: d.key, value: +d.value}; })
 // 					.get(function(error, rows) { console.log(rows); });
 
-			var tab;
-			var nodes;
-			var nodes_names;
-			var colnames;
-			var temp;
+			var nodes = [];
+			var nodes_names = [];
+			var colnames = [];
+			var temp = [];
 
 			d3.tsv("../data/moliere/l_ecole_des_femmes_personnages.txt", function(d) {
+				// pour tester que les données soient bien chargées
 				console.log(d);
-				tab = d;
-				colnames = Object.keys(tab[0]);
+				temp = d;
+				// colnames donne le nom de toutes les colonnes
+				// mais nous n'en aurons peut-être pas besoin
+				colnames = Object.keys(d[0]);
+				// ici les noms des personnages, qui donnent aussi les "keys" du tableau de données
 				nodes_names = colnames.slice(4, colnames.length);
-				temp = Array(name: nodes_names[0], step: function() {
-					for (var i = 0; i < tab.length; i++) {
-						return(tab[i][nodes_names[0]])
-				}});
-
+				// créer un objet (dataset) composé de deux tableaux (nodes et edges)
+				// nodes est composé d'un objet par noeud
+				// chaque noeud a un nom (key) et un array qui donne tous ses états
+				for (var i = 0; i < nodes_names.length; i++) {
+					var arr = [];
+					for (var j = 0; j < d.length; j++) {
+						arr.push(d[j][nodes_names[i]]);
+					};
+					nodes.push({
+						name: nodes_names[i],
+						step: arr,
+					});
+				};
+				// edges est composé d'un objet par arête, avec une source et une target
 
 
 
