@@ -5,12 +5,13 @@
 		<meta charset="utf-8">
 		<title>Network transition</title>
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-		<script src="../include/d3.min.js" charset="utf-8"></script>
+		<script src="../include/d3.v3.js" charset="utf-8"></script>
 		<style type="text/css">
 			/* No style rules here yet */
 		</style>
 	</head>
 	<body>
+		<p id="step"></p>
 		<script type="text/javascript">
 
 			//Width and height
@@ -19,47 +20,152 @@
 
 			// Import data
 
-
-// var personnages = d3.tsv("../data/moliere/l_ecole_des_femmes_personnages.txt")
-// 					.row(function(d) { return {key: d.key, value: +d.value}; })
-// 					.get(function(error, rows) { console.log(rows); });
-
-			var nodes = [];
+			// créer un objet (dataset) composé de deux tableaux (nodes et edges)
+			var node5 = [];
+			var edge5 = [];
 			var nodes_names = [];
 			var colnames = [];
 			var temp = [];
+			var dataset = [];
+			// Variable de contrôle de la transition
+			var whichstep = 0;
 
+			// nodes
 			d3.tsv("../data/moliere/l_ecole_des_femmes_personnages.txt", function(d) {
+				var element = document.getElementById("step");
+				element.innerHTML = "Piece " + d[whichstep]["piece"] 
+										+ "&nbsp;&nbsp;&nbsp;&nbsp;Acte " + d[whichstep]["acte"]  
+										+ "&nbsp;&nbsp;&nbsp;&nbsp;Scène " + d[whichstep]["scene"] 
+										+ "&nbsp;&nbsp;&nbsp;&nbsp;Réplique " +d[whichstep]["replique"];
 				// pour tester que les données soient bien chargées
-				console.log(d);
+				//console.log(d);
 				temp = d;
 				// colnames donne le nom de toutes les colonnes
 				// mais nous n'en aurons peut-être pas besoin
 				colnames = Object.keys(d[0]);
 				// ici les noms des personnages, qui donnent aussi les "keys" du tableau de données
 				nodes_names = colnames.slice(4, colnames.length);
-				// créer un objet (dataset) composé de deux tableaux (nodes et edges)
 				// nodes est composé d'un objet par noeud
 				// chaque noeud a un nom (key) et un array qui donne tous ses états
 				for (var i = 0; i < nodes_names.length; i++) {
 					var arr = [];
 					for (var j = 0; j < d.length; j++) {
-						arr.push(d[j][nodes_names[i]]);
+						arr.push(+d[j][nodes_names[i]]);
 					};
-					nodes.push({
+					node5.push({
 						name: nodes_names[i],
+						x: Math.random()*w,
+						y: Math.random()*h,
+						fixed:true,
 						step: arr,
 					});
 				};
-				// edges est composé d'un objet par arête, avec une source et une target
+				// edges
+				// FAKE DATA !!!!!!!!!!
+				edge5 = [
+					{ source: 0, target: 1 },
+					{ source: 0, target: 2 },
+					{ source: 0, target: 3 },
+					{ source: 0, target: 4 },
+					{ source: 1, target: 5 },
+					{ source: 2, target: 5 },
+					{ source: 3, target: 4 },
+					{ source: 5, target: 8 },
+					{ source: 5, target: 9 },
+					{ source: 6, target: 7 },
+					{ source: 7, target: 8 },
+					{ source: 8, target: 9 }
+				];
+				// dataset
+				dataset = {nodes: node5, edges: edge5};
 
+				//Initialize a default force layout, using the nodes and edges in dataset
+				var force = d3.layout.force()
+									 .nodes(dataset.nodes)
+									 .links(dataset.edges)
+									 .size([w, h])
+									 .linkDistance([50])
+									 .charge([-300])
+									 .start();
 
+				//Create SVG element
+				var svg = d3.select("body")
+							.append("svg")
+							.attr("width", w)
+							.attr("height", h);
+				
 
+				//Create edges as lines
+				var edges = svg.selectAll("line")
+					.data(dataset.edges)
+					.enter()
+					.append("line")
+					.style("stroke", "#ccc")
+					.style("stroke-width", 1);
 
-				//construire liste persos y.c init dataset.nodes, mais tout ça dans un autre callback
-				//foreach perso
-					//if my_row.perso == "1": d.perso.step.push(true) else false
+				//Create nodes as circles
+				var nodes = svg.selectAll("circle")
+					.data(dataset.nodes)
+					.enter()
+					.append("circle")
+					.attr("r", 10)
+					.style("fill", function(d) {
+						if (d.step[0]) {return "#1f77b4";} else {return "#ff7f0e";}
+					})
+					.on("click", function() {
+						whichstep++;
+						if (whichstep === dataset.nodes[0].step.length) {whichstep = 0};
+						element.innerHTML = "Piece " + d[whichstep]["piece"] 
+						+ "&nbsp;&nbsp;&nbsp;&nbsp;Acte " + d[whichstep]["acte"]  
+						+ "&nbsp;&nbsp;&nbsp;&nbsp;Scène " + d[whichstep]["scene"] 
+						+ "&nbsp;&nbsp;&nbsp;&nbsp;Réplique " +d[whichstep]["replique"];
+						trans();
+				   });
+
+				//Every time the simulation "ticks", this will be called
+				force.on("tick", function() {
+
+					edges.attr("x1", function(d) { return d.source.x; })
+						 .attr("y1", function(d) { return d.source.y; })
+						 .attr("x2", function(d) { return d.target.x; })
+						 .attr("y2", function(d) { return d.target.y; });
+				
+					nodes.attr("cx", function(d) { return d.x; })
+						 .attr("cy", function(d) { return d.y; });
+		
+				});
+
+				//Coulour transition
+				var trans = function() {
+					svg.selectAll("circle")
+						.transition()
+						.duration(1000)
+						.style("fill", function(d) {
+							// console.log(d.step[whichstep]);
+							if (d.step[whichstep] === 1) {return "#1f77b4";} else {return "#ff7f0e";}
+						});
+				}
+
 			});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 			//Original data
 			// var dataset = {
@@ -90,74 +196,6 @@
 			// 		{ source: 8, target: 9 }
 			// 	]
 			// };
-
-			//Initialize a default force layout, using the nodes and edges in dataset
-			var force = d3.layout.force()
-								 .nodes(dataset.nodes)
-								 .links(dataset.edges)
-								 .size([w, h])
-								 .linkDistance([50])
-								 .charge([-300])
-								 .start();
-
-			//Every time the simulation "ticks", this will be called
-			force.on("tick", function() {
-
-				edges.attr("x1", function(d) { return d.source.x; })
-					 .attr("y1", function(d) { return d.source.y; })
-					 .attr("x2", function(d) { return d.target.x; })
-					 .attr("y2", function(d) { return d.target.y; });
-			
-				nodes.attr("cx", function(d) { return d.x; })
-					 .attr("cy", function(d) { return d.y; });
-	
-			});
-
-			//Set the colours
-			var colors = d3.scale.category10();
-
-			//Create SVG element
-			var svg = d3.select("body")
-						.append("svg")
-						.attr("width", w)
-						.attr("height", h);
-			
-			//Create edges as lines
-			var edges = svg.selectAll("line")
-				.data(dataset.edges)
-				.enter()
-				.append("line")
-				.style("stroke", "#ccc")
-				.style("stroke-width", 1);
-			
-			// Variable de contrôle de la transition
-			var whichstep = 0;
-
-			//Create nodes as circles
-			var nodes = svg.selectAll("circle")
-				.data(dataset.nodes)
-				.enter()
-				.append("circle")
-				.attr("r", 10)
-				.style("fill", function(d) {
-					if (d.step[0]) {return "#1f77b4";} else {return "#ff7f0e";}
-				})
-				.on("click", function() {
-					whichstep++;
-					if (whichstep === dataset.nodes[0].step.length) {whichstep = 0};
-					trans();
-			   });
-
-			//Coulour transition
-			var trans = function() {
-				svg.selectAll("circle")
-					.transition()
-					.duration(1000)
-					.style("fill", function(d) {
-						if (d.step[whichstep]) {return "#1f77b4";} else {return "#ff7f0e";}
-					});
-			} 
-
 		</script>
 	</body>
 </html>
