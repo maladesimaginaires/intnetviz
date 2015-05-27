@@ -15,8 +15,8 @@
 		<script type="text/javascript">
 
 			//Width and height
-			var w = 500;
-			var h = 300;
+			var w = 640;
+			var h = 480;
 
 			// Import data
 
@@ -54,28 +54,28 @@
 					};
 					node5.push({
 						name: nodes_names[i],
-						x: Math.random()*w,
-						y: Math.random()*h,
-						fixed:true,
+//						x: Math.random()*w,
+//						y: Math.random()*h,
+						fixed: false,       // mis ceci a false, AX
 						step: arr,
 					});
 				};
-				// edges
-				// FAKE DATA !!!!!!!!!!
-				edge5 = [
-					{ source: 0, target: 1 },
-					{ source: 0, target: 2 },
-					{ source: 0, target: 3 },
-					{ source: 0, target: 4 },
-					{ source: 1, target: 5 },
-					{ source: 2, target: 5 },
-					{ source: 3, target: 4 },
-					{ source: 5, target: 8 },
-					{ source: 5, target: 9 },
-					{ source: 6, target: 7 },
-					{ source: 7, target: 8 },
-					{ source: 8, target: 9 }
-				];
+				// Le poids des aretes est defini comme la proportion des repliques
+                // ou deux personnages sont en co-presence
+				edge5 = [];
+                for (var i = 0; i < nodes_names.length-1; i++) {
+                    for (var j = i+1; j < nodes_names.length; j++) {
+                        var nb_copresences = 0
+                        for (var k = 0; k < d.length; k++) {
+                            nb_copresences += d[k][nodes_names[i]] * d[k][nodes_names[j]]
+                        }
+                        edge5.push({
+                            source: i,
+                            target: j,
+                            value: nb_copresences/d.length,
+                        });
+                    }
+                }
 				// dataset
 				dataset = {nodes: node5, edges: edge5};
 
@@ -84,8 +84,8 @@
 									 .nodes(dataset.nodes)
 									 .links(dataset.edges)
 									 .size([w, h])
-									 .linkDistance([50])
-									 .charge([-300])
+									 .linkDistance(function(d) { return h/2*(1-d.value); })
+                                     .charge(-h/2)
 									 .start();
 
 				//Create SVG element
@@ -122,16 +122,17 @@
 						trans();
 				   });
 
-				//Every time the simulation "ticks", this will be called
-				force.on("tick", function() {
+				//When force layout ends, this will be called
+				force.on("end", function() {
 
-					edges.attr("x1", function(d) { return d.source.x; })
+					nodes.attr("cx", function(d) { return d.x; })
+						 .attr("cy", function(d) { return d.y; });
+
+                    edges.attr("x1", function(d) { return d.source.x; })
 						 .attr("y1", function(d) { return d.source.y; })
 						 .attr("x2", function(d) { return d.target.x; })
 						 .attr("y2", function(d) { return d.target.y; });
 				
-					nodes.attr("cx", function(d) { return d.x; })
-						 .attr("cy", function(d) { return d.y; });
 		
 				});
 
