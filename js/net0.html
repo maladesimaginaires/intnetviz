@@ -17,6 +17,8 @@
 			//Width and height
 			var w = 640;
 			var h = 480;
+            
+            var step_duration = 100
 
 			// Import data
 
@@ -66,14 +68,22 @@
                 for (var i = 0; i < nodes_names.length-1; i++) {
                     for (var j = i+1; j < nodes_names.length; j++) {
                         var nb_copresences = 0
+                        arr = []
+                        activated = 0
                         for (var k = 0; k < d.length; k++) {
-                            nb_copresences += d[k][nodes_names[i]] * d[k][nodes_names[j]]
+                            var copresence = d[k][nodes_names[i]] * d[k][nodes_names[j]]
+                            nb_copresences += copresence
+                            arr.push(activated + copresence)
+                            if (copresence === 1) {activated = 1;}
                         }
-                        edge5.push({
-                            source: i,
-                            target: j,
-                            value: nb_copresences/d.length,
-                        });
+                        if (nb_copresences > 0) {
+                            edge5.push({
+                                source: i,
+                                target: j,
+                                value: nb_copresences/d.length,
+                                step: arr,
+                            });
+                        }
                     }
                 }
 				// dataset
@@ -100,10 +110,15 @@
 					.data(dataset.edges)
 					.enter()
 					.append("line")
-					.style("stroke", "#ccc")
-					.style("stroke-width", 1);
+                    .style("stroke", function(d) {
+                        if (d.step[0] === 1) {return "#cccccc";} 
+                        else if (d.step[0] === 2) {return "#ff6600";}
+                    })
+                    .style("stroke-width", function(d) {
+                        if (d.step[0] >= 1) {return 1;} else {return 0;};
+                    });
 
-				//Create nodes as circles
+                //Create nodes as circles
 				var nodes = svg.selectAll("circle")
 					.data(dataset.nodes)
 					.enter()
@@ -113,40 +128,59 @@
 						if (d.step[0]) {return "#1f77b4";} else {return "#ff7f0e";}
 					})
 					.on("click", function() {
-						whichstep++;
-						if (whichstep === dataset.nodes[0].step.length) {whichstep = 0};
-						element.innerHTML = "Piece " + d[whichstep]["piece"] 
-						+ "&nbsp;&nbsp;&nbsp;&nbsp;Acte " + d[whichstep]["acte"]  
-						+ "&nbsp;&nbsp;&nbsp;&nbsp;Scène " + d[whichstep]["scene"] 
-						+ "&nbsp;&nbsp;&nbsp;&nbsp;Réplique " +d[whichstep]["replique"];
-						trans();
-				   });
+                        whichstep++
+                        trans()
+				    });
 
-				//When force layout ends, this will be called
+                var labels = svg.selectAll("text")
+                    .data(dataset.nodes)
+                    .enter()
+                    .append("text")
+                    .style("font", "10px sans-serif")
+                    .text(function(d) { return d.name; });
+
+                //When force layout ends, this will be called
 				force.on("end", function() {
-
-					nodes.attr("cx", function(d) { return d.x; })
+                    nodes.attr("cx", function(d) { return d.x; })
 						 .attr("cy", function(d) { return d.y; });
-
                     edges.attr("x1", function(d) { return d.source.x; })
 						 .attr("y1", function(d) { return d.source.y; })
 						 .attr("x2", function(d) { return d.target.x; })
 						 .attr("y2", function(d) { return d.target.y; });
-				
-		
-				});
+                    labels.attr("x", function(d) { return d.x + 10; })
+                          .attr("y", function(d) { return d.y - 10; })
+                    });
 
-				//Coulour transition
+				//Transition
 				var trans = function() {
+                    element.innerHTML = "Piece " + d[whichstep]["piece"] 
+                    + "&nbsp;&nbsp;&nbsp;&nbsp;Acte " + d[whichstep]["acte"]  
+                    + "&nbsp;&nbsp;&nbsp;&nbsp;Scène " + d[whichstep]["scene"] 
+                    + "&nbsp;&nbsp;&nbsp;&nbsp;Réplique " +d[whichstep]["replique"];
 					svg.selectAll("circle")
 						.transition()
-						.duration(1000)
+						.duration(step_duration)
 						.style("fill", function(d) {
-							// console.log(d.step[whichstep]);
 							if (d.step[whichstep] === 1) {return "#1f77b4";} else {return "#ff7f0e";}
 						});
-				}
-
+                    svg.selectAll("line")
+						.transition()
+						.duration(step_duration)
+                        .style("stroke", function(d) {
+							if (d.step[whichstep] === 1) {return "#cccccc";} 
+                            else if (d.step[whichstep] === 2) {return "#ff6600";}
+						})
+                        .style("stroke-width", function(d) {
+							if (d.step[whichstep] >= 1) {return 1;} else {return 0;};
+						});
+                    whichstep++
+                    if (whichstep === dataset.nodes[0].step.length) {
+                        whichstep = 0;
+                    }
+                    else {
+                        setTimeout(function(){trans()}, step_duration);
+                    }
+                }
 			});
 
 
