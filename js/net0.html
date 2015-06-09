@@ -4,14 +4,23 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Network transition</title>
-		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="../include/d3.v3.js" charset="utf-8"></script>
+		<script src="../include/d3.slider.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="../include/d3.slider.css" />  
 		<style type="text/css">
-			/* No style rules here yet */
+			.kikoo {
+				margin: 1em;
+			}
+			#slider {
+				width: 30em;
+				margin: 1em;
+			}
 		</style>
 	</head>
 	<body>
-		<div id="step"></div>
+		<div id="step" class="kikoo"></div>
+		<div class="kikoo">Slider with slide event: <span id="slidertext">1</span></div>
+		<div id="slider"></div>
 		<script type="text/javascript">
 
 			//Width and height
@@ -24,6 +33,7 @@
 
 			// Variable de contrôle de la transition
 			var whichstep = 0;
+			var temp = [];
 
 			// nodes
 			d3.tsv("../data/moliere/l_ecole_des_femmes_personnages.txt", function(d) {
@@ -34,7 +44,7 @@
 										+ "&nbsp;&nbsp;&nbsp;&nbsp;Réplique " +d[whichstep]["replique"];
 				// pour tester que les données soient bien chargées
 				// console.log(d);
-				var temp = d;
+				temp = d;
 				// colnames donne le nom de toutes les colonnes
 				// mais nous n'en aurons peut-être pas besoin
 				var colnames = Object.keys(d[0]);
@@ -175,7 +185,12 @@
                         setTimeout(function(){trans()}, step_duration);
                     }
                 }
-			});
+
+				d3.select('#slider').call(d3.slider().min(1).value(1).max(temp.length).on("slide", function(evt, value) {
+    	  			d3.select('#slidertext').text(Math.round(value));
+    			}));
+    		});
+
 		</script>
 	</body>
 </html>
