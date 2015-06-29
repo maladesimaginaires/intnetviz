@@ -1,0 +1,34 @@
+#slider {
+	width: 30em;
+	margin: 1em;
+}
+svg{
+	font-size: 10px;
+	font-family: sans-serif;
+	border: solid 1px;
+}
+
+p{
+	font-weight: bold;
+	display: inline;
+	margin: 0px 20px 0px 20px;
+}
+
+
+
+@media (min-width: 1000px){
+	#conteneurPrincipal{
+		width: 100%;
+		margin: 0 auto;
+	}
+	#conteneurReseau{
+		margin: 0;
+		width: 45%;
+		float: left;
+	}
+	#conteneurTexte{
+		width: 45%;
+		float: left;
+		margin-left: 60px;
+	}
+}

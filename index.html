@@ -4,30 +4,27 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Network transition</title>
-		<script src="../include/d3.v3.js" charset="utf-8"></script>
-		<script src="../include/d3.slider.js" charset="utf-8"></script>
-		<link rel="stylesheet" href="../include/d3.slider.css" />  
-		<style type="text/css">
-			.kikoo {
-				margin: 1em;
-			}
-			#slider {
-				width: 30em;
-				margin: 1em;
-			}
-		</style>
+		<script src="include/js/d3.v3.js" charset="utf-8"></script>
+		<script src="include/js/d3.slider.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="include/css/d3.slider.css" />
+		<link rel="stylesheet" href="include/css/styles.css" />   
 	</head>
 	<body>
-		<div id="step" class="kikoo"></div>
-		<div class="kikoo">Slider with slide event: <span id="slidertext">1</span></div>
-		<div id="slider"></div>
+		<div id='conteneurPrincipal'>
+			<div id='step'></div>
+			<div>Slider with slide event: <span id="slidertext">1</span></div>
+			<div id='slider'></div>
+			<div id='conteneurReseau'></div>
+			<div id='conteneurTexte'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat voluptate dignissimos maxime adipisci asperiores cumque, ut eum earum consequuntur odio laboriosam aut nihil laudantium soluta, et, nulla veniam quod similique.</div>
+		</div>
 		<script type="text/javascript">
 
 			//Width and height
 			var w = 640;
 			var h = 480;
             
-            var step_duration = 100
+            // rapidité d'animation
+            var step_duration = 10;
 
 			// Import data
 
@@ -38,10 +35,10 @@
 			// nodes
 			d3.tsv("../data/moliere/l_ecole_des_femmes_personnages.txt", function(d) {
 				var element = document.getElementById("step");
-				element.innerHTML = "Pièce " + d[whichstep]["piece"] 
-										+ "&nbsp;&nbsp;&nbsp;&nbsp;Acte " + d[whichstep]["acte"]  
-										+ "&nbsp;&nbsp;&nbsp;&nbsp;Scène " + d[whichstep]["scene"] 
-										+ "&nbsp;&nbsp;&nbsp;&nbsp;Réplique " +d[whichstep]["replique"];
+				element.innerHTML = "<p>Pièce</p>" + d[whichstep].piece 
+										+ "<p>Acte</p>" + d[whichstep].acte  
+										+ "<p>Scène</p>" + d[whichstep].scene 
+										+ "<p>Réplique</p>" +d[whichstep].replique;
 				// pour tester que les données soient bien chargées
 				// console.log(d);
 				temp = d;
@@ -54,30 +51,30 @@
 				// chaque noeud a un nom (key) et un array qui donne tous ses états
 				var node5 = [];
 				for (var i = 0; i < nodes_names.length; i++) {
-					var arr = [];
+					var arr1 = [];
 					for (var j = 0; j < d.length; j++) {
-						arr.push(+d[j][nodes_names[i]]);
-					};
+						arr1.push(+d[j][nodes_names[i]]);
+					}
 					node5.push({
 						name: nodes_names[i],
 //						x: Math.random()*w,
 //						y: Math.random()*h,
 						fixed: false,       // mis ceci a false, AX
-						step: arr,
+						step: arr1,
 					});
-				};
+				}
 				// Le poids des aretes est defini comme la proportion des repliques
                 // ou deux personnages sont en co-presence
 				var edge5 = [];
                 for (var i = 0; i < nodes_names.length-1; i++) {
                     for (var j = i+1; j < nodes_names.length; j++) {
-                        var nb_copresences = 0
-                        arr = []
-                        activated = 0
+                        var nb_copresences = 0;
+                        arr2 = [];
+                        var activated = 0;
                         for (var k = 0; k < d.length; k++) {
-                            var copresence = d[k][nodes_names[i]] * d[k][nodes_names[j]]
-                            nb_copresences += copresence
-                            arr.push(activated + copresence)
+                            var copresence = d[k][nodes_names[i]] * d[k][nodes_names[j]];
+                            nb_copresences += copresence;
+                            arr2.push(activated + copresence);
                             if (copresence === 1) {activated = 1;}
                         }
                         if (nb_copresences > 0) {
@@ -85,7 +82,7 @@
                                 source: i,
                                 target: j,
                                 value: nb_copresences/d.length,
-                                step: arr,
+                                step: arr2,
                             });
                         }
                     }
@@ -102,13 +99,28 @@
                                      .charge(-h/2)
 									 .start();
 
-				//Create SVG element
-				var svg = d3.select("body")
-							.insert("svg")
-							.attr("width", w)
-							.attr("height", h);
-				
+				// //Create SVG element (not responsive)
+				// var svg = d3.select("body")
+				// 			.append("svg")
+				// 			.attr("width", w)
+				// 			.attr("height", h)
+				// 			.on("click", function() {
+		  //                       whichstep++;
+		  //                       trans();
+				// 		    });	
 
+				//Create SVG element (responsive)
+				var svg = d3.select("div#conteneurReseau")
+							.append("svg")
+				            .attr("id", "playgraph")
+				             //better to keep the viewBox dimensions with variables
+				            .attr("viewBox", "0 0 " + w + " " + h )
+				            .attr("preserveAspectRatio", "xMaxYMax scale")
+							.on("click", function() {
+		                        whichstep++;
+		                        trans();
+						    });							    						
+				
 				//Create edges as lines
 				var edges = svg.selectAll("line")
 					.data(dataset.edges)
@@ -119,7 +131,7 @@
                         else if (d.step[0] === 2) {return "#ff6600";}
                     })
                     .style("stroke-width", function(d) {
-                        if (d.step[0] >= 1) {return 1;} else {return 0;};
+                        if (d.step[0] >= 1) {return 1;} else {return 0;}
                     });
 
                 //Create nodes as circles
@@ -130,17 +142,13 @@
 					.attr("r", 10)
 					.style("fill", function(d) {
 						if (d.step[0]) {return "#1f77b4";} else {return "#ff7f0e";}
-					})
-					.on("click", function() {
-                        whichstep++
-                        trans()
-				    });
+					});
 
+				// ajout des noms des personnages à chaque noeud
                 var labels = svg.selectAll("text")
                     .data(dataset.nodes)
                     .enter()
                     .append("text")
-                    .style("font", "10px sans-serif")
                     .text(function(d) { return d.name; });
 
                 //When force layout ends, this will be called
@@ -152,15 +160,15 @@
 						 .attr("x2", function(d) { return d.target.x; })
 						 .attr("y2", function(d) { return d.target.y; });
                     labels.attr("x", function(d) { return d.x + 10; })
-                          .attr("y", function(d) { return d.y - 10; })
+                          .attr("y", function(d) { return d.y - 10; });
                     });
 
 				//Transition
 				var trans = function() {
-                    element.innerHTML = "Piece " + d[whichstep]["piece"] 
-                    + "&nbsp;&nbsp;&nbsp;&nbsp;Acte " + d[whichstep]["acte"]  
-                    + "&nbsp;&nbsp;&nbsp;&nbsp;Scène " + d[whichstep]["scene"] 
-                    + "&nbsp;&nbsp;&nbsp;&nbsp;Réplique " +d[whichstep]["replique"];
+                    element.innerHTML = "<p>Pièce</p>" + d[whichstep].piece 
+               		+ "<p>Acte</p>" + d[whichstep].acte  
+                    + "<p>Scène</p>" + d[whichstep].scene 
+                    + "<p>Réplique</p>" +d[whichstep].replique;
 					svg.selectAll("circle")
 						.transition()
 						.duration(step_duration)
@@ -175,22 +183,21 @@
                             else if (d.step[whichstep] === 2) {return "#ff6600";}
 						})
                         .style("stroke-width", function(d) {
-							if (d.step[whichstep] >= 1) {return 1;} else {return 0;};
+							if (d.step[whichstep] >= 1) {return 1;} else {return 0;}
 						});
-                    whichstep++
+                    whichstep++;
                     if (whichstep === dataset.nodes[0].step.length) {
                         whichstep = 0;
                     }
                     else {
-                        setTimeout(function(){trans()}, step_duration);
+                        setTimeout(function(){trans();}, step_duration);
                     }
-                }
+                };
 
 				d3.select('#slider').call(d3.slider().min(1).value(1).max(temp.length).on("slide", function(evt, value) {
     	  			d3.select('#slidertext').text(Math.round(value));
     			}));
     		});
-
 		</script>
 	</body>
 </html>
