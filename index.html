@@ -49,31 +49,40 @@
                 // console.log(d);
                 temp = d;
 
-                // colnames donne le nom de toutes les colonnes
-                // mais nous n'en aurons peut-être pas besoin
+                // colnames donne le nom de toutes les colonnes grâce à la fonction Object.keys
+                // avec [0] on choisit la première ligne, celle des en-têtes
+                // mais nous n'en aurons peut-être pas besoin si nous n'utilisons que nodes_names
                 var colnames = Object.keys(d[0]);
 
                 // ici les noms des personnages, qui donnent aussi les "keys" du tableau de données
+                // Ce sont les noms obtenus au stade précédent après exclusion des 4 premières colonnes
                 var nodes_names = colnames.slice(4, colnames.length);
 
-                // nodes est composé d'un objet par noeud
+                // node5 est composé d'un objet par noeud
                 // chaque noeud a un nom (key) et un array qui donne tous ses états
                 var node5 = [];
+
+                // On boucle tout d'abord sur les noeuds
                 for (var i = 0; i < nodes_names.length; i++) {
                     var arr1 = [];
+
+                    // Puis on boucle sur les répliques et on enregistre l'état du noeud (0 ou 1)
                     for (var j = 0; j < d.length; j++) {
                         arr1.push(+d[j][nodes_names[i]]);
                     }
+
+                    // Ici on sauve la liste des états dans node5 ainsi que le nom et la position fixe au début
                     node5.push({
                         name: nodes_names[i],
                         // x: Math.random()*w,
                         // y: Math.random()*h,
-                        fixed: false,       // mis ceci a false, AX
+                        fixed: false,
                         step: arr1,
                     });
                 }
-                // Le poids des arêtes est defini comme la proportion des repliques
-                // ou deux personnages sont en co-presence
+
+                // Le poids des arêtes est défini comme la proportion des répliques
+                // où deux personnages sont en co-presence
                 var edge5 = [];
                 for (var i = 0; i < nodes_names.length-1; i++) {
                     for (var j = i+1; j < nodes_names.length; j++) {
@@ -108,16 +117,6 @@
                                      .charge(-h/2)
                                      .start();
 
-                // //Create SVG element (not responsive)
-                // var svg = d3.select("body")
-                //          .append("svg")
-                //          .attr("width", w)
-                //          .attr("height", h)
-                //          .on("click", function() {
-                //              whichstep++;
-                //              trans();
-                //          }); 
-
                 //Create SVG element (responsive)
                 var svg = d3.select("div#conteneurReseau")
                             .append("svg")
@@ -128,7 +127,7 @@
                             .on("click", function() {
                                 whichstep++;
                                 trans();
-                            });                                                     
+                            });
                 
                 //Create edges as lines
                 var edges = svg.selectAll("line")
