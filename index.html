@@ -84,17 +84,41 @@
                 // Le poids des arêtes est défini comme la proportion des répliques
                 // où deux personnages sont en co-presence
                 var edge5 = [];
+
+                // On boucle sur tous les noeuds ("source")
                 for (var i = 0; i < nodes_names.length-1; i++) {
+
+                    // On boucle sur les noeuds qu'il reste à parcourir ("target")
                     for (var j = i+1; j < nodes_names.length; j++) {
+
+                        // nb_copresences va servir à sommer le nombre total de co-présences
                         var nb_copresences = 0;
+
+                        // arr2 enregistre les états d'une arête donnée
                         arr2 = [];
+
+                        // activated enregistre si l'arête a déjà été parcourue
                         var activated = 0;
+
+                        // On parcourt toutes les répliques
                         for (var k = 0; k < d.length; k++) {
+
+                            // coprésence vaut 1 si à la réplique k les sommets i et j sont co-présents et 0 sinon
                             var copresence = d[k][nodes_names[i]] * d[k][nodes_names[j]];
+
+                            // On additionne au résultat précédent
                             nb_copresences += copresence;
+
                             arr2.push(activated + copresence);
+
+                            // Activated permettra de savoir à l'étape suivante si la co-présence existait ici.
                             if (copresence === 1) {activated = 1;}
                         }
+
+                        // Si l'arête existe, elle est enregistrée avec ses deux extrémités et un poids égal à son 
+                        // nombre de co-présences divisé par le nombre de répliques. C'est une manière de mesurer 
+                        // l'importance de cette relation (qui ne prend pas en compte la longueur des répliques 
+                        // malheureusement). 
                         if (nb_copresences > 0) {
                             edge5.push({
                                 source: i,
@@ -105,14 +129,16 @@
                         }
                     }
                 }
-                // dataset
+
+                // On associe nodes et edges, qui sont des objects composés de pleins de trucs, dans un autre objet,
+                // dataset, qui va servir à réunir les données pour la création du graphe.
                 var dataset = {nodes: node5, edges: edge5};
 
                 //Initialize a default force layout, using the nodes and edges in dataset
                 var force = d3.layout.force()
                                      .nodes(dataset.nodes)
                                      .links(dataset.edges)
-                                     .size([w, h])
+                                     .size([0.9*w, 0.98*h])
                                      .linkDistance(function(d) { return h/2*(1-d.value); })
                                      .charge(-h/2)
                                      .start();
