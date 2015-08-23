@@ -18,7 +18,8 @@
             <div id='conteneurTexte'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat voluptate dignissimos maxime adipisci asperiores cumque, ut eum earum consequuntur odio laboriosam aut nihil laudantium soluta, et, nulla veniam quod similique.</div>
         </div>
         <script type="text/javascript">
-
+        // ajout d'une closure, à limiter aux variables globales une fois le script finaliser
+        (function (){
             // Largeur et hauteur de la fenêtre où apparaît le réseau
             var w = 640;
             var h = 480;
@@ -47,7 +48,7 @@
 
                 // pour tester que les données soient bien chargées
                 // console.log(d);
-                temp = d;
+                var temp = d;
 
                 // colnames donne le nom de toutes les colonnes grâce à la fonction Object.keys
                 // avec [0] on choisit la première ligne, celle des en-têtes
@@ -62,12 +63,16 @@
                 // chaque noeud a un nom (key) et un array qui donne tous ses états
                 var node5 = [];
 
+                // variables d'optimisation
+                var number_of_nodes = nodes_names.length;
+                var number_of_data = d.length;
+
                 // On boucle tout d'abord sur les noeuds
-                for (var i = 0; i < nodes_names.length; i++) {
+                for (var i = 0; i < number_of_nodes; i++) {
                     var arr1 = [];
 
                     // Puis on boucle sur les répliques et on enregistre l'état du noeud (0 ou 1)
-                    for (var j = 0; j < d.length; j++) {
+                    for (var j = 0; j < number_of_data; j++) {
                         arr1.push(+d[j][nodes_names[i]]);
                     }
 
@@ -86,10 +91,10 @@
                 var edge5 = [];
 
                 // On boucle sur tous les noeuds ("source")
-                for (var i = 0; i < nodes_names.length-1; i++) {
+                for (var i = 0; i < number_of_nodes-1; i++) {
 
                     // On boucle sur les noeuds qu'il reste à parcourir ("target")
-                    for (var j = i+1; j < nodes_names.length; j++) {
+                    for (var j = i+1; j < number_of_nodes; j++) {
 
                         // nb_copresences va servir à sommer le nombre total de co-présences
                         var nb_copresences = 0;
@@ -101,7 +106,7 @@
                         var activated = 0;
 
                         // On parcourt toutes les répliques
-                        for (var k = 0; k < d.length; k++) {
+                        for (var k = 0; k < number_of_data; k++) {
 
                             // coprésence vaut 1 si à la réplique k les sommets i et j sont co-présents et 0 sinon
                             var copresence = d[k][nodes_names[i]] * d[k][nodes_names[j]];
@@ -123,7 +128,7 @@
                             edge5.push({
                                 source: i,
                                 target: j,
-                                value: nb_copresences/d.length,
+                                value: nb_copresences/number_of_data,
                                 step: arr2,
                             });
                         }
@@ -232,6 +237,7 @@
                     d3.select('#slidertext').text(Math.round(value));
                 }));
             });
+        }());
         </script>
     </body>
 </html>
