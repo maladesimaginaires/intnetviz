@@ -18,8 +18,9 @@
             <div id='conteneurTexte'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat voluptate dignissimos maxime adipisci asperiores cumque, ut eum earum consequuntur odio laboriosam aut nihil laudantium soluta, et, nulla veniam quod similique.</div>
         </div>
         <script type="text/javascript">
-        // ajout d'une closure, à limiter aux variables globales une fois le script finalisé
-        (function (){
+            // ajout d'une closure, à limiter aux variables globales une fois le script finalisé
+            //(function (){
+            
             // Largeur et hauteur de la fenêtre où apparaît le réseau
             var w = 640;
             var h = 480;
@@ -27,13 +28,14 @@
             // La rapidité d'animation en ms
             var step_duration = 100;
 
-            // Import data
-
             // whichstep nous donne l'état du réseau
             var whichstep = 0;
 
             // La variable temp permet d'appeler le tableau de données en dehors de d3.tsv, par exemple dans la console
             var temp = [];
+
+            // Idem pour dataset
+            var dataset;
 
             // Importation des noeuds et gestion des fichiers à l'intérieur de la fonction d3.tsv
             // pour pallier aux problèmes d'asychronisme de JavaScript
@@ -50,7 +52,8 @@
 
                 // pour tester que les données soient bien chargées
                 // console.log(d);
-                var temp = d;
+                // temp est déclarée en dehors de d3.tsv pour permettre le debugging
+                temp = d;
 
                 // colnames donne le nom de toutes les colonnes grâce à la fonction Object.keys
                 // avec [0] on choisit la première ligne, celle des en-têtes
@@ -63,7 +66,6 @@
 
                 // node5 est composé d'un objet par noeud
                 // chaque noeud a un nom (key) et un array qui donne tous ses états
-
                 var tmp_nodes = [];
 
                 // variables d'optimisation
@@ -73,7 +75,7 @@
                 var tmp_nodes = [];
                 for (var i = 0; i < number_of_nodes; i++) {
                     var tmp_node_states = [];
-                    for (var j = 0; j < number_of_nodes; j++) {
+                    for (var j = 0; j < number_of_data; j++) {
                         tmp_node_states.push(+d[j][nodes_names[i]]);
                     }
 
@@ -160,7 +162,7 @@
                 }
                 
                 // dataset
-                var dataset = {nodes: tmp_nodes, edges: tmp_edges};
+                dataset = {nodes: tmp_nodes, edges: tmp_edges};
 
                 //Initialize a default force layout, using the nodes and edges in dataset
                 var force = d3.layout.force()
@@ -262,7 +264,7 @@
                     d3.select('#slidertext').text(Math.round(value));
                 }));
             });
-        }());
+        // }());
         </script>
     </body>
 </html>
