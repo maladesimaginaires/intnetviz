@@ -40,6 +40,8 @@
             // Importation des noeuds et gestion des fichiers à l'intérieur de la fonction d3.tsv
             // pour pallier aux problèmes d'asychronisme de JavaScript
             d3.tsv("../data/moliere/l_ecole_des_femmes_personnages.txt", function(data_nodes) {
+                // Importation du second fichier contenant les répliques complètes
+                d3.tsv("../data/moliere/l_ecole_des_femmes_texte.txt", function(data_text) {
                 // On sélectionne le div dont l'"id" est "step"
                 var element = document.getElementById("step");
 
@@ -263,6 +265,7 @@
                     d3.select('#slidertext').text(Math.round(value));
                 }));
             });
+        });
         // }());
         </script>
     </body>
