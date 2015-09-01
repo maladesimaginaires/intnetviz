@@ -14,8 +14,42 @@ p{
 	margin: 0px 20px 0px 20px;
 }
 
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+/* code pour la solution avec ajout de classes CSS
 
+// initialisation des noeuds, pour la solution
+circle{
+	fill: #1177bb;
+}
 
+// classes en fonction de l'état
+
+// couleurs des lignes
+.never_live{
+	stroke-width: 0;
+}
+.not_yet_live{
+	stroke: #eeeeee;
+}
+.live{
+	stroke: #ff6600;
+}
+.previously_live{
+	stroke: #1177bb;
+}
+
+// remplissage des noeuds
+
+.fill_live{
+	fill:  #ff6600;
+}
+.fill_previously_live{
+	stroke: #1177bb;
+}
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+/* stlyes pour rendre la page responsive */
 @media (min-width: 1000px){
 	#conteneurPrincipal{
 		width: 100%;

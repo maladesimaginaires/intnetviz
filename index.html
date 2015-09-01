@@ -191,6 +191,8 @@
                     .data(dataset.edges)
                     .enter()
                     .append("line")
+                    // tout ce qui suit est remplaçable par la ligne de code suivante, mais on perd l'état initial
+                    // .classed(function(data_nodes){return data_nodes.step[0];})
                     .style("stroke", function(data_nodes) {
                         if (data_nodes.step[0] === 'not_yet_live') {return "#eeeeee";}
                         else if (data_nodes.step[0] === 'previously_live') {return "#1177bb";}
@@ -206,6 +208,8 @@
                     .enter()
                     .append("circle")
                     .attr("r", 10)
+                    // ce qui suit est remplaçable par la ligne de code suivante, mais on perd l'état initial
+                    // .classed(function(data_nodes){return "fill_"+data_nodes.step[0];})                    
                     .style("fill", function(data_nodes) {
                         if (data_nodes.step[0]) {return "#ff6600";} else {return "#1177bb";}
                     });
