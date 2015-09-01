@@ -39,26 +39,25 @@
 
             // Importation des noeuds et gestion des fichiers à l'intérieur de la fonction d3.tsv
             // pour pallier aux problèmes d'asychronisme de JavaScript
-            d3.tsv("../data/moliere/l_ecole_des_femmes_personnages.txt", function(d) {
-
+            d3.tsv("../data/moliere/l_ecole_des_femmes_personnages.txt", function(data_nodes) {
                 // On sélectionne le div dont l'"id" est "step"
                 var element = document.getElementById("step");
 
                 // Dans ce div, on ajoute quatre paragraphes chacun suivi d'un nombre lui correspondant
-                element.innerHTML = "<p>Pièce</p>"      + d[whichstep].piece 
-                                  + "<p>Acte</p>"       + d[whichstep].acte  
-                                  + "<p>Scène</p>"      + d[whichstep].scene 
-                                  + "<p>Réplique</p>"   + d[whichstep].replique;
+                element.innerHTML = "<p>Pièce</p>"      + data_nodes[whichstep].piece 
+                                  + "<p>Acte</p>"       + data_nodes[whichstep].acte  
+                                  + "<p>Scène</p>"      + data_nodes[whichstep].scene 
+                                  + "<p>Réplique</p>"   + data_nodes[whichstep].replique;
 
                 // pour tester que les données soient bien chargées
-                // console.log(d);
+                // console.log(data_nodes);
                 // temp est déclarée en dehors de d3.tsv pour permettre le debugging
-                temp = d;
+                var temp = data_nodes;
 
                 // colnames donne le nom de toutes les colonnes grâce à la fonction Object.keys
                 // avec [0] on choisit la première ligne, celle des en-têtes
                 // mais nous n'en aurons peut-être pas besoin si nous n'utilisons que nodes_names
-                var colnames = Object.keys(d[0]);
+                var colnames = Object.keys(data_nodes[0]);
 
                 // ici les noms des personnages, qui donnent aussi les "keys" du tableau de données
                 // Ce sont les noms obtenus au stade précédent après exclusion des 4 premières colonnes
@@ -70,13 +69,13 @@
 
                 // variables d'optimisation
                 var number_of_nodes = nodes_names.length;
-                var number_of_data = d.length;
+                var number_of_data = data_nodes.length;
 
                 var tmp_nodes = [];
                 for (var i = 0; i < number_of_nodes; i++) {
                     var tmp_node_states = [];
                     for (var j = 0; j < number_of_data; j++) {
-                        tmp_node_states.push(+d[j][nodes_names[i]]);
+                        tmp_node_states.push(+data_nodes[j][nodes_names[i]]);
                     }
 
                     tmp_nodes.push({
@@ -110,8 +109,8 @@
 
                         for (var k = 0; k < number_of_data; k++) {
 
-                            var copresence = d[k][nodes_names[i]] 
-                                           * d[k][nodes_names[j]]
+                            var copresence = data_nodes[k][nodes_names[i]] 
+                                           * data_nodes[k][nodes_names[j]]
                                            ;
                             num_copresences += copresence;
                             copresences.push(copresence)
@@ -121,7 +120,7 @@
                         if (num_copresences === 0) {
                             // Tous les etats sont NL.
                             tmp_state_array = Array
-                                              .apply(null, Array(d.length))
+                                              .apply(null, Array(data_nodes.length))
                                               .map(
                                                   function() {
                                                       return 'never_live'
@@ -134,7 +133,7 @@
                             var has_been_live = 0;
                             var tmp_state_array = [];
                             // Pour chaque replique...
-                            for (var k = 0; k < d.length; k++) {
+                            for (var k = 0; k < data_nodes.length; k++) {
                                 // Si ces noeuds sont copresents => L 
                                 if (copresences[k] === 1) {
                                     tmp_state_array.push('live')
@@ -155,7 +154,7 @@
                         tmp_edges.push({
                             source: i,
                             target: j,
-                            value:  num_copresences/d.length,
+                            value:  num_copresences/data_nodes.length,
                             step:   tmp_state_array,
                         })
                     }
@@ -169,7 +168,7 @@
                                      .nodes(dataset.nodes)
                                      .links(dataset.edges)
                                      .size([0.9*w, 0.98*h])
-                                     .linkDistance(function(d) { return h/2*(1-d.value); })
+                                     .linkDistance(function(data_nodes) { return h/2*(1-data_nodes.value); })
                                      .charge(-h/2)
                                      .start();
 
@@ -190,13 +189,13 @@
                     .data(dataset.edges)
                     .enter()
                     .append("line")
-                    .style("stroke", function(d) {
-                        if (d.step[0] === 'not_yet_live') {return "#eeeeee";}
-                        else if (d.step[0] === 'previously_live') {return "#1177bb";}
-                        else if (d.step[0] === 'live') {return "#ff6600";}
+                    .style("stroke", function(data_nodes) {
+                        if (data_nodes.step[0] === 'not_yet_live') {return "#eeeeee";}
+                        else if (data_nodes.step[0] === 'previously_live') {return "#1177bb";}
+                        else if (data_nodes.step[0] === 'live') {return "#ff6600";}
                     })
-                    .style("stroke-width", function(d) {
-                        if (d.step[0] != 'never_live') {return 1;} else {return 0;}
+                    .style("stroke-width", function(data_nodes) {
+                        if (data_nodes.step[0] != 'never_live') {return 1;} else {return 0;}
                     });
 
                 // Creation des noeuds comme cercles...
@@ -205,8 +204,8 @@
                     .enter()
                     .append("circle")
                     .attr("r", 10)
-                    .style("fill", function(d) {
-                        if (d.step[0]) {return "#ff6600";} else {return "#1177bb";}
+                    .style("fill", function(data_nodes) {
+                        if (data_nodes.step[0]) {return "#ff6600";} else {return "#1177bb";}
                     });
 
                 // ajout des noms des personnages à chaque noeud
@@ -214,42 +213,42 @@
                     .data(dataset.nodes)
                     .enter()
                     .append("text")
-                    .text(function(d) { return d.name; });
+                    .text(function(data_nodes) { return data_nodes.name; });
 
                 //When force layout ends, this will be called
                 force.on("tick", function() {
-                    nodes.attr("cx", function(d) { return d.x; })
-                         .attr("cy", function(d) { return d.y; });
-                    edges.attr("x1", function(d) { return d.source.x; })
-                         .attr("y1", function(d) { return d.source.y; })
-                         .attr("x2", function(d) { return d.target.x; })
-                         .attr("y2", function(d) { return d.target.y; });
-                    labels.attr("x", function(d) { return d.x + 10; })
-                          .attr("y", function(d) { return d.y - 10; });
+                    nodes.attr("cx", function(data_nodes) { return data_nodes.x; })
+                         .attr("cy", function(data_nodes) { return data_nodes.y; });
+                    edges.attr("x1", function(data_nodes) { return data_nodes.source.x; })
+                         .attr("y1", function(data_nodes) { return data_nodes.source.y; })
+                         .attr("x2", function(data_nodes) { return data_nodes.target.x; })
+                         .attr("y2", function(data_nodes) { return data_nodes.target.y; });
+                    labels.attr("x", function(data_nodes) { return data_nodes.x + 10; })
+                          .attr("y", function(data_nodes) { return data_nodes.y - 10; });
                     });
 
                 //Transition
                 var trans = function() {
-                    element.innerHTML = "<p>Pièce</p>" + d[whichstep].piece 
-                    + "<p>Acte</p>" + d[whichstep].acte  
-                    + "<p>Scène</p>" + d[whichstep].scene 
-                    + "<p>Réplique</p>" +d[whichstep].replique;
+                    element.innerHTML = "<p>Pièce</p>" + data_nodes[whichstep].piece 
+                    + "<p>Acte</p>" + data_nodes[whichstep].acte  
+                    + "<p>Scène</p>" + data_nodes[whichstep].scene 
+                    + "<p>Réplique</p>" +data_nodes[whichstep].replique;
                     svg.selectAll("circle")
                         .transition()
                         .duration(step_duration)
-                        .style("fill", function(d) {
-                            if (d.step[whichstep]) {return "#ff6600";} else {return "#1177bb";}
+                        .style("fill", function(data_nodes) {
+                            if (data_nodes.step[whichstep]) {return "#ff6600";} else {return "#1177bb";}
                         });
                     svg.selectAll("line")
                         .transition()
                         .duration(step_duration)
-                    .style("stroke", function(d) {
-                        if (d.step[whichstep] === 'not_yet_live') {return "#eeeeee";}
-                        else if (d.step[whichstep] === 'previously_live') {return "#1177bb";}
-                        else if (d.step[whichstep] === 'live') {return "#ff6600";}
+                    .style("stroke", function(data_nodes) {
+                        if (data_nodes.step[whichstep] === 'not_yet_live') {return "#eeeeee";}
+                        else if (data_nodes.step[whichstep] === 'previously_live') {return "#1177bb";}
+                        else if (data_nodes.step[whichstep] === 'live') {return "#ff6600";}
                     })
-                    .style("stroke-width", function(d) {
-                        if (d.step[whichstep] != 'never_live') {return 1;} else {return 0;}
+                    .style("stroke-width", function(data_nodes) {
+                        if (data_nodes.step[whichstep] != 'never_live') {return 1;} else {return 0;}
                     });
                     whichstep++;
                     if (whichstep === dataset.nodes[0].step.length) {
