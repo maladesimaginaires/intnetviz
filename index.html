@@ -26,7 +26,7 @@
             var h = 480;
             
             // La rapidité d'animation en ms
-            var step_duration = 100;
+            var step_duration = 150;
 
             // whichstep nous donne l'état du réseau
             var whichstep = 0;
@@ -42,6 +42,9 @@
             d3.tsv("../data/moliere/l_ecole_des_femmes_personnages.txt", function(data_nodes) {
                 // Importation du second fichier contenant les répliques complètes
                 d3.tsv("../data/moliere/l_ecole_des_femmes_texte.txt", function(data_text) {
+                
+                // AX: Probleme d'indentation ici!!
+                
                 // On sélectionne le div dont l'"id" est "step"
                 var element = document.getElementById("step");
 
@@ -73,15 +76,52 @@
                 var number_of_nodes = nodes_names.length;
                 var number_of_data = data_nodes.length;
 
+                // Precalcul des états des noeuds; 4 etats sont possibles:
+                // - not_yet_activated (NYA)
+                // - previously_activated (PA)
+                // - activated (AD)
+                // - active (AE)
                 var tmp_nodes = [];
-                for (var i = 0; i < number_of_nodes; i++) {
+                // Pour chaque noeud...
+                for (var i = 0; i < number_of_nodes; i++) {               
+                    // Recuperer le nom du perso.
+                    var character = nodes_names[i]
+                    // Initialisations...
                     var tmp_node_states = [];
-                    for (var j = 0; j < number_of_data; j++) {
-                        tmp_node_states.push(+data_nodes[j][nodes_names[i]]);
+                    var has_been_activated = 0;
+                    
+                    // Pour chaque replique...
+                    for (var k = 0; k < number_of_data; k++) {
+
+                        // Si le perso est present...
+                        if (data_nodes[k][character] == 1) {
+                            // S'il prononce la replique => AE
+                            if (data_text[k]['personnage'] == character) {
+                                tmp_node_states.push('active')
+                            }
+                            // Dans le cas contraire => AD
+                            else {
+                                tmp_node_states.push('activated')
+                            }                        
+                            // Signaler qu'il a ete active.
+                            has_been_activated = 1                            
+                        }
+                        // Si le perso est absent...
+                        else {
+                            // S'il a ete active => PA
+                            if (has_been_activated == 1) {
+                                tmp_node_states.push('previously_activated')
+                            }
+                            // Dans le cas contraire => NYA
+                            else {
+                                tmp_node_states.push('not_yet_activated')
+                            }
+                        }
                     }
 
+                    // Stocker le personnage et la sequence d'etats...
                     tmp_nodes.push({
-                        name: nodes_names[i],
+                        name: character,
 //                      x: Math.random()*w,
 //                      y: Math.random()*h,
                         fixed: false,       // mis ceci a false, AX
@@ -103,7 +143,7 @@
                 for (var i = 0; i < number_of_nodes-1; i++) {
                     for (var j = i+1; j < number_of_nodes; j++) {
 
-                        var tmp_state_array = []
+                        var tmp_edge_states = []
                         // Calculer le nombre total de copresences et
                         // construire le vecteur des copresences...
                         var num_copresences = 0;
@@ -119,10 +159,10 @@
 
                         }
                         // Si ces noeuds ne sont jamais copresents...
-                        if (num_copresences === 0) {
+                        if (num_copresences == 0) {
                             // Tous les etats sont NL.
-                            tmp_state_array = Array
-                                              .apply(null, Array(data_nodes.length))
+                            tmp_edge_states = Array
+                                              .apply(null, Array(number_of_data))
                                               .map(
                                                   function() {
                                                       return 'never_live'
@@ -133,21 +173,21 @@
                         else {
                             // Initialisations...
                             var has_been_live = 0;
-                            var tmp_state_array = [];
+                            var tmp_edge_states = [];
                             // Pour chaque replique...
-                            for (var k = 0; k < data_nodes.length; k++) {
+                            for (var k = 0; k < number_of_data; k++) {
                                 // Si ces noeuds sont copresents => L 
-                                if (copresences[k] === 1) {
-                                    tmp_state_array.push('live')
+                                if (copresences[k] == 1) {
+                                    tmp_edge_states.push('live')
                                     has_been_live = 1;
                                 }
                                 // Sinon, s'ils ont deja ete copresents => PL
-                                else if (has_been_live === 1) {
-                                    tmp_state_array.push('previously_live')
+                                else if (has_been_live == 1) {
+                                    tmp_edge_states.push('previously_live')
                                 }
                                 // Sinon => NYL
                                 else {
-                                    tmp_state_array.push('not_yet_live')
+                                    tmp_edge_states.push('not_yet_live')
                                 }
                             }
                         }
@@ -156,8 +196,8 @@
                         tmp_edges.push({
                             source: i,
                             target: j,
-                            value:  num_copresences/data_nodes.length,
-                            step:   tmp_state_array,
+                            value:  num_copresences/number_of_data,
+                            step:   tmp_edge_states,
                         })
                     }
                 }
@@ -195,11 +235,13 @@
                     // .classed(function(data_nodes){return data_nodes.step[0];})
                     .style("stroke", function(data_nodes) {
                         if (data_nodes.step[0] === 'not_yet_live') {return "#eeeeee";}
-                        else if (data_nodes.step[0] === 'previously_live') {return "#1177bb";}
+                        else if (data_nodes.step[0] === 'previously_live') {return "#666666";}
                         else if (data_nodes.step[0] === 'live') {return "#ff6600";}
                     })
                     .style("stroke-width", function(data_nodes) {
-                        if (data_nodes.step[0] != 'never_live') {return 1;} else {return 0;}
+                        if (data_nodes.step[0] == 'never_live') {return 0;} 
+                        else if (data_nodes.step[0] == 'live') {return 2;} 
+                        else {return 1;}
                     });
 
                 // Creation des noeuds comme cercles...
@@ -209,10 +251,23 @@
                     .append("circle")
                     .attr("r", 10)
                     // ce qui suit est remplaçable par la ligne de code suivante, mais on perd l'état initial
-                    // .classed(function(data_nodes){return "fill_"+data_nodes.step[0];})                    
+                    // .classed(function(data_nodes){return "fill_"+data_nodes.step[0];})
+                    // AX: attention modifications depuis le commentaire ci-dessus!!
                     .style("fill", function(data_nodes) {
-                        if (data_nodes.step[0]) {return "#ff6600";} else {return "#1177bb";}
-                    });
+                        if (data_nodes.step[0] === 'not_yet_activated') {return "#eeeeee";} 
+                        else if (data_nodes.step[0] === 'previously_activated') {return "#666666";} 
+                        else if (data_nodes.step[0] === 'activated') {return "#ff6600";} 
+                        else if (data_nodes.step[0] === 'active') {return "#ffffff";} 
+                    })
+                    .style("stroke", function(data_nodes) {
+                        if (data_nodes.step[0] === 'not_yet_activated') {return "#eeeeee";}
+                        else if (data_nodes.step[0] === 'previously_activated') {return "#666666";}
+                        else if (
+                                data_nodes.step[0] === 'activated'
+                            ||  data_nodes.step[0] === 'active'
+                        ) {return "#ff6600";} 
+                    })
+                    .style("stroke-width", 2);
 
                 // ajout des noms des personnages à chaque noeud
                 var labels = svg.selectAll("text")
@@ -243,18 +298,32 @@
                         .transition()
                         .duration(step_duration)
                         .style("fill", function(data_nodes) {
-                            if (data_nodes.step[whichstep]) {return "#ff6600";} else {return "#1177bb";}
-                        });
+                            if (data_nodes.step[whichstep] === 'not_yet_activated') {return "#eeeeee";} 
+                            else if (data_nodes.step[whichstep] === 'previously_activated') {return "#666666";} 
+                            else if (data_nodes.step[whichstep] === 'activated') {return "#ff6600";} 
+                            else if (data_nodes.step[whichstep] === 'active') {return "#ffffff";} 
+                        })
+                        .style("stroke", function(data_nodes) {
+                            if (data_nodes.step[whichstep] === 'not_yet_activated') {return "#eeeeee";}
+                            else if (data_nodes.step[whichstep] === 'previously_activated') {return "#666666";}
+                            else if (
+                                    data_nodes.step[whichstep] === 'activated'
+                                ||  data_nodes.step[whichstep] === 'active'
+                            ) {return "#ff6600";} 
+                        })
+                        .style("stroke-width", 2);
                     svg.selectAll("line")
                         .transition()
                         .duration(step_duration)
                     .style("stroke", function(data_nodes) {
                         if (data_nodes.step[whichstep] === 'not_yet_live') {return "#eeeeee";}
-                        else if (data_nodes.step[whichstep] === 'previously_live') {return "#1177bb";}
+                        else if (data_nodes.step[whichstep] === 'previously_live') {return "#666666";}
                         else if (data_nodes.step[whichstep] === 'live') {return "#ff6600";}
                     })
                     .style("stroke-width", function(data_nodes) {
-                        if (data_nodes.step[whichstep] != 'never_live') {return 1;} else {return 0;}
+                        if (data_nodes.step[whichstep] == 'never_live') {return 0;} 
+                        else if (data_nodes.step[whichstep] == 'live') {return 2;} 
+                        else {return 1;}
                     });
                     whichstep++;
                     if (whichstep === dataset.nodes[0].step.length) {
