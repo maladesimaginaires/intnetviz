@@ -15,7 +15,9 @@
             <div>Slider with slide event: <span id="slidertext">1</span></div>
             <div id='slider'></div>
             <div id='conteneurReseau'></div>
-            <div id='conteneurTexte'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat voluptate dignissimos maxime adipisci asperiores cumque, ut eum earum consequuntur odio laboriosam aut nihil laudantium soluta, et, nulla veniam quod similique.</div>
+            <div id='previous_line_container' style="color:#eeeeee"></div>
+            <div id='current_line_container' style="color:#333333"></div>
+            <div id='next_line_container' style="color:#eeeeee"></div>
         </div>
         <script type="text/javascript">
             // ajout d'une closure, à limiter aux variables globales une fois le script finalisé
@@ -57,7 +59,7 @@
                 // pour tester que les données soient bien chargées
                 // console.log(data_nodes);
                 // temp est déclarée en dehors de d3.tsv pour permettre le debugging
-                var temp = data_nodes;
+                temp = data_nodes;
 
                 // colnames donne le nom de toutes les colonnes grâce à la fonction Object.keys
                 // avec [0] on choisit la première ligne, celle des en-têtes
@@ -74,14 +76,20 @@
 
                 // variables d'optimisation
                 var number_of_nodes = nodes_names.length;
-                var number_of_data = data_nodes.length;
+                var number_of_lines = data_nodes.length;
 
+                // Stockage du texte de chaque replique...
+                var tmp_lines = [];
+                for (var k = 0; k < number_of_lines; k++) {
+                    tmp_lines.push(data_text[k]['texte'])
+                }
+                
                 // Precalcul des états des noeuds; 4 etats sont possibles:
                 // - not_yet_activated (NYA)
                 // - previously_activated (PA)
                 // - activated (AD)
                 // - active (AE)
-                var tmp_nodes = [];
+
                 // Pour chaque noeud...
                 for (var i = 0; i < number_of_nodes; i++) {               
                     // Recuperer le nom du perso.
@@ -91,7 +99,7 @@
                     var has_been_activated = 0;
                     
                     // Pour chaque replique...
-                    for (var k = 0; k < number_of_data; k++) {
+                    for (var k = 0; k < number_of_lines; k++) {
 
                         // Si le perso est present...
                         if (data_nodes[k][character] == 1) {
@@ -149,7 +157,7 @@
                         var num_copresences = 0;
                         var copresences = []
 
-                        for (var k = 0; k < number_of_data; k++) {
+                        for (var k = 0; k < number_of_lines; k++) {
 
                             var copresence = data_nodes[k][nodes_names[i]] 
                                            * data_nodes[k][nodes_names[j]]
@@ -162,7 +170,7 @@
                         if (num_copresences == 0) {
                             // Tous les etats sont NL.
                             tmp_edge_states = Array
-                                              .apply(null, Array(number_of_data))
+                                              .apply(null, Array(number_of_lines))
                                               .map(
                                                   function() {
                                                       return 'never_live'
@@ -175,7 +183,7 @@
                             var has_been_live = 0;
                             var tmp_edge_states = [];
                             // Pour chaque replique...
-                            for (var k = 0; k < number_of_data; k++) {
+                            for (var k = 0; k < number_of_lines; k++) {
                                 // Si ces noeuds sont copresents => L 
                                 if (copresences[k] == 1) {
                                     tmp_edge_states.push('live')
@@ -196,14 +204,14 @@
                         tmp_edges.push({
                             source: i,
                             target: j,
-                            value:  num_copresences/number_of_data,
+                            value:  num_copresences/number_of_lines,
                             step:   tmp_edge_states,
                         })
                     }
                 }
                 
                 // dataset
-                dataset = {nodes: tmp_nodes, edges: tmp_edges};
+                dataset = {nodes: tmp_nodes, edges: tmp_edges, lines: tmp_lines};
 
                 //Initialize a default force layout, using the nodes and edges in dataset
                 var force = d3.layout.force()
@@ -276,7 +284,13 @@
                     .append("text")
                     .text(function(data_nodes) { return data_nodes.name; });
 
-                //When force layout ends, this will be called
+                // Afficher le texte.
+                d3.select('#current_line_container').text(dataset.lines[0])
+                if (data_nodes.length > 1) {
+                    d3.select('#next_line_container').text(dataset.lines[1])
+                }
+
+                // When force layout ends, this will be called
                 force.on("tick", function() {
                     nodes.attr("cx", function(data_nodes) { return data_nodes.x; })
                          .attr("cy", function(data_nodes) { return data_nodes.y; });
@@ -288,12 +302,25 @@
                           .attr("y", function(data_nodes) { return data_nodes.y - 10; });
                     });
 
-                //Transition
+                // Transition
                 var trans = function() {
                     element.innerHTML = "<p>Pièce</p>" + data_nodes[whichstep].piece 
                     + "<p>Acte</p>" + data_nodes[whichstep].acte  
                     + "<p>Scène</p>" + data_nodes[whichstep].scene 
-                    + "<p>Réplique</p>" +data_nodes[whichstep].replique;
+                    + "<p>Réplique</p>" + data_nodes[whichstep].replique;
+
+                    // Afficher le texte...
+                    if (whichstep > 1) {
+                        d3.select('#previous_line_container').text(dataset.lines[whichstep-1])
+                    }
+                    d3.select('#current_line_container').text(dataset.lines[whichstep])
+                    if (whichstep < data_nodes.length-1) {
+                        d3.select('#next_line_container').text(dataset.lines[whichstep+1])
+                    }
+                    else{
+                        d3.select('#next_line_container').text('')
+                    }
+
                     svg.selectAll("circle")
                         .transition()
                         .duration(step_duration)
