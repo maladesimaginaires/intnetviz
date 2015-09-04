@@ -30,6 +30,12 @@
             // La rapidité d'animation en ms
             var step_duration = 150;
 
+            // Tailles min et max des noeuds et arêtes...
+            var min_node_radius = 7;
+            var max_node_radius = 50;
+            var min_edge_width  = 1;
+            var max_node_width  = 15;
+            
             // whichstep nous donne l'état du réseau
             var whichstep = 0;
 
@@ -97,6 +103,11 @@
                     // Initialisations...
                     var tmp_node_states = [];
                     var has_been_activated = 0;
+                    var tmp_node_radius = [];
+                    var radius = min_node_radius;
+                    var radius_increment = (max_node_radius - min_node_radius)
+                                         / number_of_lines
+                                         ;
                     
                     // Pour chaque replique...
                     for (var k = 0; k < number_of_lines; k++) {
@@ -106,6 +117,7 @@
                             // S'il prononce la replique => AE
                             if (data_text[k]['personnage'] == character) {
                                 tmp_node_states.push('active')
+                                radius += radius_increment;
                             }
                             // Dans le cas contraire => AD
                             else {
@@ -125,15 +137,17 @@
                                 tmp_node_states.push('not_yet_activated')
                             }
                         }
-                    }
+                        tmp_node_radius.push(radius)
+                    }                    
 
-                    // Stocker le personnage et la sequence d'etats...
+                    // Stocker le personnage, la sequence d'etats et de poids...
                     tmp_nodes.push({
                         name: character,
 //                      x: Math.random()*w,
 //                      y: Math.random()*h,
                         fixed: false,       // mis ceci a false, AX
                         step: tmp_node_states,
+                        radius: tmp_node_radius,
                     });
                 }
 
@@ -257,7 +271,9 @@
                     .data(dataset.nodes)
                     .enter()
                     .append("circle")
-                    .attr("r", 10)
+                    .attr("r", function(data_nodes) {
+                        return data_nodes.radius[0]
+                    })
                     // ce qui suit est remplaçable par la ligne de code suivante, mais on perd l'état initial
                     // .classed(function(data_nodes){return "fill_"+data_nodes.step[0];})
                     // AX: attention modifications depuis le commentaire ci-dessus!!
@@ -324,6 +340,9 @@
                     svg.selectAll("circle")
                         .transition()
                         .duration(step_duration)
+                        .attr("r", function(data_nodes) {
+                            return data_nodes.radius[whichstep]
+                        })
                         .style("fill", function(data_nodes) {
                             if (data_nodes.step[whichstep] === 'not_yet_activated') {return "#eeeeee";} 
                             else if (data_nodes.step[whichstep] === 'previously_activated') {return "#666666";} 
@@ -339,6 +358,7 @@
                             ) {return "#ff6600";} 
                         })
                         .style("stroke-width", 2);
+
                     svg.selectAll("line")
                         .transition()
                         .duration(step_duration)
