@@ -34,7 +34,7 @@
             var min_node_radius = 7;
             var max_node_radius = 50;
             var min_edge_width  = 1;
-            var max_node_width  = 15;
+            var max_edge_width  = 15;
             
             // whichstep nous donne l'état du réseau
             var whichstep = 0;
@@ -165,6 +165,12 @@
                 for (var i = 0; i < number_of_nodes-1; i++) {
                     for (var j = i+1; j < number_of_nodes; j++) {
 
+                        var tmp_edge_width = [];
+                        var width = min_edge_width;
+                        var width_increment = (max_edge_width - min_edge_width)
+                                             / number_of_lines
+                                             ;
+
                         var tmp_edge_states = []
                         // Calculer le nombre total de copresences et
                         // construire le vecteur des copresences...
@@ -178,7 +184,8 @@
                                            ;
                             num_copresences += copresence;
                             copresences.push(copresence)
-
+                            width += copresence * width_increment
+                            tmp_edge_width.push(width)
                         }
                         // Si ces noeuds ne sont jamais copresents...
                         if (num_copresences == 0) {
@@ -220,6 +227,7 @@
                             target: j,
                             value:  num_copresences/number_of_lines,
                             step:   tmp_edge_states,
+                            width:  tmp_edge_width,
                         })
                     }
                 }
@@ -261,9 +269,11 @@
                         else if (data_nodes.step[0] === 'live') {return "#ff6600";}
                     })
                     .style("stroke-width", function(data_nodes) {
-                        if (data_nodes.step[0] == 'never_live') {return 0;} 
-                        else if (data_nodes.step[0] == 'live') {return 2;} 
-                        else {return 1;}
+                        if (data_nodes.step[0] == 'never_live') {return 0;}
+                        else {return data_nodes.width[0]}
+//                        if (data_nodes.step[0] == 'never_live') {return 0;} 
+//                        else if (data_nodes.step[0] == 'live') {return 2;} 
+//                        else {return 1;}
                     });
 
                 // Creation des noeuds comme cercles...
@@ -368,10 +378,13 @@
                         else if (data_nodes.step[whichstep] === 'live') {return "#ff6600";}
                     })
                     .style("stroke-width", function(data_nodes) {
-                        if (data_nodes.step[whichstep] == 'never_live') {return 0;} 
-                        else if (data_nodes.step[whichstep] == 'live') {return 2;} 
-                        else {return 1;}
+                        if (data_nodes.step[whichstep] == 'never_live') {return 0;}
+                        else {return data_nodes.width[whichstep]}
+//                        if (data_nodes.step[whichstep] == 'never_live') {return 0;} 
+//                        else if (data_nodes.step[whichstep] == 'live') {return 2;} 
+//                        else {return 1;}
                     });
+                    
                     whichstep++;
                     if (whichstep === dataset.nodes[0].step.length) {
                         whichstep = 0;
