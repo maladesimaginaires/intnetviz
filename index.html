@@ -87,7 +87,7 @@
                 // Stockage du texte de chaque replique...
                 var tmp_lines = [];
                 for (var k = 0; k < number_of_lines; k++) {
-                    tmp_lines.push(data_text[k]['texte'])
+                    tmp_lines.push(data_text[k]['texte'].replace("</l>", "</l><br/>"))
                 }
                 
                 // Precalcul des états des noeuds; 4 etats sont possibles:
@@ -311,9 +311,11 @@
                     .text(function(data_nodes) { return data_nodes.name; });
 
                 // Afficher le texte.
-                d3.select('#current_line_container').text(dataset.lines[0])
-                if (data_nodes.length > 1) {
-                    d3.select('#next_line_container').text(dataset.lines[1])
+                document.getElementById("current_line_container")
+                        .innerHTML = dataset.lines[0]
+                if (number_of_lines > 1) {
+                    document.getElementById("next_line_container")
+                            .innerHTML = dataset.lines[1]
                 }
 
                 // When force layout ends, this will be called
@@ -336,15 +338,26 @@
                     + "<p>Réplique</p>" + data_nodes[whichstep].replique;
 
                     // Afficher le texte...
-                    if (whichstep > 1) {
-                        d3.select('#previous_line_container').text(dataset.lines[whichstep-1])
+                    document.getElementById("current_line_container")
+                            .innerHTML = dataset.lines[0]
+                    if (number_of_lines > 1) {
+                        document.getElementById("next_line_container")
+                                .innerHTML = dataset.lines[1]
                     }
-                    d3.select('#current_line_container').text(dataset.lines[whichstep])
-                    if (whichstep < data_nodes.length-1) {
-                        d3.select('#next_line_container').text(dataset.lines[whichstep+1])
+                    
+                    if (whichstep > 1) {
+                        document.getElementById("previous_line_container")
+                                .innerHTML = dataset.lines[whichstep-1]
+                    }
+                    document.getElementById("current_line_container")
+                            .innerHTML = dataset.lines[whichstep]
+                    if (whichstep < number_of_lines-1) {
+                        document.getElementById("next_line_container")
+                                .innerHTML = dataset.lines[whichstep+1]
                     }
                     else{
-                        d3.select('#next_line_container').text('')
+                        document.getElementById("next_line_container")
+                                .innerHTML = ""
                     }
 
                     svg.selectAll("circle")
