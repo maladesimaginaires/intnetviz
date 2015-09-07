@@ -1,4 +1,4 @@
-#slider {
+﻿#slider {
 	width: 30em;
 	margin: 1em;
 }
@@ -9,9 +9,9 @@ svg{
 }
 
 p{
-	font-weight: bold;
-	display: inline;
-	margin: 0px 20px 0px 20px;
+//	font-weight: bold;
+//	display: inline;
+	margin: 3px;
 }
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
