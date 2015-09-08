@@ -283,13 +283,6 @@
                 });
             }
             
-            function test() {
-                document.getElementById("current_line_container").style.fontSize = "35px";
-            }
-
-            // Initialisation du reseau...
-            function init_svg() {
-            
             // définition d'une fonction pour arrêter/démarrer l'animation
             function play_pause() {
                 d3.event.preventDefault();
@@ -302,6 +295,9 @@
                 }
             }
 
+            // Initialisation du reseau...
+            function init_svg() {
+            
                 // Creation du SVG (responsive)...
                 svg = d3.select("div#conteneurReseau")
                         .append("svg")
