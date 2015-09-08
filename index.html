@@ -308,8 +308,13 @@
 
                 // ajout de la fonction play_pause au réseau
                 svg.on("click", play_pause);
-                // ajout de la fonction play_pause à la page  
-                corps = d3.select("body").on("keydown", play_pause);
+                
+                // réaction aux touches
+                corps = d3.select("body").on("keydown", function(){
+                    if(d3.event.keyCode == "32"){
+                        play_pause();
+                    };
+                });
             
                 // Creation des aretes comme lignes...
                 var edges = svg.selectAll("line")
@@ -438,20 +443,14 @@
                     .attr("r", function(nodes) {
                         return nodes.radius[current_line]
                     })
-                    // tout ce qui suit est remplaçable par la ligne de code 
-                    // suivante, mais on perd l'état initial:
-                    // .classed(function(nodes){return nodes.step[current_line];})
-                    // .style("fill", function(nodes) {
-                    //     switch (nodes.step[current_line]) {
-                    //         case 'not_yet_activated':       return eval('color_'+'not_yet_activated'); 
-                    //         case 'previously_activated':    return color_previously_activated; 
-                    //         case 'activated':               return color_activated; 
-                    //         case 'active':                  return color_active; 
-                    //     }
-                    // })
                     .style("fill", function(nodes) {
-                        return eval('color_'+nodes.step[current_line]);
-                    })    
+                        switch (nodes.step[current_line]) {
+                            case 'not_yet_activated':       return eval('color_'+'not_yet_activated'); 
+                            case 'previously_activated':    return color_previously_activated; 
+                            case 'activated':               return color_activated; 
+                            case 'active':                  return color_active; 
+                        }
+                    })  
                     .style("stroke", function(nodes) {
                         switch (nodes.step[current_line]) {
                             case 'not_yet_activated':       return color_not_yet_activated; 
