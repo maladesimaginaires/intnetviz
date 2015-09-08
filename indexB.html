@@ -22,6 +22,15 @@
             // ajout d'une closure, à limiter aux variables globales une fois le script finalisé
             //(function (){
             
+            // Variables de couleurs
+            var color_not_yet_activated = "#eeeeee";
+            var color_not_yet_live = "#eeeeee";
+            var color_previously_activated = "#666666";
+            var color_previously_live = "#666666";
+            var color_activated = "#ff6600"; 
+            var color_live = "#ff6600";
+            var color_active = "#ffffff";
+
             // Chemin des fichiers d'input...
             var path_characters
                 = "../data/moliere/l_ecole_des_femmes_personnages.txt";
@@ -297,7 +306,7 @@
                             else {
                                 animation_is_on = 0;
                             }
-                        });
+                        });       
             
                 // Creation des aretes comme lignes...
                 var edges = svg.selectAll("line")
@@ -431,18 +440,18 @@
                     // .classed(function(nodes){return nodes.step[current_line];})
                     .style("fill", function(nodes) {
                         switch (nodes.step[current_line]) {
-                            case 'not_yet_activated':       return "#eeeeee"; 
-                            case 'previously_activated':    return "#666666"; 
-                            case 'activated':               return "#ff6600"; 
-                            case 'active':                  return "#ffffff"; 
+                            case 'not_yet_activated':       return color_not_yet_activated; 
+                            case 'previously_activated':    return color_previously_activated; 
+                            case 'activated':               return color_activated; 
+                            case 'active':                  return color_active; 
                         }
                     })
                     .style("stroke", function(nodes) {
                         switch (nodes.step[current_line]) {
-                            case 'not_yet_activated':       return "#eeeeee"; 
-                            case 'previously_activated':    return "#666666"; 
-                            case 'activated':               return "#ff6600"; 
-                            case 'active':                  return "#ff6600"; 
+                            case 'not_yet_activated':       return color_not_yet_activated; 
+                            case 'previously_activated':    return color_previously_activated; 
+                            case 'activated':               return color_activated; 
+                            case 'active':                  return color_live; 
                         }
                     })
                     .style("stroke-width", node_stroke_width);
@@ -456,9 +465,9 @@
                     // .classed(function(edges){return edges.step[current_line];})
                     .style("stroke", function(edges) {
                         switch (edges.step[current_line]) {
-                            case 'not_yet_live':    return "#eeeeee"; 
-                            case 'previously_live': return "#666666"; 
-                            case 'live':            return "#ff6600"; 
+                            case 'not_yet_live':    return color_not_yet_live; 
+                            case 'previously_live': return color_previously_live; 
+                            case 'live':            return color_live; 
                         }
                     })
                     .style("stroke-width", function(edges) {
