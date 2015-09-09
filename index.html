@@ -314,12 +314,20 @@
                     if(d3.event.keyCode == "32"){
                         play_pause();
                     }
+                    // flèche à gauche, pour une réplique de moins
                     else if(d3.event.keyCode == "37"){
                         update_display(current_line--);
                     }
+                    // flèche à droite, pour une réplique de plus
                     else if(d3.event.keyCode == "39"){
                         update_display(current_line++);
-                    }                    
+                    }
+                    // ctrl+R pour revenir au début
+                    else if(d3.event.ctrlKey){
+                    	if(d3.event.keyCode == "82"){	
+                    	update_display(current_line = 0);	
+                    	}
+                    }                                        
                 });
             
                 // Creation des aretes comme lignes...
