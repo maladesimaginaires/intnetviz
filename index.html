@@ -459,7 +459,7 @@
                     })
                     .style("fill", function(nodes) {
                         switch (nodes.step[current_line]) {
-                            case 'not_yet_activated':       return eval('color_'+'not_yet_activated'); 
+                            case 'not_yet_activated':       return color_not_yet_activated; 
                             case 'previously_activated':    return color_previously_activated; 
                             case 'activated':               return color_activated; 
                             case 'active':                  return color_active; 
