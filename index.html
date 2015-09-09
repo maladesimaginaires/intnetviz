@@ -313,7 +313,13 @@
                 corps = d3.select("body").on("keydown", function(){
                     if(d3.event.keyCode == "32"){
                         play_pause();
-                    };
+                    }
+                    else if(d3.event.keyCode == "37"){
+                        update_display(current_line--);
+                    }
+                    else if(d3.event.keyCode == "39"){
+                        update_display(current_line++);
+                    }                    
                 });
             
                 // Creation des aretes comme lignes...
