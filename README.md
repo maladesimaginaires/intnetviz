@@ -2,7 +2,10 @@
 
 Bienvenue sur la page de notre projet ultra-secret de visualisation dynamique de réseaux de personnages tirés d'oeuvres de fiction.
 
-*Dis-moi un peu : ne trouves-tu pas, comme moi, quelque chose du ciel, quelque effet du destin, dans l'aventure inopinée de notre connaissance ?* (Angélique, Acte I, scène 4 des *Malades Imaginaires*)
+<hr> *Les gens faits comme vous font plus que les écus, Et vous êtes de taille à faire des cocus.*
+
+(l'encore insouciant mais clairvoyant Arnolphe à Horace, Acte I, scène 6 de *L'Ecole des femmes*)
+<hr>
 
 ## Pour exécuter le code
 
