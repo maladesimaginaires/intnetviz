@@ -1,6 +1,6 @@
 # A DH unil–epfl d3.js network visualisation project
 
-Bienvenue sur la page de notre projet ultra-secret de visualisation dynamique de réseaux de personnages tirés d'oeuvres de fiction.
+Visualisation dynamique de réseaux de personnages tirés d'oeuvres de fiction.
 
 <hr> *Les gens faits comme vous font plus que les écus, Et vous êtes de taille à faire des cocus.*
 
