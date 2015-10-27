@@ -1,14 +1,14 @@
 # A DH unil–epfl d3.js network visualisation project
 
-Dynamic visualisation of character networks from fictitious works.
+Dynamic visualisation of character networks from fictional works.
 
 [Try it here!](http://bl.ocks.org/yrochat/raw/9327e79756de68c15bd2/)
 
-<img src=https://raw.githubusercontent.com/maladesimaginaires/intnetviz/master/img/screenshot_moliere.png width="600">
+<img src=http://www.martingrandjean.ch/wp-content/uploads/2015/10/DEMO.png width="600">
 
-*Les gens faits comme vous font plus que les écus, Et vous êtes de taille à faire des cocus.*
+>*Les gens faits comme vous font plus que les écus, Et vous êtes de taille à faire des cocus.*
 
-(L'encore insouciant mais clairvoyant Arnolphe à Horace, Acte I, scène 6 de *L'Ecole des femmes*)
+>(L'encore insouciant mais clairvoyant Arnolphe à Horace, Acte I, scène 6 de *L'Ecole des femmes*)
 
 ## To execute the code
 
