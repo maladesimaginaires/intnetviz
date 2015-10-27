@@ -12,6 +12,6 @@ Dynamic visualisation of character networks from fictional works.
 
 ## To execute the code
 
-1. In the temrinal, move to "intnetviz" folder.
+1. In the terminal, move to "intnetviz" folder.
 2. Execute ```python -m SimpleHTTPServer 8888 &```
 3. In the browser, go to ```http://localhost:8888/```
