@@ -2,11 +2,13 @@
 
 Dynamic visualisation of character networks from fictitious works.
 
+[Try it here!](http://bl.ocks.org/yrochat/raw/9327e79756de68c15bd2/)
+
 <img src=https://raw.githubusercontent.com/maladesimaginaires/intnetviz/master/img/screenshot_moliere.png width="600">
 
 *Les gens faits comme vous font plus que les écus, Et vous êtes de taille à faire des cocus.*
 
-[L'encore insouciant mais clairvoyant Arnolphe à Horace, Acte I, scène 6 de *L'Ecole des femmes*]
+(L'encore insouciant mais clairvoyant Arnolphe à Horace, Acte I, scène 6 de *L'Ecole des femmes*)
 
 ## To execute the code
 
