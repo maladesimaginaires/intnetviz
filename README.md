@@ -2,12 +2,11 @@
 
 Dynamic visualisation of character networks from fictitious works.
 
-<hr> *Les gens faits comme vous font plus que les écus, Et vous êtes de taille à faire des cocus.*
+<img src=https://raw.githubusercontent.com/maladesimaginaires/intnetviz/master/img/screenshot_moliere.png width="600">
 
-(l'encore insouciant mais clairvoyant Arnolphe à Horace, Acte I, scène 6 de *L'Ecole des femmes*)
-<hr>
+*Les gens faits comme vous font plus que les écus, Et vous êtes de taille à faire des cocus.*
 
-![Screenshot](https://raw.githubusercontent.com/maladesimaginaires/intnetviz/master/img/screenshot_moliere.png)
+[L'encore insouciant mais clairvoyant Arnolphe à Horace, Acte I, scène 6 de *L'Ecole des femmes*]
 
 ## To execute the code
 
