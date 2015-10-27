@@ -7,21 +7,25 @@
         <script src="include/js/d3.v3.js" charset="utf-8"></script>
         <script src="include/js/d3.slider.js" charset="utf-8"></script>
         <link rel="stylesheet" href="include/css/d3.slider.css" />
-        <link rel="stylesheet" href="include/css/styles.css" />   
+        <link rel="stylesheet" href="include/css/styles.css" />  
     </head>
     <body>
         <div id='conteneurPrincipal'>
-            <div id='line_reference'></div>
-            <div id='slider'></div>
-            <div id='conteneurReseau'></div>
-            <div id='previous_line_container' style="color:#cccccc"></div>
-            <div id='current_line_container' style="color:#333333"></div>
-            <div id='next_line_container' style="color:#cccccc"></div>
+            <div id="entete">
+                <div id='line_reference'></div>
+            </div>
+            <div id="reseau">
+                <div id='slider'></div>
+                <div id='conteneurReseau'></div>
+            </div>
+            <div id="repliques">    
+                <div id='previous_line_container' style="color:#cccccc"></div>
+                <div id='current_line_container' style="color:#333333"></div>
+                <div id='next_line_container' style="color:#cccccc"></div>
+            </div>
         </div>
         <script type="text/javascript">
-            // ajout d'une closure, à limiter aux variables globales une fois le script finalisé
-            //(function (){
-            
+
             // Variables de couleurs
             var color_not_yet_activated = "#eeeeee";
             var color_not_yet_live = "#eeeeee";

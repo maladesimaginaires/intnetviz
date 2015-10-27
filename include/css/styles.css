@@ -50,19 +50,17 @@ circle{
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 
 /* stlyes pour rendre la page responsive */
-@media (min-width: 1000px){
+@media (min-width: 1200px){
+	#reseau{
+		width: 700px;
+		float: left;
+	}
+	#repliques{
+		margin-top: 28px;
+		width: 380px;
+		margin-left: 720px;
+	}
 	#conteneurPrincipal{
-		width: 100%;
+		width: 1200px;
 		margin: 0 auto;
-	}
-	#conteneurReseau{
-		margin: 0;
-		width: 45%;
-		float: left;
-	}
-	#conteneurTexte{
-		width: 45%;
-		float: left;
-		margin-left: 60px;
-	}
 }
