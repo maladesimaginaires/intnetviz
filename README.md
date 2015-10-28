@@ -4,7 +4,13 @@ Dynamic visualisation of character networks from fictional works.
 
 [Try it here!](http://bl.ocks.org/yrochat/raw/9327e79756de68c15bd2/)
 
+## Visual overview
+
 <img src=https://raw.githubusercontent.com/maladesimaginaires/intnetviz/master/img/DEMO.png width="600">
+
+Here is an animated example.
+
+<img src=https://raw.githubusercontent.com/maladesimaginaires/intnetviz/master/img/gif_malades_imaginaires.gif width="600">
 
 >*Les gens faits comme vous font plus que les écus, Et vous êtes de taille à faire des cocus.*
 
