@@ -4,7 +4,7 @@ Dynamic visualisation of character networks from fictional works.
 
 [Try it here!](http://bl.ocks.org/yrochat/raw/9327e79756de68c15bd2/)
 
-<img src=http://www.martingrandjean.ch/wp-content/uploads/2015/10/DEMO.png width="600">
+<img src=https://raw.githubusercontent.com/maladesimaginaires/intnetviz/master/img/DEMO.png width="600">
 
 >*Les gens faits comme vous font plus que les écus, Et vous êtes de taille à faire des cocus.*
 
