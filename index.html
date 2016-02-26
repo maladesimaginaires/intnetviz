@@ -97,19 +97,19 @@
                         // première ligne, celle des en-têtes
                         var colnames = Object.keys(data_nodes[0]);
 
-                        // ici les noms des personnages, qui donnent aussi les 
+                        // ici les id des personnages, qui donnent aussi les 
                         // "keys" du tableau de données. Ce sont les noms 
                         // obtenus au stade précédent après exclusion des 
                         // 4 premières colonnes
-                        var nodes_names = colnames.slice(4, colnames.length);
+                        var node_ids = colnames.slice(4, colnames.length);
 
                         // node5 est composé d'un objet par noeud
-                        // chaque noeud a un nom (key) et un array qui donne 
+                        // chaque noeud a un id (key) et un array qui donne 
                         // tous ses états
                         var tmp_nodes = [];
 
                         // variables d'optimisation
-                        var number_of_nodes = nodes_names.length;
+                        var number_of_nodes = node_ids.length;
                         number_of_lines = data_nodes.length;
 
                         // Precalcul du rayon et des etats des noeuds; 4 etats  
@@ -121,8 +121,8 @@
 
                         // Pour chaque noeud...
                         for (var i = 0; i < number_of_nodes; i++) {               
-                            // Recuperer le nom du perso.
-                            var character = nodes_names[i]
+                            // Recuperer l'id du perso.
+                            var character = node_ids[i]
                             // Initialisations...
                             var tmp_node_states = [];
                             var has_been_activated = 0;
@@ -140,7 +140,7 @@
                                 // Si le perso est present...
                                 if (data_nodes[k][character] == 1) {
                                     // S'il prononce la replique => AE
-                                    if (data_text[k]['personnage'] == character) {
+                                    if (data_text[k]['id'] == character) {
                                         tmp_node_states.push('active')
                                         radius += radius_increment;
                                     }
@@ -167,7 +167,7 @@
 
                             // Stocker personnage, sequence d'etats et de poids...
                             tmp_nodes.push({
-                                name: character,
+                                id: character,
                                 x: Math.random()*w,
                                 y: Math.random()*h,
                                 fixed: false,    
@@ -206,8 +206,8 @@
 
                                 for (var k = 0; k < number_of_lines; k++) {
 
-                                    var copresence = data_nodes[k][nodes_names[i]] 
-                                                   * data_nodes[k][nodes_names[j]]
+                                    var copresence = data_nodes[k][node_ids[i]] 
+                                                   * data_nodes[k][node_ids[j]]
                                                    ;
                                     num_copresences += copresence;
                                     copresences.push(copresence)
@@ -351,7 +351,7 @@
                     .data(dataset.nodes)
                     .enter()
                     .append("text")
-                    .text(function(nodes) { return nodes.name; });
+                    .text(function(nodes) { return nodes.id; });
 
                 //Initialisation du force layout...
                 var force = d3.layout.force()
@@ -525,7 +525,7 @@
             // Formatage des répliques...
             function format_line(data_text, line_num) {
                 var output_text =  "<br/><p><b>" 
-                                +  data_text[line_num]['personnage']
+                                +  data_text[line_num]['nom']
                                 +  "</b>"
                 if (data_text[line_num]['didascalie'] != "") {
                     output_text += "<i>, "

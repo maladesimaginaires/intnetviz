@@ -1,4 +1,4 @@
-﻿piece	acte	scene	replique	CHRYSALDE	ARNOLPHE	ALAIN	GEORGETTE	AGNÈS	HORACE	LE NOTAIRE	ENRIQUE	ORONTE
+﻿piece	acte	scene	replique	CHRYSALDE	ARNOLPHE	ALAIN	GEORGETTE	AGNÈS	HORACE	UN NOTAIRE	ENRIQUE	ORONTE
 l_ecole_des_femmes	I	I	1	1	1	0	0	0	0	0	0	0
 l_ecole_des_femmes	I	I	2	1	1	0	0	0	0	0	0	0
 l_ecole_des_femmes	I	I	3	1	1	0	0	0	0	0	0	0
