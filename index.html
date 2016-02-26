@@ -37,9 +37,9 @@
 
             // Chemin des fichiers d'input...
             var path_characters
-                = "../data/moliere/l_ecole_des_femmes_personnages.txt";
+                = "../data/moliere/l_avare_personnages.txt";
             var path_text 
-                = "../data/moliere/l_ecole_des_femmes_texte.txt";
+                = "../data/moliere/l_avare_texte.txt";
             
             // Largeur et hauteur de la fenêtre où apparaît le réseau
             var w = 640;
@@ -519,6 +519,9 @@
                              + node_stroke_width
                              + label_y_offset
                         ); 
+                    })
+                    .attr("text", function(nodes) { 
+                        return nodes.id; 
                     });
             };
             
