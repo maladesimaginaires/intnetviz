@@ -1,4 +1,4 @@
-piece	acte	scene	replique	id	nom	texte	didascalie
+﻿piece	acte	scene	replique	id	nom	texte	didascalie
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	I	1	SGANARELLE	SGANARELLE	Non, je te dis que je n'en veux rien faire : et que c'est à moi de parler et d'être le maître.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	I	2	MARTINE	MARTINE	Et je te dis, moi, que je veux que tu vives à ma fantaisie : et que je ne me suis point mariée avec toi pour souffrir tes fredaines.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	I	3	SGANARELLE	SGANARELLE	Ô la grande fatigue que d'avoir une femme  : et qu'Aristote a bien raison, quand il dit qu'une femme est pire qu'un Démon !	
@@ -102,7 +102,7 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	II	100	MARTINE	MARTINE	Je te pardonne?<dida
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	II	101	SGANARELLE	SGANARELLE	Tu es une folle de prendre garde à cela. Ce sont petites choses qui sont, de temps, en temps, nécessaires dans l'amitié : et cinq ou six coups de bâton, entre gens qui s'aiment, ne font que ragaillardir l'affection. Va, je m'en vais au bois : et je te promets, aujourd'hui, plus d'un cent de fagots.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	IV	102	LUCAS	LUCAS	Parguenne ! J'avons pris là tous deux une gueble de commission ; et je ne sais pas, moi, ce que je pensons attraper.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	IV	103	VALÈRE	VALÈRE	Que veux-tu, mon pauvre nourricier ? Il faut bien obéir à notre maître : et puis, nous avons intérêt, l'un et l'autre, à la santé de sa fille notre maîtresse, et, sans doute, son mariage différé par sa maladie, nous vaudrait quelque récompense. Horace qui est libéral, a bonne part aux prétentions qu'on peut avoir sur sa personne : et quoiqu'elle ait fait voir de l'amitié pour un certain Léandre, tu sais bien que son père n'a jamais voulu consentir à le recevoir pour son gendre.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	IV	104	MARTINE	MARTINE, rêvant à part elle	Ne puis-je point trouver quelque invention pour me venger ?	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	IV	104	MARTINE	MARTINE	Ne puis-je point trouver quelque invention pour me venger ?	, rêvant à part elle
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	IV	105	LUCAS	LUCAS	Mais quelle fantaisie s'est-il boutée là dans la tête, puisque les médecins y avont tous pardu leur latin ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	IV	106	VALÈRE	VALÈRE	On trouve quelquefois, à force de chercher, ce qu'on ne trouve pas d'abord : et souvent, en de simples lieux...	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	IV	107	MARTINE	MARTINE	Oui, il faut que je m'en venge à quelque prix que ce soit : ces coups de bâton me reviennent au coeur, je ne les saurais digérer, et... <didascalie>Elle dit tout ceci en rêvant : de sorte que ne prenant pas garde à ces deux hommes, elle les heurte en se retournant, et leur dit.</didascalie>Ah ! Messieurs, je vous demande pardon, je ne vous voyais pas : et cherchais dans ma tête quelque chose qui m'embarrasse.	
@@ -135,26 +135,27 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	IV	133	VALÈRE	VALÈRE	Nous vous remercions
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	IV	134	MARTINE	MARTINE	Mais souvenez-vous bien au moins, de l'avertissement que je vous ai donné.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	IV	135	LUCAS	LUCAS	Eh ! Morguenne, laissez-nous faire, s'il ne tient qu'à battre, la vache est à nous.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	IV	136	VALÈRE	VALÈRE	Nous sommes bien heureux d'avoir fait cette rencontre : et j'en conçois, pour moi, la meilleure espérance du monde.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	137	SGANARELLE	SGANARELLE entre sur le théâtre en chantant et tenant une bouteille	La, la, la.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	137	SGANARELLE	SGANARELLE	La, la, la.	 entre sur le théâtre en chantant et tenant une bouteille
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	138	VALÈRE	VALÈRE	J'entends quelqu'un qui chante, et qui coupe du bois.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	139	SGANARELLE	SGANARELLE	La, la, la... Ma foi, c'est assez travaillé pour un coup : prenons un peu d'haleine. <didascalie>Il boit, et dit après avoir bu :</didascalie>Voilà du bois qui est salé, comme tous les diables.<poem type='chanson'><lg n="1"><l id='1'>Qu'ils sont doux, </l><l id='2'>Bouteille jolie, </l><l id='3'>Qu'ils sont doux </l><l id='4'>Vos petits glou-gloux ! </l><l id='5'>Mais mon sort ferait bien des jaloux,</l><l id='6'>Si vous étiez toujours remplie. </l><l id='7'>Ah ! Bouteille, ma mie, </l><l id='8'>Pourquoi vous videz-vous ? </l></lg></poem>Allons, morbleu ! Il ne faut point engendrer de mélancolie.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	140	VALÈRE	VALÈRE	Le voilà lui-même.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	141	LUCAS	LUCAS	Je pense que vous dites vrai, et que j'avons bouté le nez dessus.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	142	VALÈRE	VALÈRE	Voyons de près.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	143	SGANARELLE	SGANARELLE	Ah ! Ma petite friponne, que je t'aime, mon petit bouchon.<l id='9'>... Mon sort.. ferait... bien des... jaloux,</l><l id='10'>Si...</l>Que diable ! À qui en veulent ces gens-là ?	, les apercevant, les regarde, en se tournant vers l'un et puis vers l'autre, et, abaissant la voix, dit 
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	144	VALÈRE	VALÈRE	C'est lui assurément...	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	145	LUCAS	LUCAS	Le velà tout craché comme on nous l'a défiguré.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	146	SGANARELLE	SGANARELLE, à part	<didascalie>Ici, il pose sa bouteille à terre, et Valère se baissant pour le saluer, comme il croit que c'est à dessein de la prendre, il la met de l'autre côté ; ensuite de quoi, Lucas faisant la même chose, il la reprend et la tient contre son estomac, avec divers gestes qui font un grand jeu de théâtre.</didascalie>Ils consultent en me regardant. Quel dessein auraient-ils ?	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	146	SGANARELLE	SGANARELLE	<didascalie>Ici, il pose sa bouteille à terre, et Valère se baissant pour le saluer, comme il croit que c'est à dessein de la prendre, il la met de l'autre côté ; ensuite de quoi, Lucas faisant la même chose, il la reprend et la tient contre son estomac, avec divers gestes qui font un grand jeu de théâtre.</didascalie>Ils consultent en me regardant. Quel dessein auraient-ils ?	, à part
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	147	VALÈRE	VALÈRE	Monsieur, n'est-ce pas vous qui vous appelez Sganarelle ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	148	SGANARELLE	SGANARELLE	Eh quoi ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	149	VALÈRE	VALÈRE	Je vous demande si ce n'est pas vous, qui se nomme Sganarelle.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	150	SGANARELLE	SGANARELLE, se tournant vers Valère, puis vers Lucas	Oui, et non, selon ce que vous lui voulez.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	150	SGANARELLE	SGANARELLE	Oui, et non, selon ce que vous lui voulez.	, se tournant vers Valère, puis vers Lucas
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	151	VALÈRE	VALÈRE	Nous ne voulons que lui faire toutes les civilités que nous pourrons.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	152	SGANARELLE	SGANARELLE	En ce cas, c'est moi, qui se nomme Sganarelle.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	153	VALÈRE	VALÈRE	Monsieur, nous sommes ravis de vous voir. On nous a adressés à vous pour ce que nous cherchons ; et nous venons implorer votre aide, dont nous avons besoin.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	154	SGANARELLE	SGANARELLE	Si c'est quelque chose, Messieurs, qui dépende de mon petit négoce, je suis tout prêt à vous rendre service.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	155	VALÈRE	VALÈRE	Monsieur, c'est trop de grâce que vous nous faites. Mais, Monsieur, couvrez-vous, s'il vous plaît ; le soleil pourrait vous incommoder.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	156	LUCAS	LUCAS	Monsieur, boutez dessus.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	157	SGANARELLE	SGANARELLE, bas	Voici des gens bien pleins de cérémonie.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	157	SGANARELLE	SGANARELLE	Voici des gens bien pleins de cérémonie.	, bas
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	158	VALÈRE	VALÈRE	Monsieur, il ne faut pas trouver étrange que nous venions à vous : les habiles gens sont toujours recherchés, et nous sommes instruits de votre capacité.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	159	SGANARELLE	SGANARELLE	Il est vrai, Messieurs, que je suis le premier homme du monde pour faire des fagots.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	160	VALÈRE	VALÈRE	Ah ! Monsieur... 	
@@ -174,18 +175,18 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	173	SGANARELLE	SGANARELLE	Je vous jure qu
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	174	VALÈRE	VALÈRE	Eh fi.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	175	SGANARELLE	SGANARELLE	Non, en conscience, vous en payerez cela. Je vous parle sincèrement, et ne suis pas homme à surfaire.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	176	VALÈRE	VALÈRE	Faut-il, Monsieur, qu'une personne comme vous s'amuse à ces grossières feintes ? S'abaisse à parler de la sorte ? Qu'un homme si savant, un fameux médecin, comme vous êtes, veuille se déguiser aux yeux du monde, et tenir enterrés les beaux talents qu'il a ?	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	177	SGANARELLE	SGANARELLE, à part	Il est fou.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	177	SGANARELLE	SGANARELLE	Il est fou.	, à part
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	178	VALÈRE	VALÈRE	De grâce, Monsieur, ne dissimulez point avec nous.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	179	SGANARELLE	SGANARELLE	Comment ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	180	LUCAS	LUCAS	Tout ce tripotage ne sart de rian, je savons, çen que je savons.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	181	SGANARELLE	SGANARELLE	Quoi, donc, que me voulez-vous dire ? Pour qui me prenez-vous ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	182	VALÈRE	VALÈRE	Pour ce que vous êtes, pour un grand médecin.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	183	SGANARELLE	SGANARELLE	Médecin, vous-même : je ne le suis point, et ne l'ai jamais été.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	184	VALÈRE	VALÈRE, bas	Voilà sa folie qui le tient. <didascalie>Haut.</didascalie>Monsieur, ne veuillez point nier les choses davantage : et n'en venons point, s'il vous plaît, à de fâcheuses extrémités.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	184	VALÈRE	VALÈRE	Voilà sa folie qui le tient. <didascalie>Haut.</didascalie>Monsieur, ne veuillez point nier les choses davantage : et n'en venons point, s'il vous plaît, à de fâcheuses extrémités.	, bas
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	185	SGANARELLE	SGANARELLE	À quoi, donc ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	186	VALÈRE	VALÈRE	À de certaines choses dont nous serions marris.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	187	SGANARELLE	SGANARELLE	Parbleu, venez-en à tout ce qu'il vous plaira, je ne suis point médecin : et ne sais ce que vous me voulez dire.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	188	VALÈRE	VALÈRE, bas	Je vois bien qu'il faut se servir du remède. <didascalie>Haut.</didascalie>Monsieur, encore, un coup, je vous prie d'avouer ce que vous êtes.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	188	VALÈRE	VALÈRE	Je vois bien qu'il faut se servir du remède. <didascalie>Haut.</didascalie>Monsieur, encore, un coup, je vous prie d'avouer ce que vous êtes.	, bas
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	189	LUCAS	LUCAS	Et testigué ! Ne lantiponez point davantage ; et confessez à la franquette que v'estes médecin.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	190	SGANARELLE	SGANARELLE	J'enrage.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	191	VALÈRE	VALÈRE	À quoi bon nier ce qu'on sait ?	
@@ -210,7 +211,7 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	209	VALÈRE	VALÈRE	Ah ! Voilà qui va bi
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	210	LUCAS	LUCAS	Vous me boutez la joie au coeur, quand je vous vois parler comme ça.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	211	VALÈRE	VALÈRE	Je vous demande pardon, de toute mon âme.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	212	LUCAS	LUCAS	Je vous demandons excuse de la libarté que j'avons prise.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	213	SGANARELLE	SGANARELLE, à part	Ouais ! Serait-ce bien moi qui me tromperais, et serais-je devenu médecin sans m'en être aperçu ?	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	213	SGANARELLE	SGANARELLE	Ouais ! Serait-ce bien moi qui me tromperais, et serais-je devenu médecin sans m'en être aperçu ?	, à part
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	214	VALÈRE	VALÈRE	Monsieur, vous ne vous repentirez pas de nous montrer ce que vous êtes ; et vous verrez assurément que vous en serez satisfait.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	215	SGANARELLE	SGANARELLE	Mais, Messieurs, dites-moi, ne vous trompez-vous point vous-mêmes ? Est-il bien assuré que je sois médecin ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	216	LUCAS	LUCAS	Oui, par ma figué !	
@@ -234,7 +235,7 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	233	SGANARELLE	SGANARELLE	Ma foi ! Je ne 
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	234	VALÈRE	VALÈRE	Il aime à rire. Allons, Monsieur.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	235	SGANARELLE	SGANARELLE	Sans une robe de médecin ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	236	VALÈRE	VALÈRE	Nous en prendrons une.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	237	SGANARELLE	SGANARELLE, présentant sa bouteille à Valère	Tenez cela, vous : voilà où je mets mes juleps.<didascalie>Puis se tournant vers Lucas en crachant.</didascalie>Vous, marchez là-dessus, par ordonnance du médecin.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	237	SGANARELLE	SGANARELLE	Tenez cela, vous : voilà où je mets mes juleps.<didascalie>Puis se tournant vers Lucas en crachant.</didascalie>Vous, marchez là-dessus, par ordonnance du médecin.	, présentant sa bouteille à Valère
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	I	V	238	LUCAS	LUCAS	Palsanguenne ! Velà un médecin qui me plaît ; je pense qu'il réussira ; car il est bouffon.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	I	239	VALÈRE	VALÈRE	Oui, Monsieur, je crois que vous serez satisfait : et nous vous avons amené le plus grand médecin du monde.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	I	240	LUCAS	LUCAS	Oh morguenne, il faut tirer l'échelle après ceti-là : et tous les autres ne sont pas daignes de li déchausser ses souillez.	
@@ -264,7 +265,7 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	I	263	LUCAS	LUCAS	Monsieu, je veux un peu 
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	I	264	GÉRONTE	GÉRONTE	Oui, mais ces gestes ne sont pas nécessaires.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	265	VALÈRE	VALÈRE	Monsieur préparez-vous, voici notre médecin qui entre.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	266	GÉRONTE	GÉRONTE	Monsieur, je suis ravi de vous voir chez moi : et nous avons grand besoin de vous.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	267	SGANARELLE	SGANARELLE, en robe de médecin, avec un chapeau des plus pointus	Hippocrate dit... que nous nous couvrions tous deux.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	267	SGANARELLE	SGANARELLE	Hippocrate dit... que nous nous couvrions tous deux.	, en robe de médecin, avec un chapeau des plus pointus
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	268	GÉRONTE	GÉRONTE	Hippocrate dit cela ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	269	SGANARELLE	SGANARELLE	Oui.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	270	GÉRONTE	GÉRONTE	Dans quel chapitre, s'il vous plaît ?	
@@ -307,26 +308,26 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	306	LUCAS	LUCAS	Avec votre parmission, 
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	307	SGANARELLE	SGANARELLE	Quoi, est-elle votre femme ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	308	LUCAS	LUCAS	Oui.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	309	SGANARELLE	SGANARELLE	<didascalie>Il fait semblant d'embrasser Lucas, et se tournant du côté de la Nourrice, il l'embrasse.</didascalie>Ah vraiment, je ne savais pas cela : et je m'en réjouis pour l'amour de l'un et de l'autre.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	310	LUCAS	LUCAS, en le tirant	Tout doucement, s'il vous plaît.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	310	LUCAS	LUCAS	Tout doucement, s'il vous plaît.	, en le tirant
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	311	SGANARELLE	SGANARELLE	Je vous assure que je suis ravi que vous soyez unis ensemble. <didascalie>Il fait encore semblant d'embrasser Lucas, et, passant dessous ses bras, se jette au col de sa femme.</didascalie>Je la félicite d'avoir un mari comme vous : et je vous félicite vous, d'avoir une femme si belle, si sage, et si bien faite, comme elle est.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	312	LUCAS	LUCAS, en le tirant encore	Eh testigué, point tant de compliment, je vous supplie.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	312	LUCAS	LUCAS	Eh testigué, point tant de compliment, je vous supplie.	, en le tirant encore
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	313	SGANARELLE	SGANARELLE	Ne voulez-vous pas que je me réjouisse avec vous, d'un si bel assemblage ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	314	LUCAS	LUCAS	Avec moi, tant qu'il vous plaira : mais avec ma femme, trêve de sarimonie.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	315	SGANARELLE	SGANARELLE	Je prends part également au bonheur de tous deux ; et...<didascalie>Il continue le même jeu.</didascalie>si je vous embrasse pour vous en témoigner ma joie, je l'embrasse de même pour lui en témoigner aussi...	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	316	LUCAS	LUCAS, en le tirant derechef	Ah vartigué, Monsieu le Médecin, que de lantiponages.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	II	316	LUCAS	LUCAS	Ah vartigué, Monsieu le Médecin, que de lantiponages.	, en le tirant derechef
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	317	GÉRONTE	GÉRONTE	Monsieur, voici tout à l'heure ma fille qu'on va vous amener.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	318	SGANARELLE	SGANARELLE	Je l'attends, Monsieur, avec toute la médecine.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	319	GÉRONTE	GÉRONTE	Où est-elle ?	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	320	SGANARELLE	SGANARELLE, se touchant le front	Là dedans.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	320	SGANARELLE	SGANARELLE	Là dedans.	, se touchant le front
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	321	GÉRONTE	GÉRONTE	Fort bien.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	322	SGANARELLE	SGANARELLE, en voulant toucher les tétons de la nourrice	Mais, comme je m'intéresse à toute votre famille, il faut que j'essaye un peu le lait de votre nourrice : et que je visite son sein.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	323	LUCAS	LUCAS, le tirant, en lui faisant faire la pirouette	Nanin, nanin ; je n'avons que faire de ça.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	322	SGANARELLE	SGANARELLE	Mais, comme je m'intéresse à toute votre famille, il faut que j'essaye un peu le lait de votre nourrice : et que je visite son sein.	, en voulant toucher les tétons de la nourrice
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	323	LUCAS	LUCAS	Nanin, nanin ; je n'avons que faire de ça.	, le tirant, en lui faisant faire la pirouette
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	324	SGANARELLE	SGANARELLE	C'est l'office du médecin, de voir les tétons des nourrices.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	325	LUCAS	LUCAS	Il gnia office qui quienne, je sis votre sarviteur.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	326	SGANARELLE	SGANARELLE	As-tu bien la hardiesse de t'opposer au médecin ? Hors de là !	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	327	LUCAS	LUCAS	Je me moque de çà.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	328	SGANARELLE	SGANARELLE, en le regardant de travers	Je te donnerai la fièvre.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	329	JACQUELINE	JACQUELINE, prenant Lucas par le bras et lui faisant aussi faire la pirouette	Ôte-toi de là, aussi, est-ce que je ne sis pas assez grande pour me défendre moi-même, s'il me fait quelque chose, qui ne soit pas à faire ?	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	328	SGANARELLE	SGANARELLE	Je te donnerai la fièvre.	, en le regardant de travers
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	329	JACQUELINE	JACQUELINE	Ôte-toi de là, aussi, est-ce que je ne sis pas assez grande pour me défendre moi-même, s'il me fait quelque chose, qui ne soit pas à faire ?	, prenant Lucas par le bras et lui faisant aussi faire la pirouette
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	330	LUCAS	LUCAS	Je ne veux pas qu'il te tâte, moi.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	331	SGANARELLE	SGANARELLE	Fi, le vilain, qui est jaloux de sa femme.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	III	332	GÉRONTE	GÉRONTE	Voici ma fille.	
@@ -337,12 +338,12 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	336	GÉRONTE	GÉRONTE	Allons, un siège
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	337	SGANARELLE	SGANARELLE	Voilà une malade qui n'est pas tant dégoûtante : et je tiens qu'un homme bien sain s'en accommoderait assez.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	338	GÉRONTE	GÉRONTE	Vous l'avez fait rire, Monsieur.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	339	SGANARELLE	SGANARELLE	Tant mieux : lorsque le médecin fait rire le malade, c'est le meilleur signe du monde. Eh bien, de quoi est-il question ? Qu'avez-vous ? Quel est le mal que vous sentez ?	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	340	LUCINDE	LUCINDE, répond par signes, en portant sa main à sa bouche, à sa tête et sous son menton	Han, hi, hom, han.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	340	LUCINDE	LUCINDE	Han, hi, hom, han.	, répond par signes, en portant sa main à sa bouche, à sa tête et sous son menton
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	341	SGANARELLE	SGANARELLE	Eh ! Que dites-vous ?	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	342	LUCINDE	LUCINDE, continue les mêmes gestes	Han, hi, hom, han, han, hi, hom.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	342	LUCINDE	LUCINDE	Han, hi, hom, han, han, hi, hom.	, continue les mêmes gestes
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	343	SGANARELLE	SGANARELLE	Quoi ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	344	LUCINDE	LUCINDE	Han, hi, hom.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	345	SGANARELLE	SGANARELLE, la contrefaisant	Han, hi, hom, han, ha : je ne vous entends point. Quel diable de langage est-ce là ?	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	345	SGANARELLE	SGANARELLE	Han, hi, hom, han, ha : je ne vous entends point. Quel diable de langage est-ce là ?	, la contrefaisant
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	346	GÉRONTE	GÉRONTE	Monsieur, c'est là sa maladie. Elle est devenue muette, sans que jusques ici on en ait pu savoir la cause : et c'est un accident qui a fait reculer son mariage.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	347	SGANARELLE	SGANARELLE	Et pourquoi ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	348	GÉRONTE	GÉRONTE	Celui qu'elle doit épouser veut attendre sa guérison pour conclure les choses.	
@@ -358,7 +359,7 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	357	SGANARELLE	SGANARELLE	Copieusement 
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	358	GÉRONTE	GÉRONTE	Je n'entends rien à cela.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	359	SGANARELLE	SGANARELLE	La matière est-elle louable ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	360	GÉRONTE	GÉRONTE	Je ne me connais pas à ces choses.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	361	SGANARELLE	SGANARELLE, se tournant vers la malade	Donnez-moi votre bras. Voilà un pouls qui marque que votre fille est muette.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	361	SGANARELLE	SGANARELLE	Donnez-moi votre bras. Voilà un pouls qui marque que votre fille est muette.	, se tournant vers la malade
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	362	GÉRONTE	GÉRONTE	Eh ! Oui, Monsieur, c'est là son mal : vous l'avez trouvé tout du premier coup.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	363	SGANARELLE	SGANARELLE	Ah, ah.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	364	JACQUELINE	JACQUELINE	Voyez, comme il a deviné sa maladie !	
@@ -372,11 +373,11 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	371	SGANARELLE	SGANARELLE	Aristote, là
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	372	GÉRONTE	GÉRONTE	Je le crois.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	373	SGANARELLE	SGANARELLE	Ah ! C'était un grand homme !	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	374	GÉRONTE	GÉRONTE	Sans doute.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	375	SGANARELLE	SGANARELLE, levant son bras depuis le coude	Grand homme tout à fait : un homme qui était plus grand que moi de tout cela. Pour revenir donc à notre raisonnement. Je tiens que cet empêchement de l'action de sa langue est causé par de certaines humeurs, qu'entre nous autres, savants, nous appelons humeurs peccantes, peccantes, c'est-à-dire... humeurs peccantes : d'autant que les vapeurs formées par les exhalaisons des influences qui s'élèvent dans la région des maladies, venant... pour ainsi dire...  à... Entendez-vous le latin ?	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	375	SGANARELLE	SGANARELLE	Grand homme tout à fait : un homme qui était plus grand que moi de tout cela. Pour revenir donc à notre raisonnement. Je tiens que cet empêchement de l'action de sa langue est causé par de certaines humeurs, qu'entre nous autres, savants, nous appelons humeurs peccantes, peccantes, c'est-à-dire... humeurs peccantes : d'autant que les vapeurs formées par les exhalaisons des influences qui s'élèvent dans la région des maladies, venant... pour ainsi dire...  à... Entendez-vous le latin ?	, levant son bras depuis le coude
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	376	GÉRONTE	GÉRONTE	En aucune façon.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	377	SGANARELLE	SGANARELLE, se tenant avec étonnement	Vous n'entendez point le latin !	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	377	SGANARELLE	SGANARELLE	Vous n'entendez point le latin !	, se tenant avec étonnement
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	378	GÉRONTE	GÉRONTE	Non.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	379	SGANARELLE	SGANARELLE, en faisant diverses plaisantes postures	Cabricias arci thuram, catalamus, singulariter, nominativo haec Musa la Muse, bonus, bona, bonum, Deus sanctus, est ne oratio latinas ? Etiam, oui, quare, pourquoi, quia substantivo, et adjectivum concordat in generi, numerum, et casus.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	379	SGANARELLE	SGANARELLE	Cabricias arci thuram, catalamus, singulariter, nominativo haec Musa la Muse, bonus, bona, bonum, Deus sanctus, est ne oratio latinas ? Etiam, oui, quare, pourquoi, quia substantivo, et adjectivum concordat in generi, numerum, et casus.	, en faisant diverses plaisantes postures
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	380	GÉRONTE	GÉRONTE	Ah ! Que n'ai-je étudié ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	381	JACQUELINE	JACQUELINE	L'habile homme que velà !	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	382	LUCAS	LUCAS	Oui, ça est si biau, que je n'y entends goutte.	
@@ -403,12 +404,12 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	402	JACQUELINE	JACQUELINE	Qui, moi ? Je
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	403	SGANARELLE	SGANARELLE	Tant pis, Nourrice, tant pis. Cette grande santé est à craindre : et il ne sera mauvais de vous faire quelque petite saignée amiable, de vous donner quelque petit clystère dulcifiant.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	404	GÉRONTE	GÉRONTE	Mais, Monsieur, voilà une mode que je ne comprends point. Pourquoi s'aller faire saigner quand on n'a point de maladie ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	405	SGANARELLE	SGANARELLE	Il n'importe, la mode en est salutaire ; et comme on boit pour la soif à venir, il faut se faire aussi saigner pour la maladie à venir.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	406	JACQUELINE	JACQUELINE, en se retirant	Ma fi, je me moque de ça, et je ne veux point faire de mon corps une boutique d'apothicaire.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	406	JACQUELINE	JACQUELINE	Ma fi, je me moque de ça, et je ne veux point faire de mon corps une boutique d'apothicaire.	, en se retirant
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	407	SGANARELLE	SGANARELLE	Vous êtes rétive aux remèdes ; mais nous saurons vous soumettre à la raison. <didascalie>Parlant à Géronte.</didascalie>Je vous donne le bonjour.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	408	GÉRONTE	GÉRONTE	Attendez un peu, s'il vous plaît.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	409	SGANARELLE	SGANARELLE	Que voulez-vous faire ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	410	GÉRONTE	GÉRONTE	Vous donner de l'argent, Monsieur.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	411	SGANARELLE	SGANARELLE, tendant sa main derrière, par-dessous sa robe, tandis que Géronte ouvre sa bourse	Je n'en prendrai pas, Monsieur.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	411	SGANARELLE	SGANARELLE	Je n'en prendrai pas, Monsieur.	, tendant sa main derrière, par-dessous sa robe, tandis que Géronte ouvre sa bourse
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	412	GÉRONTE	GÉRONTE	Monsieur.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	413	SGANARELLE	SGANARELLE	Point du tout.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	414	GÉRONTE	GÉRONTE	Un petit moment.	
@@ -420,27 +421,27 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	419	SGANARELLE	SGANARELLE	Je n'en ferai
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	420	GÉRONTE	GÉRONTE	Eh !	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	421	SGANARELLE	SGANARELLE	Ce n'est pas l'argent qui me fait agir.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	422	GÉRONTE	GÉRONTE	Je le crois.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	423	SGANARELLE	SGANARELLE, après avoir pris l'argent	Cela est-il de poids ?	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	423	SGANARELLE	SGANARELLE	Cela est-il de poids ?	, après avoir pris l'argent
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	424	GÉRONTE	GÉRONTE	Oui, Monsieur.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	425	SGANARELLE	SGANARELLE	Je ne suis pas un médecin mercenaire.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	426	GÉRONTE	GÉRONTE	Je le sais bien.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	427	SGANARELLE	SGANARELLE	L'intérêt ne me gouverne point.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	IV	428	GÉRONTE	GÉRONTE	Je n'ai pas cette pensée.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	429	SGANARELLE	SGANARELLE, regardant son argent	Ma foi ! Cela ne va pas mal, et pourvu que...	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	429	SGANARELLE	SGANARELLE	Ma foi ! Cela ne va pas mal, et pourvu que...	, regardant son argent
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	430	LÉANDRE	LÉANDRE	Monsieur, il y a longtemps que je vous attends : et je viens implorer votre assistance.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	431	SGANARELLE	SGANARELLE, lui prenant le poignet	Voilà un pouls qui est fort mauvais.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	431	SGANARELLE	SGANARELLE	Voilà un pouls qui est fort mauvais.	, lui prenant le poignet
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	432	LÉANDRE	LÉANDRE	Je ne suis point malade, Monsieur, et ce n'est pas pour cela que je viens à vous.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	433	SGANARELLE	SGANARELLE	Si vous n'êtes pas malade, que diable ne le dites-vous donc.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	434	LÉANDRE	LÉANDRE	Non : pour vous dire la chose en deux mots, je m'appelle Léandre, qui suis amoureux de Lucinde, que vous venez de visiter : et comme, par la mauvaise humeur, de son père, toute sorte d'accès m'est fermé auprès d'elle, je me hasarde à vous prier de vouloir servir mon amour : et de me donner lieu d'exécuter un stratagème que j'ai trouvé, pour lui pouvoir dire deux mots, d'où dépendent absolument mon bonheur et ma vie.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	435	SGANARELLE	SGANARELLE, paraissant en colère	Pour qui me prenez-vous ? Comment oser vous adresser à moi, pour vous servir dans votre amour, et vouloir ravaler la dignité de médecin, à des emplois de cette nature ?	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	435	SGANARELLE	SGANARELLE	Pour qui me prenez-vous ? Comment oser vous adresser à moi, pour vous servir dans votre amour, et vouloir ravaler la dignité de médecin, à des emplois de cette nature ?	, paraissant en colère
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	436	LÉANDRE	LÉANDRE	Monsieur, ne faites point de bruit.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	437	SGANARELLE	SGANARELLE, en le faisant reculer	J'en veux faire, moi, vous êtes un impertinent.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	437	SGANARELLE	SGANARELLE	J'en veux faire, moi, vous êtes un impertinent.	, en le faisant reculer
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	438	LÉANDRE	LÉANDRE	Eh ! Monsieur, doucement.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	439	SGANARELLE	SGANARELLE	Un malavisé.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	440	LÉANDRE	LÉANDRE	De grâce.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	441	SGANARELLE	SGANARELLE	Je vous apprendrai que je ne suis point homme à cela : et que c'est une insolence extrême...	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	442	LÉANDRE	LÉANDRE, tirant une bourse qu'il lui donne	Monsieur.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	443	SGANARELLE	SGANARELLE, tenant la bourse	De vouloir m'employer... Je ne parle pas pour vous, car vous êtes honnête homme, et je serois ravi de vous rendre service. Mais il y a de certains impertinents au monde, qui viennent prendre les gens pour ce qu'ils ne sont pas : et je vous avoue que cela me met en colère.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	442	LÉANDRE	LÉANDRE	Monsieur.	, tirant une bourse qu'il lui donne
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	443	SGANARELLE	SGANARELLE	De vouloir m'employer... Je ne parle pas pour vous, car vous êtes honnête homme, et je serois ravi de vous rendre service. Mais il y a de certains impertinents au monde, qui viennent prendre les gens pour ce qu'ils ne sont pas : et je vous avoue que cela me met en colère.	, tenant la bourse
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	444	LÉANDRE	LÉANDRE	Je vous demande pardon, Monsieur, de la liberté que...	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	445	SGANARELLE	SGANARELLE	Vous vous moquez : de quoi est-il question ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	II	V	446	LÉANDRE	LÉANDRE	Vous saurez, donc, Monsieur, que cette maladie que vous voulez guérir, est une feinte maladie. Les médecins ont raisonné là-dessus, comme il faut ; et ils n'ont pas manqué de dire, que cela procédait, qui du cerveau, qui des entrailles, qui, de la rate, qui du foie. Mais il est certain que l'amour en est la véritable cause : et que Lucinde n'a trouvé cette maladie, que pour se délivrer d'un mariage, dont elle était importunée. Mais, de crainte qu'on ne nous voye ensemble, retirons-nous d'ici : et je vous dirai en marchant, ce que je souhaite de vous.	
@@ -454,17 +455,17 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	I	453	SGANARELLE	SGANARELLE	Diable emport
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	I	454	LÉANDRE	LÉANDRE	Quoi, vous n'êtes pas effectivement...	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	I	455	SGANARELLE	SGANARELLE	Non, vous dis-je, ils m'ont fait médecin malgré mes dents. Je ne m'étais jamais mêlé d'être si savant que cela : et toutes mes études n'ont été que jusqu'en sixième. Je ne sais point sur quoi cette imagination leur est venue : mais quand j'ai vu qu'à toute force ils voulaient que je fusse médecin, je me suis résolu de l'être, aux dépens de qui il appartiendra. Cependant, vous ne sauriez croire comment l'erreur s'est répandue : et de quelle façon, chacun est endiablé à me croire habile homme. On me vient chercher de tous les côtés : et si les choses vont toujours de même, je suis d'avis de m'en tenir, toute ma vie, à la médecine. Je trouve que c'est le métier le meilleur de tous : car soi qu'on fasse bien, ou soit qu'on fasse mal, on est toujours payé de même sorte. La méchante besogne ne retombe jamais sur notre dos ; et nous taillons, comme il nous plaît, sur l'étoffe où nous travaillons. Un cordonnier en faisant des souliers, ne saurait gâter un morceau de cuir qu'il n'en paye les pots cassés ; mais ici l'on peut gâter un homme, sans qu'il en coûte rien. Les bévues ne sont point pour nous : et c'est toujours la faute de celui qui meurt. Enfin le bon de cette profession, est qu'il y a parmi les morts, une honnêteté, une discrétion la plus grande du monde : et jamais on n'en voit se plaindre du médecin qui l'a tué.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	I	456	LÉANDRE	LÉANDRE	Il est vrai que les morts sont fort honnêtes gens, sur cette matière.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	I	457	SGANARELLE	SGANARELLE, voyant des hommes qui viennent vers lui	Voilà des gens qui ont la mine de me venir consulter. Allez toujours m'attendre auprès du logis de votre maîtresse.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	I	457	SGANARELLE	SGANARELLE	Voilà des gens qui ont la mine de me venir consulter. Allez toujours m'attendre auprès du logis de votre maîtresse.	, voyant des hommes qui viennent vers lui
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	458	THIBAUT	THIBAUT	Monsieu, je venons vous charcher, mon fils Perrin et moi.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	459	SGANARELLE	SGANARELLE	Qu'y a-t-il ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	460	THIBAUT	THIBAUT	Sa pauvre mère, qui a nom Parette, est dans un lit, malade, il y a six mois.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	461	SGANARELLE	SGANARELLE, tendant la main, comme pour recevoir de l'argent	Que voulez-vous que j'y fasse ?	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	461	SGANARELLE	SGANARELLE	Que voulez-vous que j'y fasse ?	, tendant la main, comme pour recevoir de l'argent
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	462	THIBAUT	THIBAUT	Je voudrions, Monsieu, que vous nous baillissiez quelque petite drôlerie pour la garir.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	463	SGANARELLE	SGANARELLE	Il faut voir de quoi est-ce qu'elle est malade.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	464	THIBAUT	THIBAUT	Alle est malade d'hypocrisie, Monsieu.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	465	SGANARELLE	SGANARELLE	D'hypocrisie ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	466	THIBAUT	THIBAUT	Oui, c'est-à-dire qu'alle est enflée partout, et l'an dit que c'est quantité de sériosités qu'alle a dans le corps, et que son foie, son ventre, ou sa rate, comme vous voudrais l'appeler, au glieu de faire du sang, ne fait plus que de l'iau. Alle a, de deux jours l'un, la fièvre quotiguenne, avec des lassitules et des douleurs dans les mufles des jambes. On entend dans sa gorge des fleumes qui sont tout prêts à l'étouffer : et, parfois, il lui prend des syncoles, et des conversions, que je crayons qu'alle est passée. J'avons dans notre village, un apothicaire, révérence parler, qui li a donné je ne sai combien d'histoires : et il m'en coûte plus d'eune douzaine de bons écus, en lavements, ne v's'en déplaise, en apostumes, qu'on li a fait prendre, en infections de jacinthe, et en portions cordales. Mais tout ça, comme dit l'autre, n'a été que de l'onguent miton mitaine. Il velait li bailler d'eune certaine drogue que l'on appelle du vin amétile ; mais j'ai-s-eu peur, franchement, que ça l'envoyît à patres, et l'an dit que ces gros médecins tuont je ne sais combien de monde, avec cette invention-là.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	467	SGANARELLE	SGANARELLE, tendant toujours la main et la branlant, comme pour signe qu'il demande de l'argent	Venons au fait, mon ami, venons au fait.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	467	SGANARELLE	SGANARELLE	Venons au fait, mon ami, venons au fait.	, tendant toujours la main et la branlant, comme pour signe qu'il demande de l'argent
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	468	THIBAUT	THIBAUT	Le fait est, Monsieur, que je venons vous prier de nous dire ce qu'il faut que je fassions.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	469	SGANARELLE	SGANARELLE	Je ne vous entends point du tout.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	II	470	PERRIN	PERRIN	Monsieu, ma mère est malade, et velà deux écus que je vous apportons, pour nous bailler queuque remède.	
@@ -504,7 +505,7 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	V	503	SGANARELLE	SGANARELLE	Tant mieux. C
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	V	504	GÉRONTE	GÉRONTE	Oui, mais en opérant, je crains qu'il ne l'étouffe.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	V	505	SGANARELLE	SGANARELLE	Ne vous mettez pas en peine : j'ai des remèdes qui se moquent de tout, et je l'attends à l'agonie.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	V	506	GÉRONTE	GÉRONTE	Qui est cet homme-là, que vous amenez ?	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	V	507	SGANARELLE	SGANARELLE, faisant des signes avec la main que c'est un apothicaire	C'est...	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	V	507	SGANARELLE	SGANARELLE	C'est...	, faisant des signes avec la main que c'est un apothicaire
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	V	508	GÉRONTE	GÉRONTE	Quoi ?	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	V	509	SGANARELLE	SGANARELLE	Celui...	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	V	510	GÉRONTE	GÉRONTE	Eh ?	
@@ -515,7 +516,7 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	514	JACQUELINE	JACQUELINE	Monsieu, vel
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	515	SGANARELLE	SGANARELLE	Cela lui fera du bien. Allez-vous-en, Monsieur l'Apothicaire, tâter un peu son pouls, afin que je raisonne tantôt, avec vous, de sa maladie.<didascalie>En cet endroit, il tire Géronte à un bout du théâtre, et, lui passant un bras sur les épaules, lui rabat la main sous le menton, avec laquelle il le fait retourner vers lui, lorsqu'il veut regarder ce que sa fille et l'apothicaire font ensemble, lui tenant cependant le discours suivant pour l'amuser :</didascalie>Monsieur, c'est une grande et subtile question entre les doctes, de savoir si les femmes sont plus faciles à guérir que les hommes ?Je vous prie d'écouter ceci, s'il vous plaît. Les uns disent que non, les autres disent que oui : et moi je dis que oui, et non : d'autant que l'incongruité des humeurs opaques, qui se rencontrent au tempérament naturel des femmes; étant cause que la partie brutale veut toujours prendre empire sur la sensitive, on voit que l'inégalité de leurs opinions dépend du mouvement oblique, du cercle de la Lune ; et comme le soleil, qui darde ses rayons sur la concavité de la terre, trouve...	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	516	LUCINDE	LUCINDE	Non, je ne suis point du tout capable de changer de sentiments.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	517	GÉRONTE	GÉRONTE	Voilà ma fille qui parle ! Ô grande vertu du remède ! Ô admirable médecin ! Que je vous suis obligé, Monsieur, de cette guérison merveilleuse : et que puis-je faire pour vous après un tel service ?	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	518	SGANARELLE	SGANARELLE, se promenant sur le théâtre, et s'essuyant le front	Voilà une maladie qui m'a bien donné de la peine !	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	518	SGANARELLE	SGANARELLE	Voilà une maladie qui m'a bien donné de la peine !	, se promenant sur le théâtre, et s'essuyant le front
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	519	LUCINDE	LUCINDE	Oui, mon père, j'ai recouvré la parole : mais je l'ai recouvrée pour vous dire, que je n'aurai jamais d'autre époux que Léandre, et que c'est inutilement que vous voulez me donner Horace.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	520	GÉRONTE	GÉRONTE	Mais...	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	521	LUCINDE	LUCINDE	Rien n'est capable d'ébranler la résolution que j'ai prise.	
@@ -534,7 +535,7 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	533	LUCINDE	LUCINDE	Mon coeur ne saura
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	534	GÉRONTE	GÉRONTE	Là...	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	535	LUCINDE	LUCINDE	Et je me jetterai plutôt dans un convent, que d'épouser un homme que je n'aime point.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	536	GÉRONTE	GÉRONTE	Mais...	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	537	LUCINDE	LUCINDE, parlant d'un ton de voix à étourdir	Non. En aucune façon. Point d'affaire. Vous perdez le temps. Je n'en ferai rien. Cela est résolu.	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	537	LUCINDE	LUCINDE	Non. En aucune façon. Point d'affaire. Vous perdez le temps. Je n'en ferai rien. Cela est résolu.	, parlant d'un ton de voix à étourdir
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	538	GÉRONTE	GÉRONTE	Ah ! Quelle impétuosité de paroles, il n'y a pas moyen d'y résister, Monsieur, je vous prie de la faire redevenir muette.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	539	SGANARELLE	SGANARELLE	C'est une chose qui m'est impossible. Tout ce que je puis faire pour votre service est de vous rendre sourd, si vous voulez.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	VI	540	GÉRONTE	GÉRONTE	Je vous remercie. Penses-tu donc...	
@@ -580,7 +581,7 @@ LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	IX	579	SGANARELLE	SGANARELLE	Retire-toi d
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	IX	580	MARTINE	MARTINE	Non, je veux demeurer pour t'encourager à la mort : et je ne te quitterai point, que je ne t'aie vu pendu.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	IX	581	SGANARELLE	SGANARELLE	Ah.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	X	582	GÉRONTE	GÉRONTE	Le Commissaire viendra bientôt, et l'on s'en va vous mettre en lieu, où l'on me répondra de vous.	
-LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	X	583	SGANARELLE	SGANARELLE, le chapeau à la main	Hélas, cela ne se peut-il point changer en quelques coups de bâton ?	
+LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	X	583	SGANARELLE	SGANARELLE	Hélas, cela ne se peut-il point changer en quelques coups de bâton ?	, le chapeau à la main
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	X	584	GÉRONTE	GÉRONTE	Non, non, la justice en ordonnera... Mais que vois-je.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	XI	585	LÉANDRE	LÉANDRE	Monsieur, je viens faire paraître Léandre à vos yeux, et remettre Lucinde en votre pouvoir, nous avons eu dessein de prendre la fuite nous deux, et de nous aller marier ensemble : mais cette entreprise a fait place à un procédé plus honnête : je ne prétends point vous voler votre fille, et ce n'est que de votre main que je veux la recevoir : ce que je vous dirai, Monsieur, c'est que je viens tout à l'heure de recevoir des lettres par où j'apprends que mon oncle est mort, et que je suis héritier de tous ses biens.	
 LE MÉDECIN MALGRÉ LUI, COMÉDIE.	III	XI	586	GÉRONTE	GÉRONTE	Monsieur, votre vertu m'est tout à fait considérable, et je vous donne ma fille, avec la plus grande joie du monde.	

@@ -1,4 +1,4 @@
-piece	acte	scene	replique	id	nom	texte	didascalie
+﻿piece	acte	scene	replique	id	nom	texte	didascalie
 L´AVARE, COMÉDIE	I	I	1	VALERE	VALÈRE	Hé quoi ? Charmante Élise, vous devenez mélancolique, après les obligeantes assurances que vous avez eu la bonté de me donner de votre foi ? Je vous vois soupirer, hélas ! Au milieu de ma joie ! Est-ce du regret, dites-moi, de m´avoir fait heureux, et vous repentez-vous de cet engagement où mes feux ont pu vous contraindre ? 	
 L´AVARE, COMÉDIE	I	I	2	ELISE	ÉLISE	Non, Valère, je ne puis pas me repentir de tout ce que je fais pour vous. Je m´y sens entraîner par une trop douce puissance, et je n´ai pas même la force de souhaiter que les choses ne fussent pas. Mais, à vous dire vrai, le succès me donne de l´inquiétude ; et je crains fort de vous aimer un peu plus que je ne devrais. 	
 L´AVARE, COMÉDIE	I	I	3	VALERE	VALÈRE	Hé ! Que pouvez-vous craindre, Élise, dans les bontés que vous avez pour moi ? 	
@@ -473,7 +473,7 @@ L´AVARE, COMÉDIE	III 	I	471	HARPAGON	HARPAGON	Non, en aucune façon.
 L´AVARE, COMÉDIE	III 	I	472	MAITRE-JACQUES	MAÎTRE JACQUES	Pardonnez-moi : je sais fort bien que je vous mettrais en colère. 	
 L´AVARE, COMÉDIE	III 	I	473	HARPAGON	HARPAGON	Point du tout : au contraire, c´est me faire plaisir, et je suis bien aise d´apprendre comme on parle de moi. 	
 L´AVARE, COMÉDIE	III 	I	474	MAITRE-JACQUES	MAÎTRE JACQUES	Monsieur, puisque vous le voulez, je vous dirai franchement qu´on se moque partout de vous ; qu´on nous jette de tous côtés cent brocards à votre sujet ; et que l´on n´est point plus ravi que de vous tenir au cul et aux chausses, et de faire sans cesse des contes de votre lésine. L´un dit que vous faites imprimer des almanachs particuliers, où vous faites doubler les quatre-temps et les vigiles, afin de profiter des jeûnes où vous obligez votre monde. L´autre, que vous avez toujours une querelle toute prête à faire à vos valets dans le temps des étrennes, ou de leur sortie d´avec vous, pour vous trouver une raison de ne leur donner rien. Celui-là conte qu´une fois vous fîtes assigner le chat d´un de vos voisins, pour vous avoir mangé un reste d´un gigot de mouton. Celui-ci, que l´on vous surprit une nuit, en venant dérober vous-même l´avoine de vos chevaux ; et que votre cocher, qui était celui d´avant moi, vous donna dans l´obscurité je ne sais combien de coups de bâton, dont vous ne voulûtes rien dire. Enfin voulez-vous que je vous dise ? On ne saurait aller nulle part où l´on ne vous entende accommoder de toutes pièces ; vous êtes la fable et la risée de tout le monde ; et jamais on ne parle de vous, que sous les noms d´avare, de ladre, de vilain et de fesse-mathieu. 	
-L´AVARE, COMÉDIE	III 	I	475	HARPAGON	HARPAGON, en le battant	Vous êtes un sot, un maraud, un coquin, et un impudent. 	
+L´AVARE, COMÉDIE	III 	I	475	HARPAGON	HARPAGON	Vous êtes un sot, un maraud, un coquin, et un impudent. 	, en le battant
 L´AVARE, COMÉDIE	III 	I	476	MAITRE-JACQUES	MAÎTRE JACQUES	Hé bien ! Ne l´avais-je pas deviné ? Vous ne m´avez pas voulu croire : je vous l´avais bien dit que je vous fâcherais de vous dire la vérité. 	
 L´AVARE, COMÉDIE	III 	I	477	HARPAGON	HARPAGON	Apprenez à parler. 	
 L´AVARE, COMÉDIE	III 	II	478	VALERE	VALÈRE	À ce que je puis voir, maître Jacques, on paye mal votre franchise. 	
@@ -518,16 +518,16 @@ L´AVARE, COMÉDIE	III 	V	516	HARPAGON	HARPAGON	Tu as raison. Voilà, belle mign
 L´AVARE, COMÉDIE	III 	VI	517	MARIANE	MARIANE	Je m´acquitte bien tard, Madame, d´une telle visite. 	
 L´AVARE, COMÉDIE	III 	VI	518	ELISE	ÉLISE	Vous avez fait, Madame, ce que je devais faire, et c´était à moi de vous prévenir. 	
 L´AVARE, COMÉDIE	III 	VI	519	HARPAGON	HARPAGON	Vous voyez qu´elle est grande ; mais mauvaise herbe croît toujours. 	
-L´AVARE, COMÉDIE	III 	VI	520	MARIANE	MARIANE, bas à Frosine	Oh ! L´homme déplaisant ! 	
+L´AVARE, COMÉDIE	III 	VI	520	MARIANE	MARIANE	Oh ! L´homme déplaisant ! 	, bas à Frosine
 L´AVARE, COMÉDIE	III 	VI	521	HARPAGON	HARPAGON	Que dit la belle ? 	
 L´AVARE, COMÉDIE	III 	VI	522	FROSINE	FROSINE	Qu´elle vous trouve admirable. 	
 L´AVARE, COMÉDIE	III 	VI	523	HARPAGON	HARPAGON	C´est trop d´honneur que vous me faites, adorable mignonne. 	
-L´AVARE, COMÉDIE	III 	VI	524	MARIANE	MARIANE, à part	Quel animal ! 	
+L´AVARE, COMÉDIE	III 	VI	524	MARIANE	MARIANE	Quel animal ! 	, à part
 L´AVARE, COMÉDIE	III 	VI	525	HARPAGON	HARPAGON	Je vous suis trop obligé de ces sentiments. 	
-L´AVARE, COMÉDIE	III 	VI	526	MARIANE	MARIANE, à part	Je n´y puis plus tenir. 	
+L´AVARE, COMÉDIE	III 	VI	526	MARIANE	MARIANE	Je n´y puis plus tenir. 	, à part
 L´AVARE, COMÉDIE	III 	VI	527	HARPAGON	HARPAGON	Voici mon fils aussi qui vous vient faire la révérence. 	
-L´AVARE, COMÉDIE	III 	VI	528	MARIANE	MARIANE, à part, à Frosine	Ah ! Frosine, quelle rencontre ! C´est justement celui dont je t´ai parlé. 	
-L´AVARE, COMÉDIE	III 	VI	529	FROSINE	FROSINE, à Mariane	L´aventure est merveilleuse. 	
+L´AVARE, COMÉDIE	III 	VI	528	MARIANE	MARIANE	Ah ! Frosine, quelle rencontre ! C´est justement celui dont je t´ai parlé. 	, à part, à Frosine
+L´AVARE, COMÉDIE	III 	VI	529	FROSINE	FROSINE	L´aventure est merveilleuse. 	, à Mariane
 L´AVARE, COMÉDIE	III 	VI	530	HARPAGON	HARPAGON	Je vois que vous vous étonnez de me voir de si grands enfants, mais je serai bientôt défait et de l´un et de l´autre. 	
 L´AVARE, COMÉDIE	III 	VII	531	CLEANTE	CLÉANTE	Madame, à vous dire le vrai, c´est ici une aventure où sans doute je ne m´attendais pas ; et mon père ne m´a pas peu surpris lorsqu´il m´a dit tantôt le dessein qu´il avait formé. 	
 L´AVARE, COMÉDIE	III 	VII	532	MARIANE	MARIANE	Je puis dire la même chose. C´est une rencontre imprévue qui m´a surprise autant que vous ; et je n´étais point préparée à une pareille aventure. 	
@@ -548,8 +548,8 @@ L´AVARE, COMÉDIE	III 	VII	546	HARPAGON	HARPAGON	Mon Dieu ! J´ai une langue po
 L´AVARE, COMÉDIE	III 	VII	547	FROSINE	FROSINE	Non ; il vaut mieux que de ce pas nous allions à la foire, afin d´en revenir plus tôt, et d´avoir tout le temps ensuite de vous entretenir. 	
 L´AVARE, COMÉDIE	III 	VII	548	HARPAGON	HARPAGON	Qu´on mette donc les chevaux au carrosse. Je vous prie de m´excuser, ma belle, si je n´ai pas songé à vous donner un peu de collation avant que de partir. 	
 L´AVARE, COMÉDIE	III 	VII	549	CLEANTE	CLÉANTE	J´y ai pourvu, mon père, et j´ai fait apporter ici quelques bassins d´oranges de la Chine, de citrons doux et de confitures, que j´ai envoyé quérir de votre part. 	
-L´AVARE, COMÉDIE	III 	VII	550	HARPAGON	HARPAGON, bas à Valère	Valère ! 	
-L´AVARE, COMÉDIE	III 	VII	551	VALERE	VALÈRE, à Harpagon	Il a perdu le sens. 	
+L´AVARE, COMÉDIE	III 	VII	550	HARPAGON	HARPAGON	Valère ! 	, bas à Valère
+L´AVARE, COMÉDIE	III 	VII	551	VALERE	VALÈRE	Il a perdu le sens. 	, à Harpagon
 L´AVARE, COMÉDIE	III 	VII	552	CLEANTE	CLÉANTE	Est-ce que vous trouvez, mon père, que ce ne soit pas assez ? Madame aura la bonté d´excuser cela, s´il lui plaît. 	
 L´AVARE, COMÉDIE	III 	VII	553	MARIANE	MARIANE	C´est une chose qui n´était pas nécessaire. 	
 L´AVARE, COMÉDIE	III 	VII	554	CLEANTE	CLÉANTE	Avez-vous jamais vu, Madame, un diamant plus vif que celui que vous voyez que mon père a au doigt ? 	
@@ -559,24 +559,24 @@ L´AVARE, COMÉDIE	III 	VII	557	MARIANE	MARIANE	Il est fort beau sans doute, et 
 L´AVARE, COMÉDIE	III 	VII	558	CLEANTE	CLÉANTE	<didascalie>Il se met au-devant de Mariane, qui le veut rendre.</didascalie>Nenni, Madame : il est en de trop belles mains. C´est un présent que mon père vous a fait. 	
 L´AVARE, COMÉDIE	III 	VII	559	HARPAGON	HARPAGON	Moi ? 	
 L´AVARE, COMÉDIE	III 	VII	560	CLEANTE	CLÉANTE	N´est-il pas vrai, mon père, que vous voulez que Madame le garde pour l´amour de vous ? 	
-L´AVARE, COMÉDIE	III 	VII	561	HARPAGON	HARPAGON, à part, à son fils	Comment ? 	
+L´AVARE, COMÉDIE	III 	VII	561	HARPAGON	HARPAGON	Comment ? 	, à part, à son fils
 L´AVARE, COMÉDIE	III 	VII	562	CLEANTE	CLÉANTE	Belle demande ! Il me fait signe de vous le faire accepter. 	
 L´AVARE, COMÉDIE	III 	VII	563	MARIANE	MARIANE	Je ne veux point. 	
 L´AVARE, COMÉDIE	III 	VII	564	CLEANTE	CLÉANTE	Vous moquez-vous ? Il n´a garde de le reprendre. 	
-L´AVARE, COMÉDIE	III 	VII	565	HARPAGON	HARPAGON, à part	J´enrage ! 	
+L´AVARE, COMÉDIE	III 	VII	565	HARPAGON	HARPAGON	J´enrage ! 	, à part
 L´AVARE, COMÉDIE	III 	VII	566	MARIANE	MARIANE	Ce serait. 	
-L´AVARE, COMÉDIE	III 	VII	567	CLEANTE	CLÉANTE, en empêchant toujours Mariane de rendre la bague	Non, vous dis-je, c´est l´offenser. 	
+L´AVARE, COMÉDIE	III 	VII	567	CLEANTE	CLÉANTE	Non, vous dis-je, c´est l´offenser. 	, en empêchant toujours Mariane de rendre la bague
 L´AVARE, COMÉDIE	III 	VII	568	MARIANE	MARIANE	De grâce. 	
 L´AVARE, COMÉDIE	III 	VII	569	CLEANTE	CLÉANTE	Point du tout. 	
-L´AVARE, COMÉDIE	III 	VII	570	HARPAGON	HARPAGON, à part	Peste soit. 	
+L´AVARE, COMÉDIE	III 	VII	570	HARPAGON	HARPAGON	Peste soit. 	, à part
 L´AVARE, COMÉDIE	III 	VII	571	CLEANTE	CLÉANTE	Le voilà qui se scandalise de votre refus. 	
-L´AVARE, COMÉDIE	III 	VII	572	HARPAGON	HARPAGON, bas à son fils	Ah ! traître ! 	
+L´AVARE, COMÉDIE	III 	VII	572	HARPAGON	HARPAGON	Ah ! traître ! 	, bas à son fils
 L´AVARE, COMÉDIE	III 	VII	573	CLEANTE	CLÉANTE	Vous voyez qu´il se désespère. 	
-L´AVARE, COMÉDIE	III 	VII	574	HARPAGON	HARPAGON, bas, à son fils, en le menaçant	Bourreau que tu es ! 	
+L´AVARE, COMÉDIE	III 	VII	574	HARPAGON	HARPAGON	Bourreau que tu es ! 	, bas, à son fils, en le menaçant
 L´AVARE, COMÉDIE	III 	VII	575	CLEANTE	CLÉANTE	Mon père, ce n´est pas ma faute. Je fais ce que je puis pour l´obliger à la garder ; mais elle est obstinée. 	
-L´AVARE, COMÉDIE	III 	VII	576	HARPAGON	HARPAGON, bas, à son fils, avec emportement	Pendard ! 	
+L´AVARE, COMÉDIE	III 	VII	576	HARPAGON	HARPAGON	Pendard ! 	, bas, à son fils, avec emportement
 L´AVARE, COMÉDIE	III 	VII	577	CLEANTE	CLÉANTE	Vous êtes cause, Madame, que mon père me querelle. 	
-L´AVARE, COMÉDIE	III 	VII	578	HARPAGON	HARPAGON, bas, à son fils, avec les mêmes grimaces	Le coquin ! 	
+L´AVARE, COMÉDIE	III 	VII	578	HARPAGON	HARPAGON	Le coquin ! 	, bas, à son fils, avec les mêmes grimaces
 L´AVARE, COMÉDIE	III 	VII	579	CLEANTE	CLÉANTE	Vous le ferez tomber malade. De grâce, Madame, ne résistez point davantage. 	
 L´AVARE, COMÉDIE	III 	VII	580	FROSINE	FROSINE	Mon Dieu ! Que de façons ! Gardez la bague, puisque Monsieur le veut. 	
 L´AVARE, COMÉDIE	III 	VII	581	MARIANE	MARIANE	Pour ne vous point mettre en colère, je la garde maintenant ; et je prendrai un autre temps pour vous la rendre. 	
@@ -741,7 +741,7 @@ L´AVARE, COMÉDIE	IV	V	739	HARPAGON	HARPAGON	Je te déshérite.
 L´AVARE, COMÉDIE	IV	V	740	CLEANTE	CLÉANTE	Tout ce que vous voudrez. 	
 L´AVARE, COMÉDIE	IV	V	741	HARPAGON	HARPAGON	Et je te donne ma malédiction. 	
 L´AVARE, COMÉDIE	IV	V	742	CLEANTE	CLÉANTE	Je n´ai que faire de vos dons. 	
-L´AVARE, COMÉDIE	IV	VI	743	LA-FLECHE	LA FLÈCHE, sortant du jardin, avec une cassette	Ah ! Monsieur, que je vous trouve à propos ! Suivez-moi vite. 	
+L´AVARE, COMÉDIE	IV	VI	743	LA-FLECHE	LA FLÈCHE	Ah ! Monsieur, que je vous trouve à propos ! Suivez-moi vite. 	, sortant du jardin, avec une cassette
 L´AVARE, COMÉDIE	IV	VI	744	CLEANTE	CLÉANTE	Qu´y a-t-il ? 	
 L´AVARE, COMÉDIE	IV	VI	745	LA-FLECHE	LA FLÈCHE	Suivez-moi, vous dis-je : nous sommes bien. 	
 L´AVARE, COMÉDIE	IV	VI	746	CLEANTE	CLÉANTE	Comment ? 	
@@ -765,7 +765,7 @@ L´AVARE, COMÉDIE	V	I	763	HARPAGON	HARPAGON	En bons louis d´or et pistoles bie
 L´AVARE, COMÉDIE	V	I	764	COMMISSAIRE	LE COMMISSAIRE	Qui soupçonnez-vous de ce vol ? 	
 L´AVARE, COMÉDIE	V	I	765	HARPAGON	HARPAGON	Tout le monde ; et je veux que vous arrêtiez prisonniers la ville et les faubourgs. 	
 L´AVARE, COMÉDIE	V	I	766	COMMISSAIRE	LE COMMISSAIRE	Il faut, si vous m´en croyez, n´effaroucher personne, et tâcher doucement d´attraper quelques preuves, afin de procéder après par la rigueur au recouvrement des deniers qui vous ont été pris. 	
-L´AVARE, COMÉDIE	V	II	767	MAITRE-JACQUES	MAÎTRE JACQUES, au bout du théâtre, en se retournant du côté dont il sort.	Je m´en vais revenir. Qu´on me l´égorge tout à l´heure ; qu´on me lui fasse griller les pieds, qu´on me le mette dans l´eau bouillante, et qu´on me le pende au plancher. 	
+L´AVARE, COMÉDIE	V	II	767	MAITRE-JACQUES	MAÎTRE JACQUES	Je m´en vais revenir. Qu´on me l´égorge tout à l´heure ; qu´on me lui fasse griller les pieds, qu´on me le mette dans l´eau bouillante, et qu´on me le pende au plancher. 	, au bout du théâtre, en se retournant du côté dont il sort.
 L´AVARE, COMÉDIE	V	II	768	HARPAGON	HARPAGON	Qui ? Celui qui m´a dérobé ? 	
 L´AVARE, COMÉDIE	V	II	769	MAITRE-JACQUES	MAÎTRE JACQUES	Je parle d´un cochon de lait que votre intendant me vient d´envoyer, et je veux vous l´accommoder à ma fantaisie. 	
 L´AVARE, COMÉDIE	V	II	770	HARPAGON	HARPAGON	Il n´est pas question de cela ; et voilà Monsieur, à qui il faut parler d´autre chose. 	
@@ -779,7 +779,7 @@ L´AVARE, COMÉDIE	V	II	777	HARPAGON	HARPAGON	Traître, il s´agit d´autre chos
 L´AVARE, COMÉDIE	V	II	778	MAITRE-JACQUES	MAÎTRE JACQUES	On vous a pris de l´argent ? 	
 L´AVARE, COMÉDIE	V	II	779	HARPAGON	HARPAGON	Oui, coquin ; et je m´en vais te pendre, si tu ne me le rends. 	
 L´AVARE, COMÉDIE	V	II	780	COMMISSAIRE	LE COMMISSAIRE	Mon Dieu ! Ne le maltraitez point. Je vois à sa mine qu´il est honnête homme, et que sans se faire mettre en prison, il vous découvrira ce que vous voulez savoir. Oui, mon ami, si vous nous confessez la chose, il ne vous sera fait aucun mal, et vous serez récompensé comme il faut par votre maître. On lui a pris aujourd´hui son argent, et il n´est pas que vous ne sachiez quelques nouvelles de cette affaire. 	
-L´AVARE, COMÉDIE	V	II	781	MAITRE-JACQUES	MAÎTRE JACQUES, à part	Voici justement ce qu´il me faut pour me venger de notre intendant : depuis qu´il est entré céans, il est le favori, on n´écoute que ses conseils, et j´ai aussi sur le coeur les coups de bâton de tantôt. 	
+L´AVARE, COMÉDIE	V	II	781	MAITRE-JACQUES	MAÎTRE JACQUES	Voici justement ce qu´il me faut pour me venger de notre intendant : depuis qu´il est entré céans, il est le favori, on n´écoute que ses conseils, et j´ai aussi sur le coeur les coups de bâton de tantôt. 	, à part
 L´AVARE, COMÉDIE	V	II	782	HARPAGON	HARPAGON	Qu´as-tu à ruminer ? 	
 L´AVARE, COMÉDIE	V	II	783	COMMISSAIRE	LE COMMISSAIRE	Laissez-le faire : il se prépare à vous contenter, et je vous ai bien dit qu´il était honnête homme. 	
 L´AVARE, COMÉDIE	V	II	784	MAITRE-JACQUES	MAÎTRE JACQUES	Monsieur, si vous voulez que je vous dise les choses, je crois que c´est Monsieur votre cher intendant qui a fait le coup. 	
@@ -881,7 +881,7 @@ L´AVARE, COMÉDIE	V	III	879	VALERE	VALÈRE	Ce sont des noms qui ne me sont poin
 L´AVARE, COMÉDIE	V	IV	880	HARPAGON	HARPAGON	Ah ! Fille scélérate ! Fille indigne d´un père comme moi ! C´est ainsi que tu pratiques les leçons que je t´ai données ? Tu te laisses prendre d´amour pour un voleur infâme, et tu lui engages ta foi sans mon consentement ? Mais vous serez trompés l´un et l´autre. Quatre bonnes murailles me répondront de ta conduite ; et une bonne potence me fera raison de ton audace. 	
 L´AVARE, COMÉDIE	V	IV	881	VALERE	VALÈRE	Ce ne sera point votre passion qui jugera l´affaire ; et l´on m´écoutera, au moins, avant que de me condamner. 	
 L´AVARE, COMÉDIE	V	IV	882	HARPAGON	HARPAGON	Je me suis abusé de dire une potence, et tu seras roué tout vif. 	
-L´AVARE, COMÉDIE	V	IV	883	ELISE	ÉLISE, à genoux devant son père	Ah ! Mon père, prenez des sentiments un peu plus humains, je vous prie, et n´allez point pousser les choses dans les dernières violences du pouvoir paternel. Ne vous laissez point entraîner aux premiers mouvements de votre passion, et donnez-vous le temps de considérer ce que vous voulez faire. Prenez la peine de mieux voir celui dont vous vous offensez : il est tout autre que vos yeux ne le jugent ; et vous trouverez moins étrange que je me sois donnée à lui, lorsque vous saurez que sans lui vous ne m´auriez plus il y a longtemps. Oui, mon père, c´est celui qui me sauva de ce grand péril que vous savez que je courus dans l´eau, et à qui vous devez la vie de cette même fille dont. 	
+L´AVARE, COMÉDIE	V	IV	883	ELISE	ÉLISE	Ah ! Mon père, prenez des sentiments un peu plus humains, je vous prie, et n´allez point pousser les choses dans les dernières violences du pouvoir paternel. Ne vous laissez point entraîner aux premiers mouvements de votre passion, et donnez-vous le temps de considérer ce que vous voulez faire. Prenez la peine de mieux voir celui dont vous vous offensez : il est tout autre que vos yeux ne le jugent ; et vous trouverez moins étrange que je me sois donnée à lui, lorsque vous saurez que sans lui vous ne m´auriez plus il y a longtemps. Oui, mon père, c´est celui qui me sauva de ce grand péril que vous savez que je courus dans l´eau, et à qui vous devez la vie de cette même fille dont. 	, à genoux devant son père
 L´AVARE, COMÉDIE	V	IV	884	HARPAGON	HARPAGON	Tout cela n´est rien ; et il valait bien mieux pour moi qu´il te laissât noyer que de faire ce qu´il a fait. 	
 L´AVARE, COMÉDIE	V	IV	885	ELISE	ÉLISE	Mon père, je vous conjure, par l´amour paternel, de me. 	
 L´AVARE, COMÉDIE	V	IV	886	HARPAGON	HARPAGON	Non, non, je ne veux rien entendre ; et il faut que la justice fasse son devoir. 	
@@ -897,7 +897,7 @@ L´AVARE, COMÉDIE	V	V	895	VALERE	VALÈRE	Je ne vois pas quel crime on me peut f
 L´AVARE, COMÉDIE	V	V	896	HARPAGON	HARPAGON	Je me moque de tous ces contes ; et le monde aujourd´hui n´est plein que de ces larrons de noblesse, que de ces imposteurs, qui tirent avantage de leur obscurité, et s´habillent insolemment du premier nom illustre qu´ils s´avisent de prendre. 	
 L´AVARE, COMÉDIE	V	V	897	VALERE	VALÈRE	Sachez que j´ai le coeur trop bon pour me parer de quelque chose qui ne soit point à moi, et que tout Naples peut rendre témoignage de ma naissance. 	
 L´AVARE, COMÉDIE	V	V	898	ANSELME	ANSELME	Tout beau ! Prenez garde à ce que vous allez dire. Vous risquez ici plus que vous ne pensez ; et vous parlez devant un homme à qui tout Naples est connu, et qui peut aisément voir clair dans l´histoire que vous ferez. 	
-L´AVARE, COMÉDIE	V	V	899	VALERE	VALÈRE, en mettant fièrement son chapeau	Je ne suis point homme à rien craindre, et si Naples vous est connu, vous savez qui était Don Thomas d´Alburcy. 	
+L´AVARE, COMÉDIE	V	V	899	VALERE	VALÈRE	Je ne suis point homme à rien craindre, et si Naples vous est connu, vous savez qui était Don Thomas d´Alburcy. 	, en mettant fièrement son chapeau
 L´AVARE, COMÉDIE	V	V	900	ANSELME	ANSELME	Sans doute, je le sais ; et peu de gens l´ont connu mieux que moi. 	
 L´AVARE, COMÉDIE	V	V	901	HARPAGON	HARPAGON	Je ne me soucie ni de Don Thomas ni de Don Martin. 	
 L´AVARE, COMÉDIE	V	V	902	ANSELME	ANSELME	De grâce, laissez-le parler, nous verrons ce qu´il en veut dire. 	

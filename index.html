@@ -26,6 +26,12 @@
         </div>
         <script type="text/javascript">
 
+            // variables de path...
+            var play_base_name = "phedre"
+            var base_path = "../data/racine/"
+            var char_file_suffix = "_personnages.txt"
+            var text_file_suffix = "_texte.txt"
+            
             // Variables de couleurs
             var color_not_yet_activated = "#eeeeee";
             var color_not_yet_live = "#eeeeee";
@@ -36,10 +42,8 @@
             var color_active = "#ffffff";
 
             // Chemin des fichiers d'input...
-            var path_characters
-                = "../data/moliere/l_avare_personnages.txt";
-            var path_text 
-                = "../data/moliere/l_avare_texte.txt";
+            var path_characters = base_path + play_base_name + char_file_suffix
+            var path_text = base_path + play_base_name + text_file_suffix
             
             // Largeur et hauteur de la fenêtre où apparaît le réseau
             var w = 640;
@@ -81,7 +85,7 @@
                    
             function import_play_data() {
                 // Importation des noeuds et gestion des fichiers à l'interieur de 
-                // la fonction d3.tsv pour pallier aux problemes d'asychronisme de 
+                // la fonction d3.tsv pour pallier les problemes d'asychronisme de 
                 // JavaScript
                 d3.tsv(path_characters, function(data_nodes) {
                     // Importation du second fichier contenant les répliques
@@ -125,6 +129,8 @@
                             var character = node_ids[i]
                             // Initialisations...
                             var tmp_node_states = [];
+                            var tmp_node_names = [];
+                            var last_known_name = null;
                             var has_been_activated = 0;
                             var tmp_node_radius = [];
                             var radius = min_node_radius;
@@ -136,13 +142,21 @@
                             
                             // Pour chaque replique...
                             for (var k = 0; k < number_of_lines; k++) {
-
                                 // Si le perso est present...
                                 if (data_nodes[k][character] == 1) {
-                                    // S'il prononce la replique => AE
-                                    if (data_text[k]['id'] == character) {
+                                    // Liste des persos prononcant la replique.
+                                    char_ids = data_text[k]['id'].split(
+                                        /\s*(,|et)\s*/
+                                    )
+                                    // Si celui-ci prononce la replique => AE
+                                    char_idx = char_ids.indexOf(character)
+                                    if (char_idx > -1) {
                                         tmp_node_states.push('active')
                                         radius += radius_increment;
+                                        char_names = data_text[k]['nom'].split(
+                                            /\s*(,|et)\s*/
+                                        )
+                                        last_known_name = char_names[char_idx]
                                     }
                                     // Dans le cas contraire => AD
                                     else {
@@ -163,11 +177,30 @@
                                     }
                                 }
                                 tmp_node_radius.push(radius)
+                                tmp_node_names.push(last_known_name)
                             }                    
 
+                            // Remplir le debut de la liste des noms avec le 
+                            // 1er nom connu pour ce personnage, ou son id si
+                            // son nom n'est jamais connu (parce qu'il ne dit
+                            // aucune replique)...
+                            for (var k = 0; k < number_of_lines; k++) {
+                                if (tmp_node_names[k] != null) {
+                                    first_known_name = tmp_node_names[k]
+                                    for (var l = 0; l < k; l++) {
+                                        tmp_node_names[l] = first_known_name
+                                    }
+                                    break;
+                                }
+                                else {
+                                    tmp_node_names[k] = character
+                                }
+                            }                                
+                            
                             // Stocker personnage, sequence d'etats et de poids...
                             tmp_nodes.push({
                                 id: character,
+                                name: tmp_node_names,
                                 x: Math.random()*w,
                                 y: Math.random()*h,
                                 fixed: false,    
@@ -320,18 +353,23 @@
                     }
                     // flèche à gauche, pour une réplique de moins
                     else if(d3.event.keyCode == "37"){
-                        update_display(current_line--);
+                        if (current_line > 0) {
+                            update_display(current_line--);
+                        }
                     }
                     // flèche à droite, pour une réplique de plus
                     else if(d3.event.keyCode == "39"){
-                        update_display(current_line++);
+                        if (current_line < number_of_lines) {
+                            update_display(current_line++);
+                        }
                     }
                     // ctrl+R pour revenir au début
                     else if(d3.event.ctrlKey){
                     	if(d3.event.keyCode == "82"){	
                     	update_display(current_line = 0);	
                     	}
-                    }                                        
+                    }
+                    position_slider.value(current_line)                    
                 });
             
                 // Creation des aretes comme lignes...
@@ -351,7 +389,7 @@
                     .data(dataset.nodes)
                     .enter()
                     .append("text")
-                    .text(function(nodes) { return nodes.id; });
+                    .text(function(nodes) { return nodes.name[0]; });
 
                 //Initialisation du force layout...
                 var force = d3.layout.force()
@@ -521,7 +559,7 @@
                         ); 
                     })
                     .attr("text", function(nodes) { 
-                        return nodes.id; 
+                        return nodes.name[current_line]; 
                     });
             };
             
@@ -531,13 +569,15 @@
                                 +  data_text[line_num]['nom']
                                 +  "</b>"
                 if (data_text[line_num]['didascalie'] != "") {
-                    output_text += "<i>, "
+                    output_text += "<i>"
                                 +  data_text[line_num]['didascalie']
                                 +  "</i>"
                 }                
                 output_text     += "</p>"
                                 + data_text[line_num]['texte']
-                                  .replace(/l>/g, "p>")
+                                  .replace(/<note[^>]*>.+?<\/note>/g, "")
+                                  .replace(/<l[^>]*>/g, "<p>")
+                                  .replace(/<\/l>/g, "</p>")
                                   .replace(/<didascalie>/g, "<p><i>")
                                   .replace(/<\/didascalie>/g, "</p></i>")
                 return output_text
