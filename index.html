@@ -475,6 +475,10 @@
                                 current_line - 1
                             );
                 }
+                else {
+                    document.getElementById("previous_line_container")
+                            .innerHTML = "";
+                }
                 document.getElementById("current_line_container")
                         .innerHTML = format_line(
                             dataset.lines, 
