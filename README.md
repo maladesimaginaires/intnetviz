@@ -2,7 +2,7 @@
 
 Dynamic visualisation of character networks from fictional works.
 
-[Try it here!](http://bl.ocks.org/yrochat/raw/9327e79756de68c15bd2/)
+[Try it here!](http://langtech.ch/intnetviz)
 
 ## Visual overview
 
