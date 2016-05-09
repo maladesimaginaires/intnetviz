@@ -65,6 +65,22 @@
             var label_x_offset = 5
             var label_y_offset = 5
             
+            // Traitement de l'événement "wheel"...             
+            document.getElementById("previous_line_container").addEventListener("wheel", wheel_up_or_down);
+            document.getElementById("current_line_container").addEventListener("wheel", wheel_up_or_down);
+            document.getElementById("next_line_container").addEventListener("wheel", wheel_up_or_down);
+            document.getElementById("reseau").addEventListener("wheel", wheel_up_or_down);
+            document.getElementById("entete").addEventListener("wheel", wheel_up_or_down);
+            function wheel_up_or_down(e) {
+                if (e.deltaY < 0 && current_line > 0) {
+                    update_display(current_line--);
+                }
+                else if (e.deltaY > 0 && current_line < number_of_lines-1) {
+                    update_display(current_line++);
+                }
+                position_slider.value(current_line)
+            } 
+            
             // current_line nous donne la replique actuelle.
             var current_line = 0;
             
@@ -579,10 +595,6 @@
                     });
             };
             
-            ///////////////////////////////////////////////////////////////////
-            // TODO: déterminer comment traiter les didascalies seules.
-            ///////////////////////////////////////////////////////////////////
-
             // Formatage des répliques...
             function format_line(data_text, line_num) {
                 var output_text =  "<br/><p>"
