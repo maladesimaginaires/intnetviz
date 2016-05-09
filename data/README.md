@@ -1,5 +1,5 @@
-Les textes sont disponibles sur le site [Théâtre classique](http://www.theatre-classique.fr/).
+Texts are available on the website [Théâtre classique](http://www.theatre-classique.fr/).
 
-En particulier, la liste des pièces est à [cette page](http://www.theatre-classique.fr/pages/programmes/PageEdition.php).
+In particular, the list of plays can be found [here](http://www.theatre-classique.fr/pages/programmes/PageEdition.php).
 
-Le bouton ```HTML``` donne accès à la pièce en ```.xml```
+The button ```HTML``` gives access to the play in ```.xml``` format.
