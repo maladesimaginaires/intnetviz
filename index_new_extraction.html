@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<!-- Initial code was (long ago) 04_force.html by Scott Murray -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Network transition</title>
+        <script src="include/js/d3.v3.js" charset="utf-8"></script>
+        <script src="include/js/d3.slider.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="include/css/d3.slider.css" />
+        <link rel="stylesheet" href="include/css/styles.css" />  
+    </head>
+    <body>
+        <div id='conteneurPrincipal'>
+            <div id="entete">
+                <div id='line_reference'></div>
+            </div>
+            <div id="reseau">
+                <div id='slider'></div>
+                <div id='conteneurReseau'></div>
+            </div>
+            <div id="repliques">    
+                <div id='previous_line_container' style="color:#cccccc"></div>
+                <div id='current_line_container' style="color:#333333"></div>
+                <div id='next_line_container' style="color:#cccccc"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+
+            // variables de path...
+            var play_base_name = "le_malade_imaginaire"
+            var base_path = "data/moliere/"
+            var char_file_suffix = "_personnages.txt"
+            var text_file_suffix = "_texte.txt"
+            
+            // Variables de couleurs
+            var color_not_yet_activated = "#eeeeee";
+            var color_not_yet_live = "#eeeeee";
+            var color_previously_activated = "#666666";
+            var color_previously_live = "#666666";
+            var color_activated = "#ff6600"; 
+            var color_live = "#ff6600";
+            var color_active = "#ffffff";
+
+            // Chemin des fichiers d'input...
+            var path_characters = base_path + play_base_name + char_file_suffix
+            var path_text = base_path + play_base_name + text_file_suffix
+            
+            // Largeur et hauteur de la fenêtre où apparaît le réseau
+            var w = 640;
+            var h = 480;
+            
+            // La rapidité d'animation en ms
+            var step_duration = 150;
+            
+            // Epaisseur du contour des noeuds...
+            var node_stroke_width = 2
+
+            // Tailles min et max des noeuds et aretes...
+            var min_node_radius = 7;
+            var max_node_radius = 50;
+            var min_edge_width  = 1;
+            var max_edge_width  = 15;
+            
+            // Decalage des labels...
+            var label_x_offset = 5
+            var label_y_offset = 5
+            
+            // current_line nous donne la replique actuelle.
+            var current_line = 0;
+            
+            // Indique si l'animation est en cours.
+            var animation_is_on = 0
+
+            // La variable temp permet d'appeler le tableau de données en dehors de d3.tsv, par exemple dans la console
+            var temp = [];
+
+            // Idem pour dataset etc...
+            var dataset;
+            var svg; 
+            var number_of_lines;
+            var position_slider;
+
+            // Importation des donnees et precalcul des etats.
+            import_play_data();
+                   
+            function import_play_data() {
+                // Importation des noeuds et gestion des fichiers à l'interieur de 
+                // la fonction d3.tsv pour pallier les problemes d'asychronisme de 
+                // JavaScript
+                d3.tsv(path_characters, function(data_nodes) {
+                    // Importation du second fichier contenant les répliques
+                    d3.tsv(path_text, function(data_text) {
+                                    
+                        // pour tester que les données soient bien chargées
+                        // console.log(data_nodes);
+                        // temp est déclarée en dehors de d3.tsv pour debug
+                        temp = data_nodes;
+
+                        // colnames donne le nom de toutes les colonnes grâce à
+                        // la fonction Object.keys. Avec [0] on choisit la 
+                        // première ligne, celle des en-têtes
+                        var colnames = Object.keys(data_nodes[0]);
+
+                        // ici les id des personnages, qui donnent aussi les 
+                        // "keys" du tableau de données. Ce sont les noms 
+                        // obtenus au stade précédent après exclusion des 
+                        // 6 premières colonnes
+                        var node_ids = colnames.slice(6, colnames.length);
+
+                        // node5 est composé d'un objet par noeud
+                        // chaque noeud a un id (key) et un array qui donne 
+                        // tous ses états
+                        var tmp_nodes = [];
+
+                        ///////////////////////////////////////////////////////
+                        // TODO: déterminer comment traiter les lignes qui ne
+                        // sont pas des répliques (didascalies seules) dans la
+                        // construction des listes nodes et edges (ll. 119-306)
+                        ///////////////////////////////////////////////////////
+                 
+                        // variables d'optimisation
+                        var number_of_nodes = node_ids.length;
+                        number_of_lines = data_nodes.length;
+
+                        // Precalcul du rayon et des etats des noeuds; 4 etats  
+                        // sont possibles:
+                        // - not_yet_activated (NYA)
+                        // - previously_activated (PA)
+                        // - activated (AD)
+                        // - active (AE)
+
+                        // Pour chaque noeud...
+                        for (var i = 0; i < number_of_nodes; i++) {               
+                            // Recuperer l'id du perso.
+                            var character = node_ids[i]
+                            // Initialisations...
+                            var tmp_node_states = [];
+                            var tmp_node_names = [];
+                            var last_known_name = null;
+                            var has_been_activated = 0;
+                            var tmp_node_radius = [];
+                            var radius = min_node_radius;
+                            var radius_increment = (
+                                                        max_node_radius 
+                                                      - min_node_radius
+                                                   ) 
+                                                   / number_of_lines;
+                            
+                            // Pour chaque replique...
+                            for (var k = 0; k < number_of_lines; k++) {
+                                // Si le perso est present...
+                                if (data_nodes[k][character] == 1) {
+                                    // Liste des persos prononcant la replique.
+                                    char_ids = data_text[k]['id'].split(
+                                        /\s*(,|et)\s*/
+                                    )
+                                    // Si celui-ci prononce la replique => AE
+                                    char_idx = char_ids.indexOf(character)
+                                    if (char_idx > -1) {
+                                        tmp_node_states.push('active')
+                                        radius += radius_increment;
+                                        char_names = data_text[k]['nom'].split(
+                                            /\s*(,|et)\s*/
+                                        )
+                                        last_known_name = char_names[char_idx]
+                                    }
+                                    // Dans le cas contraire => AD
+                                    else {
+                                        tmp_node_states.push('activated')
+                                    }                        
+                                    // Signaler qu'il a ete active.
+                                    has_been_activated = 1                            
+                                }
+                                // Si le perso est absent...
+                                else {
+                                    // S'il a ete active => PA
+                                    if (has_been_activated == 1) {
+                                        tmp_node_states.push('previously_activated')
+                                    }
+                                    // Dans le cas contraire => NYA
+                                    else {
+                                        tmp_node_states.push('not_yet_activated')
+                                    }
+                                }
+                                tmp_node_radius.push(radius)
+                                tmp_node_names.push(last_known_name)
+                            }                    
+
+                            // Remplir le debut de la liste des noms avec le 
+                            // 1er nom connu pour ce personnage, ou son id si
+                            // son nom n'est jamais connu (parce qu'il ne dit
+                            // aucune replique)...
+                            for (var k = 0; k < number_of_lines; k++) {
+                                if (tmp_node_names[k] != null) {
+                                    first_known_name = tmp_node_names[k]
+                                    for (var l = 0; l < k; l++) {
+                                        tmp_node_names[l] = first_known_name
+                                    }
+                                    break;
+                                }
+                                else {
+                                    tmp_node_names[k] = character
+                                }
+                            }                                
+                            
+                            // Stocker personnage, sequence d'etats et de poids...
+                            tmp_nodes.push({
+                                id: character,
+                                name: tmp_node_names,
+                                x: Math.random()*w,
+                                y: Math.random()*h,
+                                fixed: false,    
+                                step: tmp_node_states,
+                                radius: tmp_node_radius,
+                            });
+                        }
+
+                        // Precalcul des états et poids des arêtes; le poids est 
+                        // defini comme la proportion des repliques ou les deux 
+                        // personnages en question sont copresents; 4 etats sont
+                        // possibles:
+                        // - never_live (NL)
+                        // - not_yet_live (NYL)
+                        // - previously_live (PL)
+                        // - live (L)
+                        var tmp_edges = [];
+                        // Pour chaque paire de noeuds...
+
+                        for (var i = 0; i < number_of_nodes-1; i++) {
+                            for (var j = i+1; j < number_of_nodes; j++) {
+
+                                var tmp_edge_width = [];
+                                var width = min_edge_width;
+                                var width_increment = (
+                                                          max_edge_width 
+                                                        - min_edge_width
+                                                      )
+                                                      / number_of_lines;
+
+                                var tmp_edge_states = []
+                                // Calculer le nombre total de copresences et
+                                // construire le vecteur des copresences...
+                                var num_copresences = 0;
+                                var copresences = []
+
+                                for (var k = 0; k < number_of_lines; k++) {
+
+                                    var copresence = data_nodes[k][node_ids[i]] 
+                                                   * data_nodes[k][node_ids[j]]
+                                                   ;
+                                    num_copresences += copresence;
+                                    copresences.push(copresence)
+                                    width += copresence * width_increment
+                                    tmp_edge_width.push(width)
+                                }
+                                // Si ces noeuds ne sont jamais copresents...
+                                if (num_copresences == 0) {
+                                    // Tous les etats sont NL.
+                                    tmp_edge_states = Array.apply(
+                                                        null, 
+                                                        Array(number_of_lines)
+                                                      )
+                                                      .map(
+                                                        function() {
+                                                            return 'never_live'
+                                                        }
+                                                      );
+                                }
+                                // Si ces noeuds sont copresents au moins une fois...
+                                else {
+                                    // Initialisations...
+                                    var has_been_live = 0;
+                                    var tmp_edge_states = [];
+                                    // Pour chaque replique...
+                                    for (var k = 0; k < number_of_lines; k++) {
+                                        // Si ces noeuds sont copresents => L 
+                                        if (copresences[k] == 1) {
+                                            tmp_edge_states.push('live')
+                                            has_been_live = 1;
+                                        }
+                                        // Sinon s'ils ont deja ete copresents => PL
+                                        else if (has_been_live == 1) {
+                                            tmp_edge_states.push('previously_live')
+                                        }
+                                        // Sinon => NYL
+                                        else {
+                                            tmp_edge_states.push('not_yet_live')
+                                        }
+                                    }
+                                }
+
+                                // Stocker le poids et la sequence d'etats...
+                                tmp_edges.push({
+                                    source: i,
+                                    target: j,
+                                    value:  num_copresences/number_of_lines,
+                                    step:   tmp_edge_states,
+                                    width:  tmp_edge_width,
+                                })
+                            }
+                        }
+                        
+                        // Stockage du dataset (y.c. texte des repliques)
+                        dataset = {
+                            nodes: tmp_nodes, 
+                            edges: tmp_edges, 
+                            lines: data_text
+                        };
+
+                        // Initialisation du reseau...
+                        init_svg();
+                        update_display(current_line);
+
+                        // Initialisation du slider...
+                        position_slider = d3.slider()
+                            .min(1)
+                            .value(1)
+                            .max(number_of_lines)
+                            .on("slide", function(evt, value) {
+                                current_line = Math.round(value);
+                                update_display(current_line);
+                            });
+                        d3.select('#slider').call(position_slider);
+                        
+                    });
+                });
+            }
+            
+            // définition d'une fonction pour arrêter/démarrer l'animation
+            function play_pause() {
+                d3.event.preventDefault();
+                if (animation_is_on === 0) {
+                    animation_is_on = 1;
+                    play_animation();
+                }
+                else {
+                    animation_is_on = 0;
+                }
+            }
+
+            // Initialisation du reseau...
+            function init_svg() {
+            
+                // Creation du SVG (responsive)...
+                svg = d3.select("div#conteneurReseau")
+                        .append("svg")
+                        .attr("id", "playgraph")
+                        // better to keep the viewBox dimensions with variables
+                        .attr("viewBox", "0 0 " + w + " " + h )
+                        .attr("preserveAspectRatio", "xMaxYMax");
+
+                // ajout de la fonction play_pause au réseau
+                svg.on("click", play_pause);
+                
+                // réaction aux touches
+                corps = d3.select("body").on("keydown", function(){
+                    if(d3.event.keyCode == "32"){
+                        play_pause();
+                    }
+                    // flèche à gauche, pour une réplique de moins
+                    else if(d3.event.keyCode == "37"){
+                        if (current_line > 0) {
+                            update_display(current_line--);
+                        }
+                    }
+                    // flèche à droite, pour une réplique de plus
+                    else if(d3.event.keyCode == "39"){
+                        if (current_line < number_of_lines-1) {
+                            update_display(current_line++);
+                        }
+                    }
+                    // ctrl+R pour revenir au début
+                    else if(d3.event.ctrlKey){
+                    	if(d3.event.keyCode == "82"){	
+                    	update_display(current_line = 0);	
+                    	}
+                    }
+                    position_slider.value(current_line)                    
+                });
+            
+                // Creation des aretes comme lignes...
+                var edges = svg.selectAll("line")
+                    .data(dataset.edges)
+                    .enter()
+                    .append("line")
+
+                // Creation des noeuds comme cercles...
+                var nodes = svg.selectAll("circle")
+                    .data(dataset.nodes)
+                    .enter()
+                    .append("circle")
+
+                // ajout des noms des personnages à chaque noeud
+                var labels = svg.selectAll("text")
+                    .data(dataset.nodes)
+                    .enter()
+                    .append("text")
+                    .text(function(nodes) { return nodes.name[0]; });
+
+                //Initialisation du force layout...
+                var force = d3.layout.force()
+                                     .nodes(dataset.nodes)
+                                     .links(dataset.edges)
+                                     .size([0.9*w, 0.98*h])
+                                     .linkDistance(function(data_nodes) { 
+                                        return h/2*(1-data_nodes.value); 
+                                     })
+                                     .charge(-h/2)
+                                     .start();
+
+                // Ceci est appele a chaque etape du force layout...
+                force.on("tick", function() {
+                
+                    nodes.attr("cx", function(nodes) { return nodes.x; })
+                         .attr("cy", function(nodes) { return nodes.y; });
+                         
+                    edges.attr("x1", function(nodes) { return nodes.source.x; })
+                         .attr("y1", function(nodes) { return nodes.source.y; })
+                         .attr("x2", function(nodes) { return nodes.target.x; })
+                         .attr("y2", function(nodes) { return nodes.target.y; });
+                         
+                    labels.attr("x", function(nodes) { 
+                                return nodes.x + (
+                                    nodes.radius[current_line] / 2
+                                    + node_stroke_width
+                                    + label_x_offset
+                                )
+                    })
+                          .attr("y", function(nodes) { 
+                                return nodes.y - (
+                                    nodes.radius[current_line] / 2
+                                    + node_stroke_width
+                                    + label_y_offset
+                               )
+                    });
+                });
+
+            }
+        
+            // Animation de la piece depuis la position actuelle...
+            function play_animation() {
+                if (animation_is_on != 0){
+                    if (current_line < number_of_lines-1) {
+                        current_line++;
+                        position_slider.value(current_line);
+                        update_display();
+                        setTimeout(
+                            play_animation, 
+                            step_duration
+                        );
+                    }
+                    else {
+                        current_line = 0;
+                    }
+                }
+            }
+                    
+            // Mise a jour de l'affichage...
+            function update_display() {
+            
+                ///////////////////////////////////////////////////////////////
+                // TODO: inclure plutôt la position de la réplique dans le
+                // div2 (non dans la pièce), et afficher cette référence en 
+                // regard des répliques (sans le nom de la pièce).
+                ///////////////////////////////////////////////////////////////
+
+                // "Adresse" de la replique...
+                var line_reference = document.getElementById("line_reference");
+                line_reference.innerHTML = 
+                      dataset.lines[current_line].piece 
+                    + ", " + dataset.lines[current_line].div1_nom  
+                    + ", " + dataset.lines[current_line].div2_nom  
+                    + ", position " + dataset.lines[current_line].pos  
+                    ;
+
+                // Afficher le texte...
+                document.getElementById("current_line_container")
+                        .innerHTML = format_line(dataset.lines, 0);
+                if (number_of_lines > 1) {
+                    document.getElementById("next_line_container")
+                            .innerHTML = format_line(dataset.lines, 1);
+                }                
+                if (current_line > 1) {
+                    document.getElementById("previous_line_container")
+                            .innerHTML = format_line(
+                                dataset.lines, 
+                                current_line - 1
+                            );
+                }
+                else {
+                    document.getElementById("previous_line_container")
+                            .innerHTML = "";
+                }
+                document.getElementById("current_line_container")
+                        .innerHTML = format_line(
+                            dataset.lines, 
+                            current_line
+                        );
+                if (current_line < number_of_lines-1) {
+                    document.getElementById("next_line_container")
+                            .innerHTML = format_line(
+                                dataset.lines, 
+                                current_line + 1
+                            );
+                }
+                else {
+                    document.getElementById("next_line_container")
+                            .innerHTML = "";
+                }
+                
+                // Mise a jour des noeuds...
+                svg.selectAll("circle")
+                    .transition()
+                    .duration(step_duration)
+                    .attr("r", function(nodes) {
+                        return nodes.radius[current_line]
+                    })
+                    .style("fill", function(nodes) {
+                        switch (nodes.step[current_line]) {
+                            case 'not_yet_activated':       return color_not_yet_activated; 
+                            case 'previously_activated':    return color_previously_activated; 
+                            case 'activated':               return color_activated; 
+                            case 'active':                  return color_active; 
+                        }
+                    })  
+                    .style("stroke", function(nodes) {
+                        switch (nodes.step[current_line]) {
+                            case 'not_yet_activated':       return color_not_yet_activated; 
+                            case 'previously_activated':    return color_previously_activated; 
+                            case 'activated':               return color_activated; 
+                            case 'active':                  return color_live; 
+                        }
+                    })
+                    .style("stroke-width", node_stroke_width);
+
+                // Mise a jour des aretes...
+                svg.selectAll("line")
+                    .transition()
+                    .duration(step_duration)
+                    // tout ce qui suit est remplaçable par la ligne de code 
+                    // suivante, mais on perd l'état initial:
+                    // .classed(function(edges){return edges.step[current_line];})
+                    .style("stroke", function(edges) {
+                        switch (edges.step[current_line]) {
+                            case 'not_yet_live':    return color_not_yet_live; 
+                            case 'previously_live': return color_previously_live; 
+                            case 'live':            return color_live; 
+                        }
+                    })
+                    .style("stroke-width", function(edges) {
+                        if (edges.step[current_line] == 'never_live') {
+                            return 0;
+                        }
+                        else {
+                            return edges.width[current_line];
+                        }
+                    });
+                
+                // Mise à jour des labels...
+                svg.selectAll("text")
+                    .transition()
+                    .duration(step_duration)
+                    .attr("x", function(nodes) { 
+                        return nodes.x + (
+                               nodes.radius[current_line] / 2
+                             + node_stroke_width
+                             + label_x_offset
+                        ); 
+                    })
+                    .attr("y", function(nodes) { 
+                        return nodes.y - (
+                               nodes.radius[current_line] / 2
+                             + node_stroke_width
+                             + label_y_offset
+                        ); 
+                    })
+                    .attr("text", function(nodes) { 
+                        return nodes.name[current_line]; 
+                    });
+            };
+            
+            ///////////////////////////////////////////////////////////////////
+            // TODO: déterminer comment traiter les didascalies seules.
+            ///////////////////////////////////////////////////////////////////
+
+            // Formatage des répliques...
+            function format_line(data_text, line_num) {
+                var output_text =  "<br/><p><b>" 
+                                +  data_text[line_num]['nom']
+                                +  "</b>"
+                if (data_text[line_num]['didascalie'] != "") {
+                    output_text += "<i>"
+                                +  data_text[line_num]['didascalie']
+                                +  "</i>"
+                }                
+                output_text     += "</p>"
+                                + data_text[line_num]['texte']
+                                  .replace(/<note[^>]*>.+?<\/note>/g, "")
+                                  .replace(/<l[^>]*>/g, "<p>")
+                                  .replace(/<\/l>/g, "</p>")
+                                  .replace(/<didascalie>/g, "<p><i>")
+                                  .replace(/<\/didascalie>/g, "</p></i>")
+                return output_text
+            }
+        </script>
+    </body>
+</html>
