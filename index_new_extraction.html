@@ -585,21 +585,26 @@
 
             // Formatage des répliques...
             function format_line(data_text, line_num) {
-                var output_text =  "<br/><p><b>" 
-                                +  data_text[line_num]['nom']
-                                +  "</b>"
+                var output_text =  "<br/><p>"
+                if (data_text[line_num]['nom'] != "__none__") {
+                    output_text     += "<b>" 
+                                    +  data_text[line_num]['nom']
+                                    +  "</b>"
+                }
                 if (data_text[line_num]['didascalie'] != "") {
                     output_text += "<i>"
                                 +  data_text[line_num]['didascalie']
                                 +  "</i>"
                 }                
                 output_text     += "</p>"
-                                + data_text[line_num]['texte']
+                if (data_text[line_num]['texte'] != "__none__") {
+                    output_text += data_text[line_num]['texte']
                                   .replace(/<note[^>]*>.+?<\/note>/g, "")
                                   .replace(/<l[^>]*>/g, "<p>")
                                   .replace(/<\/l>/g, "</p>")
                                   .replace(/<didascalie>/g, "<p><i>")
                                   .replace(/<\/didascalie>/g, "</p></i>")
+                }
                 return output_text
             }
         </script>
