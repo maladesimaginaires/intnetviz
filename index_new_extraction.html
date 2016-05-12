@@ -26,11 +26,34 @@
         </div>
         <script type="text/javascript">
 
+            // Récupération des variables dans l'url...
+            function getQueryVariable(variable) {
+                   var query = window.location.search.substring(1);
+                   var vars = query.split("&");
+                   for (var i=0;i<vars.length;i++) {
+                           var pair = vars[i].split("=");
+                           if(pair[0] == variable){return pair[1];}
+                   }
+                   return(false);
+            }
+            
+            // Piece par defaut (si non specifiee dans l'url)...
+            var author = getQueryVariable("author")
+            var play = getQueryVariable("play")
+            if (author == false || play == false) {
+                play = "le_malade_imaginaire"
+                author = "moliere"
+            }
+
             // variables de path...
-            var play_base_name = "le_malade_imaginaire"
-            var base_path = "data/moliere/"
+            var base_data_path = "data/"
             var char_file_suffix = "_personnages.txt"
             var text_file_suffix = "_texte.txt"
+            
+            // Chemin des fichiers d'input...
+            var play_path = author + "/" + play
+            var path_characters = base_data_path + play_path + char_file_suffix
+            var path_text = base_data_path + play_path + text_file_suffix
             
             // Variables de couleurs
             var color_not_yet_activated = "#eeeeee";
@@ -41,10 +64,6 @@
             var color_live = "#ff6600";
             var color_active = "#ffffff";
 
-            // Chemin des fichiers d'input...
-            var path_characters = base_path + play_base_name + char_file_suffix
-            var path_text = base_path + play_base_name + text_file_suffix
-            
             // Largeur et hauteur de la fenêtre où apparaît le réseau
             var w = 640;
             var h = 480;
