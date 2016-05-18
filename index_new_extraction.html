@@ -157,6 +157,15 @@
                         var number_of_nodes = node_ids.length;
                         number_of_lines = data_nodes.length;
 
+                        // Nombre de répliques effectivement prononcées...
+                        var number_of_spoken_lines = 0
+                        for(var i = 0; i < data_text.length; i++) {
+                            if (data_text[i]['texte'] != '__none__') {
+                                number_of_spoken_lines++
+                            }
+                        }
+
+                        
                         // Precalcul du rayon et des etats des noeuds; 4 etats  
                         // sont possibles:
                         // - not_yet_activated (NYA)
@@ -179,7 +188,7 @@
                                                         max_node_radius 
                                                       - min_node_radius
                                                    ) 
-                                                   / number_of_lines;
+                                                   / number_of_spoken_lines;
                             
                             // Pour chaque replique...
                             for (var k = 0; k < number_of_lines; k++) {
