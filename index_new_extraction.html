@@ -11,11 +11,12 @@
     </head>
     <body>
         <div id='conteneurPrincipal'>
-            <div id="selection_auteur_piece">
+            <div id="navigation_piece">
                 Pièce:
                 <select id="selection_piece" onChange="javascript:selection_piece(this)">
-                    <option id="le_malade_imaginaire">Le Malade imaginaire</option>
-                    <option id="le_misanthrope">Le Misanthrope</option>
+                    <option id="author=moliere&play=le_malade_imaginaire">Molière - Le Malade imaginaire</option>
+                    <option id="author=moliere&play=le_misanthrope">Molière - Le Misanthrope</option>
+                    <option id="author=jean_racine&play=phedre">Jean Racine - Phèdre</option>
                 </select>      
             </div>
             <div id="entete">
@@ -45,23 +46,19 @@
 
             // Selection de la piece
             function selection_piece(s) {
-                author = 'moliere'
-                play = s[s.selectedIndex].id
-                window.location.href = base_url  + '?' 
-                                     + 'author=' + author + '&'
-                                     + 'play='   + play
-                                     ;
+                var query_string = s[s.selectedIndex].id
+                window.location.href = base_url + "?" + query_string;
             }
         
             // Récupération des variables dans l'url...
             function getQueryVariable(variable) {
-                   var query = window.location.search.substring(1);
-                   var vars = query.split("&");
-                   for (var i=0; i<vars.length; i++) {
-                           var pair = vars[i].split("=");
-                           if (pair[0] == variable) {return pair[1]}
-                   }
-                   return(false);
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) { return pair[1] }
+                }
+                return(false);
             }
             
             // Piece par defaut (si non specifiee dans l'url)...
@@ -71,7 +68,8 @@
                 play = "le_malade_imaginaire"
                 author = "moliere"
             }
-            document.getElementById(play).selected=true
+            var query_string = "author=" + author + "&play=" + play
+            document.getElementById(query_string).selected=true
             
             // Chemin des fichiers d'input...
             var play_path = author + "/" + play
