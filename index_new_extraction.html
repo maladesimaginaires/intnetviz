@@ -11,6 +11,13 @@
     </head>
     <body>
         <div id='conteneurPrincipal'>
+            <div id="selection_auteur_piece">
+                Pièce:
+                <select id="selection_piece" onChange="javascript:selection_piece(this)">
+                    <option id="le_malade_imaginaire">Le Malade imaginaire</option>
+                    <option id="le_misanthrope">Le Misanthrope</option>
+                </select>      
+            </div>
             <div id="entete">
                 <div id='line_reference'></div>
             </div>
@@ -26,13 +33,33 @@
         </div>
         <script type="text/javascript">
 
+            // variables de path...
+            var base_data_path = "data/"
+            var char_file_suffix = "_personnages.txt"
+            var text_file_suffix = "_texte.txt"
+            var base_url = [
+                location.protocol, '//', 
+                location.host, 
+                location.pathname
+            ].join('');
+
+            // Selection de la piece
+            function selection_piece(s) {
+                author = 'moliere'
+                play = s[s.selectedIndex].id
+                window.location.href = base_url  + '?' 
+                                     + 'author=' + author + '&'
+                                     + 'play='   + play
+                                     ;
+            }
+        
             // Récupération des variables dans l'url...
             function getQueryVariable(variable) {
                    var query = window.location.search.substring(1);
                    var vars = query.split("&");
-                   for (var i=0;i<vars.length;i++) {
+                   for (var i=0; i<vars.length; i++) {
                            var pair = vars[i].split("=");
-                           if(pair[0] == variable){return pair[1];}
+                           if (pair[0] == variable) {return pair[1]}
                    }
                    return(false);
             }
@@ -44,11 +71,7 @@
                 play = "le_malade_imaginaire"
                 author = "moliere"
             }
-
-            // variables de path...
-            var base_data_path = "data/"
-            var char_file_suffix = "_personnages.txt"
-            var text_file_suffix = "_texte.txt"
+            document.getElementById(play).selected=true
             
             // Chemin des fichiers d'input...
             var play_path = author + "/" + play
@@ -524,7 +547,7 @@
                     document.getElementById("next_line_container")
                             .innerHTML = format_line(dataset.lines, 1);
                 }                
-                if (current_line > 1) {
+                if (current_line > 0) {
                     document.getElementById("previous_line_container")
                             .innerHTML = format_line(
                                 dataset.lines, 
