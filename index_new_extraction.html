@@ -25,12 +25,18 @@
             <div id="reseau">
                 <div id='slider'></div>
                 <div id='conteneurReseau'></div>
-            </div>
+	            <div id="controles">
+	                <button id="b_debut">Début</button>
+	                <button id="b_moins1">-</button>
+	                <button id="b_play_pause">Play / Pause</button>
+	                <button id="b_plus1">+</button>
+	            </div>                
+            </div>               
             <div id="repliques">    
                 <div id='previous_line_container' style="color:#cccccc"></div>
                 <div id='current_line_container' style="color:#333333"></div>
                 <div id='next_line_container' style="color:#cccccc"></div>
-            </div>
+            </div>          
         </div>
         <script type="text/javascript">
 
@@ -415,9 +421,6 @@
                         // better to keep the viewBox dimensions with variables
                         .attr("viewBox", "0 0 " + w + " " + h )
                         .attr("preserveAspectRatio", "xMaxYMax");
-
-                // ajout de la fonction play_pause au réseau
-                //svg.on("click", play_pause);
                 
                 // réaction aux touches
                 corps = d3.select("body").on("keydown", function(){
@@ -444,6 +447,30 @@
                     }
                     position_slider.value(current_line)                    
                 });
+
+                // ajout d'un bouton début
+                d3.select("button#b_debut").on("click", function(){
+                	update_display(current_line = 0);
+                }); 
+
+                // ajout d'un bouton moins 1
+                d3.select("button#b_moins1").on("click", function(){
+                    if (current_line > 0) {
+                        update_display(current_line--);
+                    }
+                });
+
+                // ajout d'un bouton play/pause
+                d3.select("button#b_play_pause").on("click", function(){
+                	play_pause();
+                });
+
+                // ajout d'un bouton plus 1
+                d3.select("button#b_plus1").on("click", function(){
+                    if (current_line < number_of_lines-1) {
+                        update_display(current_line++);
+                    }
+                });                                  
             
                 // Creation des aretes comme lignes...
                 var edges = svg.selectAll("line")
