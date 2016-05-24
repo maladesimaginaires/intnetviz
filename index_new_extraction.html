@@ -471,11 +471,26 @@
                                      .gravity(.08)
                                      .start();
 
+                // implémentation du Sticky force layout
+                var drag = force.drag()
+                    .on("dragstart", dragstart);
+
+                function dblclick(d) {
+					d3.select(this).classed("fixed", d.fixed = false);
+				}
+
+				function dragstart(d) {
+  					d3.select(this).classed("fixed", d.fixed = true);
+				}                       
+
                 // Creation des noeuds comme cercles...
                 var nodes = svg.selectAll("circle")
                     .data(dataset.nodes)
                     .enter()
                     .append("circle")
+                    // événement pour fixer des noeuds
+                    .on("dblclick", dblclick)
+                    // activation du déplacement général
                     .call(force.drag);
 
                 // Ceci est appele a chaque etape du force layout...
