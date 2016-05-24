@@ -355,13 +355,15 @@
                                 }
 
                                 // Stocker le poids et la sequence d'etats...
-                                tmp_edges.push({
-                                    source: i,
-                                    target: j,
-                                    value:  num_copresences/number_of_lines,
-                                    step:   tmp_edge_states,
-                                    width:  tmp_edge_width,
-                                })
+                                if(num_copresences > 0){
+                                    tmp_edges.push({
+                                        source: i,
+                                        target: j,
+                                        value:  num_copresences/    number_of_lines,
+                                        step:   tmp_edge_states,
+                                        width:  tmp_edge_width,
+                                    })
+                                }
                             }
                         }
                         
@@ -449,12 +451,6 @@
                     .enter()
                     .append("line")
 
-                // Creation des noeuds comme cercles...
-                var nodes = svg.selectAll("circle")
-                    .data(dataset.nodes)
-                    .enter()
-                    .append("circle")
-
                 // ajout des noms des personnages à chaque noeud
                 var labels = svg.selectAll("text")
                     .data(dataset.nodes)
@@ -463,15 +459,25 @@
                     .text(function(nodes) { return nodes.name[0]; });
 
                 //Initialisation du force layout...
+                //console.log(dataset.nodes);
+                console.log(dataset.edges[0].value);
                 var force = d3.layout.force()
                                      .nodes(dataset.nodes)
                                      .links(dataset.edges)
                                      .size([0.9*w, 0.98*h])
                                      .linkDistance(function(data_nodes) { 
-                                        return h/2*(1-data_nodes.value); 
+                                        return h/4*(1-data_nodes.value); 
                                      })
                                      .charge(-h/2)
+                                     .gravity(.08)
                                      .start();
+
+                // Creation des noeuds comme cercles...
+                var nodes = svg.selectAll("circle")
+                    .data(dataset.nodes)
+                    .enter()
+                    .append("circle")
+                    .call(force.drag);
 
                 // Ceci est appele a chaque etape du force layout...
                 force.on("tick", function() {
