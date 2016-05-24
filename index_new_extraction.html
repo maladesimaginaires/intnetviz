@@ -451,13 +451,6 @@
                     .enter()
                     .append("line")
 
-                // ajout des noms des personnages à chaque noeud
-                var labels = svg.selectAll("text")
-                    .data(dataset.nodes)
-                    .enter()
-                    .append("text")
-                    .text(function(nodes) { return nodes.name[0]; });
-
                 //Initialisation du force layout...
                 var force = d3.layout.force()
                                      .nodes(dataset.nodes)
@@ -492,6 +485,13 @@
                     .on("dblclick", dblclick)
                     // activation du déplacement général
                     .call(force.drag);
+
+                // ajout des noms des personnages à chaque noeud
+                var labels = svg.selectAll("text")
+                    .data(dataset.nodes)
+                    .enter()
+                    .append("text")
+                    .text(function(nodes) { return nodes.name[0]; });
 
                 // Ceci est appele a chaque etape du force layout...
                 force.on("tick", function() {
