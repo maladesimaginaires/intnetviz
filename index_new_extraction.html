@@ -466,6 +466,7 @@
                                      .linkDistance(function(data_nodes) { 
                                         return h/4*(1-data_nodes.value); 
                                      })
+                                     .linkStrength(1)
                                      .charge(-h/2)
                                      .gravity(.08)
                                      .start();
