@@ -459,8 +459,6 @@
                     .text(function(nodes) { return nodes.name[0]; });
 
                 //Initialisation du force layout...
-                //console.log(dataset.nodes);
-                console.log(dataset.edges[0].value);
                 var force = d3.layout.force()
                                      .nodes(dataset.nodes)
                                      .links(dataset.edges)
