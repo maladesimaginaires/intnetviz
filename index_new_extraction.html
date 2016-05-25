@@ -482,17 +482,18 @@
                     .append("line")
 
                 //Initialisation du force layout...
+                var d_fact = Math.sqrt(dataset.nodes.length)
                 var force = d3.layout.force()
-                                     .nodes(dataset.nodes)
-                                     .links(dataset.edges)
-                                     .size([0.9*w, 0.98*h])
-                                     .linkDistance(function(data_nodes) { 
-                                        return h/4*(1-data_nodes.value); 
-                                     })
-                                     .linkStrength(1)
-                                     .charge(-h/2)
-                                     .gravity(.08)
-                                     .start();
+                     .nodes(dataset.nodes)
+                     .links(dataset.edges)
+                     .size([0.9*w, 0.98*h])
+                     .linkDistance(function(data_nodes) { 
+                        return 1.5 * h / d_fact * (1-data_nodes.value); 
+                     })
+                     .linkStrength(1)
+                     .charge(-h/2)
+                     .gravity(.08)
+                     .start();
 
                 // implémentation du Sticky force layout
                 var drag = force.drag()
