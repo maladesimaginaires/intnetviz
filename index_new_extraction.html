@@ -27,6 +27,7 @@
             </div>
             <div id="reseau">
                 <div id='slider'></div>
+                <svg id="graduations"></svg> 
                 <div id='conteneurReseau'></div>
 	            <div id="controles">
 	                <button id="b_debut">Début</button>
@@ -155,7 +156,63 @@
                 d3.tsv(path_characters, function(data_nodes) {
                     // Importation du second fichier contenant les répliques
                     d3.tsv(path_text, function(data_text) {
-                                    
+ 
+                    // Création d'un tableau récoltant les positions des changements d'actes
+                     var tableau_actes = [];
+                     for(var i=0; i<data_text.length-1; i++){
+                         if(i != data_text.length && i != 0 && data_text[i].div1_nom != data_text[i+1].div1_nom){
+                             // ajout du numéro de ligne du nouvel acte
+                             tableau_actes.push(i+2);
+                         }
+                     }
+
+                    // Création d'un tableau récoltant les positions des changements de scènes
+                     var tableau_scenes = [];
+                     for(var i=0; i<data_text.length-1; i++){
+                         if(i != data_text.length && i != 0 && data_text[i].div2_nom != data_text[i+1].div2_nom){
+                             // ajout du numéro de ligne du nouvel acte
+                             tableau_scenes.push(i+2);
+                         }
+                     }
+
+                    // Création d'une échelle pour graduer le slider par scène
+                     var echelle_slider_scenes = d3.scale.linear()
+                         .domain([0,data_text.length])
+                         .range([0,527]); // en attendant w
+
+                    // Ajout des graduations par scènes
+                    var grduations_scenes = d3.select('#graduations')
+                        .selectAll('line.graduations_scenes')
+                        .data(tableau_scenes)
+                        .enter()
+                        .append("line")
+                        .attr("class","graduations_scenes")
+                        .attr("x1", function(d){return echelle_slider_scenes(d)})
+                        .attr("y1", 10)
+                        .attr("x2", function(d){return echelle_slider_scenes(d)})
+                        .attr("y2", 25)
+                        .style("stroke", "gray")
+                        .style("stroke-width", 1); 
+
+                    // Création d'une échelle pour graduer le slider par acte
+                     var echelle_slider_actes = d3.scale.linear()
+                         .domain([0,data_text.length])
+                         .range([0,527]); // en attendant w
+
+                    // Ajout des graduations par actes
+                    var grduations_actes = d3.select('#graduations')
+                        .selectAll('line.graduations_actes')
+                        .data(tableau_actes)
+                        .enter()
+                        .append("line")
+                        .attr("class","graduations_actes")
+                        .attr("x1", function(d){return echelle_slider_actes(d)})
+                        .attr("y1", 0)
+                        .attr("x2", function(d){return echelle_slider_actes(d)})
+                        .attr("y2", 35)
+                        .style("stroke", "black")
+                        .style("stroke-width", 1);                        
+
                         // pour tester que les données soient bien chargées
                         // console.log(data_nodes);
                         // temp est déclarée en dehors de d3.tsv pour debug
@@ -570,7 +627,9 @@
                     }
                 }
             }
-                    
+
+            //console.log(situer_actes());
+
             // Mise a jour de l'affichage...
             function update_display() {
             

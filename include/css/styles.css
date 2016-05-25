@@ -2,10 +2,20 @@
 	width: 30em;
 	margin: 1em;
 }
-svg{
+svg#playgraph{
 	font-size: 10px;
 	font-family: sans-serif;
 	border: solid 1px;
+}
+
+svg#graduations{
+	width: 527px;
+	height: 50px;
+	margin-top: -43px;
+	margin-left: 17.6px;
+	float: left;
+	position: relative;
+	/*border: solid 1px;*/
 }
 
 p{
