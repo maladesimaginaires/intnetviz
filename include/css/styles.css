@@ -17,6 +17,19 @@
 	background-color: #FAFAFA;		
 }
 
+a, a:hover, a:visited{
+	text-decoration : none;
+	color: rgb(199,148,54);
+}
+
+#dhlab{
+
+	font-size: 18pt;
+	font-family: impact;
+	float: right;
+	color: rgb(199,148,54);
+}
+
 #previous_line_container{
 	height: 60px;	
 }

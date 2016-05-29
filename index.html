@@ -57,7 +57,7 @@
         <div id="footer">
             <br><hr>
             <img src="include/images/uniLogo.png" height="50px" alt="Logo de l'université de Lausanne">
-            <img src="include/images/EPFL-logo.jpg" height="50px" alt="Logo de l'université de Lausanne">
+            <div id="dhlab"><a href="http://dhlab.epfl.ch/page-87782.html">DHLAB</div><!--img src="include/images/EPFL-logo.jpg" height="50px" alt="Logo de l'université de Lausanne"-->
         </div>                 
         </div>
         <script type="text/javascript">
@@ -135,20 +135,20 @@
             
             //ISAAC : DESACTIVE POUR EVITER UN CONFLIT AVEC LES REPLIQUES
             // Traitement de l'événement "wheel"...             
-            // document.getElementById("previous_line_container").addEventListener("wheel", wheel_up_or_down);
-            // document.getElementById("current_line_container").addEventListener("wheel", wheel_up_or_down);
-            // document.getElementById("next_line_container").addEventListener("wheel", wheel_up_or_down);
-            // document.getElementById("reseau").addEventListener("wheel", wheel_up_or_down);
-            // document.getElementById("ligne_reference").addEventListener("wheel", wheel_up_or_down);
-            // function wheel_up_or_down(e) {
-            //     if (e.deltaY < 0 && current_line > 0) {
-            //         update_display(current_line--);
-            //     }
-            //     else if (e.deltaY > 0 && current_line < number_of_lines-1) {
-            //         update_display(current_line++);
-            //     }
-            //     position_slider.value(current_line)
-            // } 
+            document.getElementById("previous_line_container").addEventListener("wheel", wheel_up_or_down);
+            document.getElementById("current_line_container").addEventListener("wheel", wheel_up_or_down);
+            document.getElementById("next_line_container").addEventListener("wheel", wheel_up_or_down);
+            document.getElementById("reseau").addEventListener("wheel", wheel_up_or_down);
+            document.getElementById("ligne_reference").addEventListener("wheel", wheel_up_or_down);
+            function wheel_up_or_down(e) {
+                if (e.deltaY < 0 && current_line > 0) {
+                    update_display(current_line--);
+                }
+                else if (e.deltaY > 0 && current_line < number_of_lines-1) {
+                    update_display(current_line++);
+                }
+                position_slider.value(current_line)
+            } 
             
             // current_line nous donne la replique actuelle.
             var current_line = 0;
