@@ -87,7 +87,8 @@ hr{
 
 #barre_boutons button:hover{
 	color: white;
-	background-color: black;
+	border: 1px solid #ff6600;
+	background-color: #ff6600;
 }
 
 #barre_boutons{
