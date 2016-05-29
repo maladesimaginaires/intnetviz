@@ -1,4 +1,16 @@
-﻿#barre_boutons{
+﻿#barre_boutons button{
+	width: 71.5px;
+	height: 25px;
+	background-color: white;
+	border: 1px solid black;
+}
+
+#barre_boutons button:hover{
+	color: white;
+	background-color: black;
+}
+
+#barre_boutons{
 	display: inline-block;
 	float: left;
 }
@@ -69,17 +81,17 @@ circle{
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 
 /* stlyes pour rendre la page responsive */
-@media (min-width: 1200px){
+@media (min-width: 1000px){
 	#reseau{
-		width: 700px;
+		width: 600px;
 		float: left;
 	}
 	#repliques{
 		margin-top: 28px;
 		width: 380px;
-		margin-left: 720px;
+		margin-left: 620px;
 	}
 	#conteneurPrincipal{
-		width: 1200px;
+		width: 1000px;
 		margin: 0 auto;
 }
