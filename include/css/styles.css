@@ -3,6 +3,10 @@
 	float: left;
 }
 
+.debut_scene{
+	border-left : thick solid orange;
+}
+
 #slider {
 	width: 30em;
 	margin: 1em;
