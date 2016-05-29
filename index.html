@@ -490,7 +490,7 @@
                         .attr("preserveAspectRatio", "xMaxYMax");
                 
                 // réaction aux touches
-                corps = d3.select("body").on("keydown", function(){
+                corps = d3.select("body").on("keydown", function(e){
                     if(d3.event.keyCode == "32"){
                         play_pause();
                     }
@@ -512,7 +512,9 @@
                     	update_display(current_line = 0);	
                     	}
                     }
-                    position_slider.value(current_line)                    
+                    position_slider.value(current_line);
+                    // suppression des comportements par défaut des navigateurs
+                    e.preventDefault();                    
                 });
 
                 // ajout d'un bouton début
