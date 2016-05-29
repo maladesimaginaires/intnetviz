@@ -8,7 +8,8 @@
         <script src="include/js/d3.slider.js" charset="utf-8"></script>
         <script type="text/javascript" src="https://cdn.rawgit.com/mikeflynn/egg.js/master/egg.min.js"></script>
         <link rel="stylesheet" href="include/css/d3.slider.css" />
-        <link rel="stylesheet" href="include/css/styles.css" />  
+        <link rel="stylesheet" href="include/css/styles.css" />
+        <link rel="icon" href="include/images/maladesImaginairesIcone.png">  
     </head>
     <body>
     <a href="https://github.com/maladesimaginaires/intnetviz"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on Github" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
@@ -49,10 +50,14 @@
                 </div>               
             </div>               
             <div id="repliques">    
-                <div id='previous_line_container' style="color:#cccccc"></div>
-                <div id='current_line_container' style="color:#333333"></div>
-                <div id='next_line_container' style="color:#cccccc"></div>
-            </div>          
+                <div id='previous_line_container' class="txt" style="color:#cccccc"></div>
+                <div id='current_line_container' class="txt" style="color:#333333"></div>
+                <div id='next_line_container' class="txt" style="color:#cccccc"></div>
+            </div>
+        <div id="footer">
+            <br><hr>
+            <img src="include/images/uniLogo.png" height="50px" alt="Logo de l'université de Lausanne">
+        </div>                 
         </div>
         <script type="text/javascript">
 
@@ -127,21 +132,22 @@
             var label_x_offset = 5
             var label_y_offset = 5
             
-            //Traitement de l'événement "wheel"...             
-            document.getElementById("previous_line_container").addEventListener("wheel", wheel_up_or_down);
-            document.getElementById("current_line_container").addEventListener("wheel", wheel_up_or_down);
-            document.getElementById("next_line_container").addEventListener("wheel", wheel_up_or_down);
-            document.getElementById("reseau").addEventListener("wheel", wheel_up_or_down);
-            document.getElementById("ligne_reference").addEventListener("wheel", wheel_up_or_down);
-            function wheel_up_or_down(e) {
-                if (e.deltaY < 0 && current_line > 0) {
-                    update_display(current_line--);
-                }
-                else if (e.deltaY > 0 && current_line < number_of_lines-1) {
-                    update_display(current_line++);
-                }
-                position_slider.value(current_line)
-            } 
+            //ISAAC : DESACTIVE POUR EVITER UN CONFLIT AVEC LES REPLIQUES
+            // Traitement de l'événement "wheel"...             
+            // document.getElementById("previous_line_container").addEventListener("wheel", wheel_up_or_down);
+            // document.getElementById("current_line_container").addEventListener("wheel", wheel_up_or_down);
+            // document.getElementById("next_line_container").addEventListener("wheel", wheel_up_or_down);
+            // document.getElementById("reseau").addEventListener("wheel", wheel_up_or_down);
+            // document.getElementById("ligne_reference").addEventListener("wheel", wheel_up_or_down);
+            // function wheel_up_or_down(e) {
+            //     if (e.deltaY < 0 && current_line > 0) {
+            //         update_display(current_line--);
+            //     }
+            //     else if (e.deltaY > 0 && current_line < number_of_lines-1) {
+            //         update_display(current_line++);
+            //     }
+            //     position_slider.value(current_line)
+            // } 
             
             // current_line nous donne la replique actuelle.
             var current_line = 0;
@@ -821,6 +827,9 @@
                     document.getElementById("next_line_container")
                             .innerHTML = "";
                 }
+                // mettre le scroll du conteneur "previous" au bas du texte
+                var conteneurPrevious = document.getElementById("previous_line_container");
+                conteneurPrevious.scrollTop = conteneurPrevious.scrollHeight;
                 
                 // Mise a jour des noeuds...
                 svg.selectAll("circle")
@@ -895,7 +904,7 @@
             
             // Formatage des répliques...
             function format_line(data_text, line_num) {
-                var output_text =  "<br/><p>"
+                var output_text =  "<p>"
                 if (data_text[line_num]['nom'] != "__none__") {
                     output_text     += "<b>" 
                                     +  data_text[line_num]['nom']
