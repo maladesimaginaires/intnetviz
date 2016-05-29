@@ -907,16 +907,17 @@
             function format_line(data_text, line_num) {
                 var output_text =  "<p>"
                 if (data_text[line_num]['nom'] != "__none__") {
-                    output_text     += "<b>" 
+                    /* tentative de centrage du texte par ajout d'un SPAN */
+                    output_text     += "<b><span class='nom_personnage'>" 
                                     +  data_text[line_num]['nom']
-                                    +  "</b>"
+                                    +  "</span></b>"
                 }
                 if (data_text[line_num]['didascalie'] != "") {
                     output_text += "<i>"
                                 +  data_text[line_num]['didascalie']
                                 +  "</i>"
                 }                
-                output_text     += "</p>"
+                output_text     += "</p><br>"
                 if (data_text[line_num]['texte'] != "__none__") {
                     output_text += data_text[line_num]['texte']
                                   .replace(/<note[^>]*>.+?<\/note>/g, "")

@@ -13,17 +13,27 @@
 	width: 375px;
 	margin-bottom: 20px;
 	overflow: auto;
-	text-overflow: ellipsis;		
+	text-overflow: ellipsis;
+	background-color: #FAFAFA;		
 }
 
 #previous_line_container{
 	height: 60px;	
 }
+
 #current_line_container{
 	height: 200px;
 }
+
 #next_line_container{
-	height: 160px;
+	height: 176px;
+}
+
+/* tentative de centrage du texte */
+span.nom_personnage{
+	text-align: center;
+	width: 60px;
+	margin: 0 auto;
 }
 
 #entete{
