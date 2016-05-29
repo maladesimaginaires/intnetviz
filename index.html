@@ -11,19 +11,24 @@
         <link rel="stylesheet" href="include/css/styles.css" />  
     </head>
     <body>
+    <a href="https://github.com/maladesimaginaires/intnetviz"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on Github" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
         <div id='conteneurPrincipal'>
-            <div id="navigation_piece">
-                Pièce:
-                <select id="selection_piece" onChange="javascript:selection_piece(this)">
-                    <option id="author=moliere&play=l_avare">Molière - L'Avare</option>
-                    <option id="author=moliere&play=l_ecole_des_femmes">Molière - L'Ecole des femmes</option>
-                    <option id="author=moliere&play=le_malade_imaginaire">Molière - Le Malade imaginaire</option>
-                    <option id="author=moliere&play=le_medecin_malgre_lui">Molière - Le Médecin malgré lui</option>
-                    <option id="author=moliere&play=le_misanthrope">Molière - Le Misanthrope</option>
-                    <option id="author=jean_racine&play=phedre">Jean Racine - Phèdre</option>
-                </select>      
-            </div>
             <div id="entete">
+                <div id="titre">Les Malades imaginaires - Visualiser le théâtre</div>
+                <div id="navigation_piece">
+                    Pièce:
+                    <select id="selection_piece" onChange="javascript:selection_piece(this)">
+                        <option id="author=moliere&play=l_avare">Molière - L'Avare</option>
+                        <option id="author=moliere&play=l_ecole_des_femmes">Molière - L'Ecole des femmes</option>
+                        <option id="author=moliere&play=le_malade_imaginaire">Molière - Le Malade imaginaire</option>
+                        <option id="author=moliere&play=le_medecin_malgre_lui">Molière - Le Médecin malgré lui</option>
+                        <option id="author=moliere&play=le_misanthrope">Molière - Le Misanthrope</option>
+                        <option id="author=jean_racine&play=phedre">Jean Racine - Phèdre</option>
+                    </select>
+                </div>            
+            </div>
+            <hr> 
+            <div id="ligne_reference">
                 <div id='line_reference'></div>
             </div>
             <div id="controles">
@@ -41,7 +46,7 @@
                         <button id="b_plus_1_replique">+</button>
                         <button id="b_plus_1_scene">Scène +</button>
                         <button id="b_plus_1_acte">Acte +</button>
-                </div>                
+                </div>               
             </div>               
             <div id="repliques">    
                 <div id='previous_line_container' style="color:#cccccc"></div>
@@ -122,12 +127,12 @@
             var label_x_offset = 5
             var label_y_offset = 5
             
-            // Traitement de l'événement "wheel"...             
+            //Traitement de l'événement "wheel"...             
             document.getElementById("previous_line_container").addEventListener("wheel", wheel_up_or_down);
             document.getElementById("current_line_container").addEventListener("wheel", wheel_up_or_down);
             document.getElementById("next_line_container").addEventListener("wheel", wheel_up_or_down);
             document.getElementById("reseau").addEventListener("wheel", wheel_up_or_down);
-            document.getElementById("entete").addEventListener("wheel", wheel_up_or_down);
+            document.getElementById("ligne_reference").addEventListener("wheel", wheel_up_or_down);
             function wheel_up_or_down(e) {
                 if (e.deltaY < 0 && current_line > 0) {
                     update_display(current_line--);

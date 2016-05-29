@@ -1,4 +1,33 @@
-﻿#barre_boutons button{
+﻿#entete{
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	width: 100%;
+	height: 15px;
+	padding: 10px;
+	display: inline-block;
+}
+
+hr{
+	height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+
+#titre{
+	font-size: 18px;
+	margin-left: -10px;
+	float: left;
+}
+#navigation_piece{
+	float: right;
+}
+
+#conteneur_principal{
+	display: flex;
+	background-color: black;
+}
+
+#barre_boutons button{
 	width: 71.5px;
 	height: 25px;
 	background-color: white;
@@ -30,13 +59,12 @@ svg#playgraph{
 }
 
 svg#graduations{
-	width: 527px;
+	width: 580px;
 	height: 50px;
 	margin-top: -43px;
 	margin-left: 17.6px;
 	float: left;
 	position: relative;
-	/*border: solid 1px;*/
 }
 
 p{
@@ -81,17 +109,17 @@ circle{
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 
 /* stlyes pour rendre la page responsive */
-@media (min-width: 1000px){
-	#reseau{
-		width: 600px;
-		float: left;
-	}
-	#repliques{
-		margin-top: 28px;
-		width: 380px;
-		margin-left: 620px;
-	}
-	#conteneurPrincipal{
-		width: 1000px;
-		margin: 0 auto;
+/*@media (min-width: 1000px){*/
+#reseau{
+	width: 600px;
+	float: left;
 }
+#repliques{
+	margin-top: 28px;
+	width: 380px;
+	margin-left: 620px;
+}
+#conteneurPrincipal{
+	width: 1000px;
+	margin: 0 auto;
+/*}*/
