@@ -518,6 +518,30 @@
                             update_display(current_line++);
                         }
                     }
+                    // ctrl+a pour reculer d'un acte
+                    else if(d3.event.ctrlKey){
+                        if(d3.event.keyCode == "65"){   
+                         moins_1_acte();   
+                        }
+                    }
+                    // alt+a pour avancer d'un acte
+                    else if(d3.event.altKey){
+                        if(d3.event.keyCode == "65"){   
+                         plus_1_acte();   
+                        }
+                    }                    
+                    // // ctrl+s pour reculer d'une scène
+                    // else if(d3.event.ctrlKey){
+                    //     if(d3.event.keyCode == "71"){   
+                    //      moins_1_scene();   
+                    //     }
+                    // }
+                    // // alt+s pour avancer d'une scène
+                    // else if(d3.event.altKey){
+                    //     if(d3.event.keyCode == "71"){   
+                    //      plus_1_scene();   
+                    //     }
+                    // }                    
                     // ctrl+R pour revenir au début
                     else if(d3.event.ctrlKey){
                     	if(d3.event.keyCode == "82"){	
@@ -557,7 +581,9 @@
                 });                                  
  
                 // ajout d'un bouton plus 1 acte
-                d3.select("button#b_plus_1_acte").on("click", function(){
+                d3.select("button#b_plus_1_acte").on("click", plus_1_acte); 
+
+                function plus_1_acte(){
                     // cas où on est déjà dans le dernier acte
                     if(current_line>tableau_actes[tableau_actes.length-1]){
                     }
@@ -578,10 +604,12 @@
                         }
                       }    
                     }
-                });
+                };
 
                  // ajout d'un bouton moins 1 acte
-                d3.select("button#b_moins_1_acte").on("click", function(){
+                d3.select("button#b_moins_1_acte").on("click", moins_1_acte)                            
+ 
+                function moins_1_acte(){
                     // cas où on est dans le dernier acte
                     if(current_line>tableau_actes[tableau_actes.length-1]){
                         position_slider.value(tableau_actes[tableau_actes.length-1]-1);
@@ -604,11 +632,13 @@
                         }
                       }    
                     }
-                });                             
-               
+                }
+
 
                 // ajout d'un bouton plus 1 scène
-                d3.select("button#b_plus_1_scene").on("click", function(){
+                d3.select("button#b_plus_1_scene").on("click", plus_1_scene);
+
+                function plus_1_scene(){   
                     // cas où on est déjà dans la dernière scène
                     if(current_line>tableau_scenes[tableau_scenes.length-1]){
                     }
@@ -629,10 +659,12 @@
                         }
                       }    
                     }
-                });
+                   } 
 
                  // ajout d'un bouton moins 1 scène
-                d3.select("button#b_moins_1_scene").on("click", function(){
+                d3.select("button#b_moins_1_scene").on("click", moins_1_scene);
+
+                function moins_1_scene(){
                     // cas où on est dans la dernière scène
                     if(current_line>tableau_scenes[tableau_scenes.length-1]){
                         position_slider.value(tableau_scenes[tableau_scenes.length-1]-1);
@@ -655,7 +687,7 @@
                         }
                       }    
                     }
-                });      
+                };      
 
                 // Creation des aretes comme lignes...
                 var edges = svg.selectAll("line")
