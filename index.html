@@ -519,13 +519,15 @@
 
                 // ajout d'un bouton début
                 d3.select("button#b_debut").on("click", function(){
-                	update_display(current_line = 0);
+                    position_slider.value(current_line = 0);
+                    current_line = 0;
                 }); 
 
                 // ajout d'un bouton moins 1
                 d3.select("button#b_moins_1_replique").on("click", function(){
                     if (current_line > 0) {
                         update_display(current_line--);
+                        position_slider.value(current_line);
                     }
                 });
 
@@ -538,6 +540,7 @@
                 d3.select("button#b_plus_1_replique").on("click", function(){
                     if (current_line < number_of_lines-1) {
                         update_display(current_line++);
+                        position_slider.value(current_line);
                     }
                 });                                  
  
