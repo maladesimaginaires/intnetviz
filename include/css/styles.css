@@ -1,4 +1,9 @@
-﻿#slider {
+﻿#barre_boutons{
+	display: inline-block;
+	float: left;
+}
+
+#slider {
 	width: 30em;
 	margin: 1em;
 }

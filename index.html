@@ -6,6 +6,7 @@
         <title>Les malades imaginaires - Visualiser le théâtre</title>
         <script src="include/js/d3.v3.js" charset="utf-8"></script>
         <script src="include/js/d3.slider.js" charset="utf-8"></script>
+        <script type="text/javascript" src="https://cdn.rawgit.com/mikeflynn/egg.js/master/egg.min.js"></script>
         <link rel="stylesheet" href="include/css/d3.slider.css" />
         <link rel="stylesheet" href="include/css/styles.css" />  
     </head>
@@ -25,16 +26,22 @@
             <div id="entete">
                 <div id='line_reference'></div>
             </div>
+            <div id="controles">
+                    <div id='slider'></div>
+                    <svg id="graduations"></svg> 
+            </div>
             <div id="reseau">
-                <div id='slider'></div>
-                <svg id="graduations"></svg> 
                 <div id='conteneurReseau'></div>
-	            <div id="controles">
-	                <button id="b_debut">Début</button>
-	                <button id="b_moins1">-</button>
-	                <button id="b_play_pause">Play / Pause</button>
-	                <button id="b_plus1">+</button>
-	            </div>                
+                <div id="barre_boutons">
+                        <button id="b_debut">Début</button>
+                        <button id="b_moins_1_acte">- Acte</button>    
+                        <button id="b_moins_1_scene">- Scène</button>                   
+                        <button id="b_moins_1_replique">-</button>
+                        <button id="b_play_pause">Play / Pause</button>
+                        <button id="b_plus_1_replique">+</button>
+                        <button id="b_plus_1_scene">Scène +</button>
+                        <button id="b_plus_1_acte">Acte +</button>
+                </div>                
             </div>               
             <div id="repliques">    
                 <div id='previous_line_container' style="color:#cccccc"></div>
@@ -158,7 +165,7 @@
                     d3.tsv(path_text, function(data_text) {
  
                     // Création d'un tableau récoltant les positions des changements d'actes
-                     var tableau_actes = [];
+                     tableau_actes = [];
                      for(var i=0; i<data_text.length-1; i++){
                          if(i != data_text.length && i != 0 && data_text[i].div1_nom != data_text[i+1].div1_nom){
                              // ajout du numéro de ligne du nouvel acte
@@ -167,7 +174,7 @@
                      }
 
                     // Création d'un tableau récoltant les positions des changements de scènes
-                     var tableau_scenes = [];
+                     tableau_scenes = [];
                      for(var i=0; i<data_text.length-1; i++){
                          if(i != data_text.length && i != 0 && data_text[i].div2_nom != data_text[i+1].div2_nom){
                              // ajout du numéro de ligne du nouvel acte
@@ -514,7 +521,7 @@
                 }); 
 
                 // ajout d'un bouton moins 1
-                d3.select("button#b_moins1").on("click", function(){
+                d3.select("button#b_moins_1_replique").on("click", function(){
                     if (current_line > 0) {
                         update_display(current_line--);
                     }
@@ -526,12 +533,113 @@
                 });
 
                 // ajout d'un bouton plus 1
-                d3.select("button#b_plus1").on("click", function(){
+                d3.select("button#b_plus_1_replique").on("click", function(){
                     if (current_line < number_of_lines-1) {
                         update_display(current_line++);
                     }
                 });                                  
-            
+ 
+                // ajout d'un bouton plus 1 acte
+                d3.select("button#b_plus_1_acte").on("click", function(){
+                    // cas où on est déjà dans le dernier acte
+                    if(current_line>tableau_actes[tableau_actes.length-1]){
+                    }
+                      // cas où on est dans le premier acte
+                    else if(current_line<tableau_actes[0]){
+                        position_slider.value(tableau_actes[0]-1);
+                        current_line++;                        
+                    }
+                    // cas des actes intermédiaires
+                    else{  
+                      for(var i=0; i<tableau_actes.length-1;i++){
+                        // on détermine l'intervalle
+                        if(current_line>=tableau_actes[i] && current_line<tableau_actes[i+1]){
+                            // on met à jour et on quitte la boucle
+                            position_slider.value(tableau_actes[i+1]-1);
+                            current_line++; 
+                            break;
+                        }
+                      }    
+                    }
+                });
+
+                 // ajout d'un bouton moins 1 acte
+                d3.select("button#b_moins_1_acte").on("click", function(){
+                    // cas où on est dans le dernier acte
+                    if(current_line>tableau_actes[tableau_actes.length-1]){
+                        position_slider.value(tableau_actes[tableau_actes.length-1]-1);
+                        current_line++;
+                    }
+                      // cas où on est dans le premier acte
+                    else if(current_line<=tableau_actes[0]){
+                        position_slider.value(0);
+                        current_line = 0;                       
+                    }
+                    // cas des actes intermédiaires
+                    else{  
+                      for(var i=tableau_actes.length-1; i>0;i--){
+                        // on détermine l'intervalle
+                        if(current_line<=tableau_actes[i] && current_line>tableau_actes[i-1]){
+                            // on met à jour et on quitte la boucle
+                            position_slider.value(tableau_actes[i-1]-1);
+                            current_line++; 
+                            break;
+                        }
+                      }    
+                    }
+                });                             
+               
+
+                // ajout d'un bouton plus 1 scène
+                d3.select("button#b_plus_1_scene").on("click", function(){
+                    // cas où on est déjà dans la dernière scène
+                    if(current_line>tableau_scenes[tableau_scenes.length-1]){
+                    }
+                      // cas où on est dans la première scène
+                    else if(current_line<tableau_scenes[0]){
+                        position_slider.value(tableau_scenes[0]-1);
+                        current_line++;                        
+                    }
+                    // cas des scènes intermédiaires
+                    else{  
+                      for(var i=0; i<tableau_scenes.length-1;i++){
+                        // on détermine l'intervalle
+                        if(current_line>=tableau_scenes[i] && current_line<tableau_scenes[i+1]){
+                            // on met à jour et on quitte la boucle
+                            position_slider.value(tableau_scenes[i+1]-1);
+                            current_line++; 
+                            break;
+                        }
+                      }    
+                    }
+                });
+
+                 // ajout d'un bouton moins 1 scène
+                d3.select("button#b_moins_1_scene").on("click", function(){
+                    // cas où on est dans la dernière scène
+                    if(current_line>tableau_scenes[tableau_scenes.length-1]){
+                        position_slider.value(tableau_scenes[tableau_scenes.length-1]-1);
+                        current_line++;
+                    }
+                      // cas où on est dans la première scène
+                    else if(current_line<=tableau_scenes[0]){
+                        position_slider.value(0);
+                        current_line = 0;                        
+                    }
+                    // cas des scènes intermédiaires
+                    else{ 
+                      for(var i=tableau_scenes.length-1; i>0;i--){
+                        // on détermine l'intervalle
+                        if(current_line<=tableau_scenes[i] && current_line>tableau_scenes[i-1]){
+                            // on met à jour et on quitte la boucle
+                            position_slider.value(tableau_scenes[i-1]-1);
+                            current_line++; 
+                            break;
+                        }
+                      }    
+                    }
+                });      
+
                 // Creation des aretes comme lignes...
                 var edges = svg.selectAll("line")
                     .data(dataset.edges)
@@ -778,6 +886,10 @@
                 }
                 return output_text
             }
+        // egg
+        var egg = new Egg("e,x,i,t", function() {
+            window.location='http://r.fod4.com/http://a.fod4.com/images/user_photos/1305402/bee81a0eebdae11fe03f7c5462d35fcc_original.jpg';
+        }).listen();    
         </script>
     </body>
 </html>
