@@ -529,19 +529,21 @@
                         if(d3.event.keyCode == "65"){   
                          plus_1_acte();   
                         }
-                    }                    
-                    // // ctrl+s pour reculer d'une scène
+                    }     
+
+                    // // ctrl+w pour reculer d'une scène
                     // else if(d3.event.ctrlKey){
-                    //     if(d3.event.keyCode == "71"){   
+                    //     if(d3.event.keyCode == "87"){   
                     //      moins_1_scene();   
                     //     }
                     // }
-                    // // alt+s pour avancer d'une scène
+                    // // alt+w pour avancer d'une scène
                     // else if(d3.event.altKey){
-                    //     if(d3.event.keyCode == "71"){   
+                    //     if(d3.event.keyCode == "87"){   
                     //      plus_1_scene();   
                     //     }
-                    // }                    
+                    // } 
+
                     // ctrl+R pour revenir au début
                     else if(d3.event.ctrlKey){
                     	if(d3.event.keyCode == "82"){	
@@ -549,8 +551,8 @@
                     	}
                     }
                     position_slider.value(current_line);
-                    // suppression des comportements par défaut des navigateurs
-                    e.preventDefault();                    
+                    // SUSPENDU : suppression des comportements par défaut des navigateurs
+                    // e.preventDefault();                    
                 });
 
                 // ajout d'un bouton début
