@@ -822,7 +822,8 @@
                 // "Adresse" de la replique...
                 var line_reference = document.getElementById("line_reference");
                 line_reference.innerHTML = 
-                      dataset.lines[current_line].div1_nom  
+                      dataset.lines[current_line].piece  
+                    + ", " + dataset.lines[current_line].div1_nom  
                     + ", " + dataset.lines[current_line].div2_nom  
                     + ", line " + dataset.lines[current_line].pos  
                     ;
