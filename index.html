@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Les malades imaginaires - Visualiser le théâtre</title>
+        <title>Visualising the dynamics of character networks</title>
         <script src="include/js/d3.v3.js" charset="utf-8"></script>
         <script src="include/js/d3.slider.js" charset="utf-8"></script>
         <script type="text/javascript" src="https://cdn.rawgit.com/mikeflynn/egg.js/master/egg.min.js"></script>
@@ -15,9 +15,9 @@
     <a href="https://github.com/maladesimaginaires/intnetviz"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on Github" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
         <div id='conteneurPrincipal'>
             <div id="entete">
-                <div id="titre">Les Malades imaginaires - Visualiser le théâtre</div>
+                <div id="titre">Visualising the dynamics of character networks</div>
                 <div id="navigation_piece">
-                    Pièce:
+                    Choose a play:
                     <select id="selection_piece" onChange="javascript:selection_piece(this)">
                         <option id="author=moliere&play=l_avare">Molière - L'Avare</option>
                         <option id="author=moliere&play=l_ecole_des_femmes">Molière - L'Ecole des femmes</option>
@@ -39,14 +39,14 @@
             <div id="reseau">
                 <div id='conteneurReseau'></div>
                 <div id="barre_boutons">
-                        <button id="b_debut">Début</button>
-                        <button id="b_moins_1_acte">- Acte</button>    
-                        <button id="b_moins_1_scene">- Scène</button>                   
-                        <button id="b_moins_1_replique">-</button>
-                        <button id="b_play_pause">> / II</button>
-                        <button id="b_plus_1_replique">+</button>
-                        <button id="b_plus_1_scene">Scène +</button>
-                        <button id="b_plus_1_acte">Acte +</button>
+                        <button id="b_debut">Start</button>
+                        <button id="b_moins_1_acte">&#9668; Act</button>    
+                        <button id="b_moins_1_scene">&#9668; Scene</button>                   
+                        <button id="b_moins_1_replique">&#9668; line</button>
+                        <button id="b_play_pause">&#9658; / &#10074;&#10074;</button>
+                        <button id="b_plus_1_replique">Line &#9658;</button>
+                        <button id="b_plus_1_scene">Scene &#9658;</button>
+                        <button id="b_plus_1_acte">Act &#9658;</button>
                 </div>               
             </div>               
             <div id="repliques">    
@@ -56,8 +56,8 @@
             </div>
         <div id="footer">
             <br><hr>
-            <img src="include/images/uniLogo.png" height="50px" alt="Logo de l'université de Lausanne">
-            <img id="dhlab" src="include/images/EPFL-logo.jpg" height="50px" alt="Logo de l'EPFL (DHLAB)">
+            <img src="include/images/uniLogo.png" height="50px" alt="Unil logo">
+            <img id="dhlab" src="include/images/EPFL-logo.jpg" height="50px" alt="EPFL logo">
         </div>                 
         </div>
         <script type="text/javascript">
@@ -822,10 +822,9 @@
                 // "Adresse" de la replique...
                 var line_reference = document.getElementById("line_reference");
                 line_reference.innerHTML = 
-                      dataset.lines[current_line].piece 
-                    + ", " + dataset.lines[current_line].div1_nom  
+                      dataset.lines[current_line].div1_nom  
                     + ", " + dataset.lines[current_line].div2_nom  
-                    + ", position " + dataset.lines[current_line].pos  
+                    + ", line " + dataset.lines[current_line].pos  
                     ;
 
                 // Afficher le texte...
