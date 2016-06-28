@@ -47,7 +47,7 @@
                         <button id="b_plus_1_replique">Line &#9658;</button>
                         <button id="b_plus_1_scene">Scene &#9658;</button>
                         <button id="b_plus_1_acte">Act &#9658;</button>
-                        <button id="b_plus_1_acte">End</button>
+                        <button id="b_fin">End</button>
                 </div>               
             </div>               
             <div id="repliques">    
@@ -688,6 +688,12 @@
                       }    
                     }
                 };      
+
+                // ajout d'un bouton fin
+                d3.select("button#b_fin").on("click", function(){
+                    position_slider.value(current_line = number_of_lines-1);
+                    current_line = number_of_lines-1;
+                }); 
 
                 // Creation des aretes comme lignes...
                 var edges = svg.selectAll("line")
