@@ -31,7 +31,7 @@ a, a:hover, a:visited{
 }
 
 #previous_line_container{
-	height: 60px;	
+	height: 70px;	
 }
 
 #current_line_container{
@@ -39,7 +39,7 @@ a, a:hover, a:visited{
 }
 
 #next_line_container{
-	height: 176px;
+	height: 166px;
 }
 
 /* tentative de centrage du texte */
