@@ -96,6 +96,11 @@ hr{
 	float: left;
 }
 
+#b_play_pause{
+	color: #ff6600;
+	border: 1px solid #ff6600;
+}
+
 .debut_scene{
 	border-left : thick solid orange;
 }
