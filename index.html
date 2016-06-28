@@ -140,12 +140,13 @@
             document.getElementById("ligne_reference").addEventListener("wheel", wheel_up_or_down);
             function wheel_up_or_down(e) {
                 if (e.deltaY < 0 && current_line > 0) {
-                    update_display(current_line--);
+                    current_line--;
+                    update_display();
                 }
                 else if (e.deltaY > 0 && current_line < number_of_lines-1) {
-                    update_display(current_line++);
+                    current_line++;
+                    update_display();
                 }
-                position_slider.value(current_line)
             } 
             
             // current_line nous donne la replique actuelle.
@@ -176,19 +177,19 @@
  
                     // Création d'un tableau récoltant les positions des changements d'actes
                      tableau_actes = [];
-                     for(var i=0; i<data_text.length-1; i++){
-                         if(i != data_text.length && i != 0 && data_text[i].div1_nom != data_text[i+1].div1_nom){
+                     for(var i=1; i<data_text.length-1; i++){
+                         if(data_text[i].div1_nom != data_text[i+1].div1_nom){
                              // ajout du numéro de ligne du nouvel acte
-                             tableau_actes.push(i+2);
+                             tableau_actes.push(i+1);
                          }
                      }
 
                     // Création d'un tableau récoltant les positions des changements de scènes
                      tableau_scenes = [];
-                     for(var i=0; i<data_text.length-1; i++){
-                         if(i != data_text.length && i != 0 && data_text[i].div2_nom != data_text[i+1].div2_nom){
+                     for(var i=1; i<data_text.length-1; i++){
+                         if(data_text[i].div2_nom != data_text[i+1].div2_nom){
                              // ajout du numéro de ligne du nouvel acte
-                             tableau_scenes.push(i+2);
+                             tableau_scenes.push(i+1);
                          }
                      }
 
@@ -459,19 +460,19 @@
 
                         // Initialisation du reseau...
                         init_svg();
-                        update_display(current_line);
 
                         // Initialisation du slider...
                         position_slider = d3.slider()
-                            .min(1)
+                            .min(0)
                             .value(1)
-                            .max(number_of_lines)
+                            .max(number_of_lines-1)
                             .on("slide", function(evt, value) {
                                 current_line = Math.round(value);
                                 update_display(current_line);
                             });
                         d3.select('#slider').call(position_slider);
-                        
+
+                        update_display(current_line);                        
                     });
                 });
             }
@@ -504,196 +505,195 @@
                     if(d3.event.keyCode == "32"){
                         play_pause();
                     }
+                    // shift + alt + flèche, pour début/fin
+                    else if(d3.event.shiftKey && d3.event.altKey){
+                        if(d3.event.keyCode == "37"){   
+                            current_line = 0;
+                        }
+                        else if(d3.event.keyCode == "39"){   
+                            current_line = number_of_lines-1; 
+                        }
+                        update_display();
+                    }     
+                    // shift + flèche, pour reculer/avancer d'un acte
+                    else if(d3.event.shiftKey){
+                        if(d3.event.keyCode == "37"){   
+                            current_line = acte_precedent();
+                        }
+                        else if(d3.event.keyCode == "39"){   
+                            current_line = acte_suivant(); 
+                        }
+                        update_display();
+                    }     
+                    // alt + flèche, pour reculer/avancer d'une scene
+                    else if(d3.event.altKey){
+                        if(d3.event.keyCode == "37"){   
+                            current_line = scene_precedente();
+                        }
+                        else if(d3.event.keyCode == "39"){   
+                            current_line = scene_suivante(); 
+                        }
+                        update_display();
+                    }     
                     // flèche à gauche, pour une réplique de moins
                     else if(d3.event.keyCode == "37"){
                         if (current_line > 0) {
-                            update_display(current_line--);
+                            current_line--;
+                            update_display();
                         }
                     }
                     // flèche à droite, pour une réplique de plus
                     else if(d3.event.keyCode == "39"){
                         if (current_line < number_of_lines-1) {
-                            update_display(current_line++);
+                            current_line++; 
+                            update_display();
                         }
                     }
-                    // ctrl+a pour reculer d'un acte
-                    else if(d3.event.ctrlKey){
-                        if(d3.event.keyCode == "65"){   
-                         moins_1_acte();   
-                        }
-                    }
-                    // alt+a pour avancer d'un acte
-                    else if(d3.event.altKey){
-                        if(d3.event.keyCode == "65"){   
-                         plus_1_acte();   
-                        }
-                    }     
 
-                    // // ctrl+w pour reculer d'une scène
-                    // else if(d3.event.ctrlKey){
-                    //     if(d3.event.keyCode == "87"){   
-                    //      moins_1_scene();   
-                    //     }
-                    // }
-                    // // alt+w pour avancer d'une scène
-                    // else if(d3.event.altKey){
-                    //     if(d3.event.keyCode == "87"){   
-                    //      plus_1_scene();   
-                    //     }
-                    // } 
-
-                    // ctrl+R pour revenir au début
-                    else if(d3.event.ctrlKey){
-                    	if(d3.event.keyCode == "82"){	
-                    	update_display(current_line = 0);	
-                    	}
-                    }
-                    position_slider.value(current_line);
                     // SUSPENDU : suppression des comportements par défaut des navigateurs
                     // e.preventDefault();                    
                 });
 
                 // ajout d'un bouton début
                 d3.select("button#b_debut").on("click", function(){
-                    position_slider.value(current_line = 0);
-                    current_line = 0;
+                    current_line = 0; 
+                    update_display();
                 }); 
 
-                // ajout d'un bouton moins 1
+                // ajout d'un bouton moins 1 acte
+                d3.select("button#b_moins_1_acte").on("click", function(){
+                    current_line = acte_precedent(); 
+                    update_display();
+                });
+
+                // ajout d'un bouton moins 1 scene
+                d3.select("button#b_moins_1_scene").on("click", function(){
+                    current_line = scene_precedente(); 
+                    update_display();
+                });
+
+                // ajout d'un bouton moins 1 replique
                 d3.select("button#b_moins_1_replique").on("click", function(){
                     if (current_line > 0) {
-                        update_display(current_line--);
-                        position_slider.value(current_line);
+                        current_line--; 
+                        update_display();
                     }
                 });
 
                 // ajout d'un bouton play/pause
                 d3.select("button#b_play_pause").on("click", function(){
-                	play_pause();
+                    play_pause();
                 });
 
-                // ajout d'un bouton plus 1
+                // ajout d'un bouton plus 1 replique
                 d3.select("button#b_plus_1_replique").on("click", function(){
                     if (current_line < number_of_lines-1) {
-                        update_display(current_line++);
-                        position_slider.value(current_line);
+                        current_line++; 
+                        update_display();
                     }
                 });                                  
  
+                // ajout d'un bouton plus 1 scene
+                d3.select("button#b_plus_1_scene").on("click", function(){
+                    current_line = scene_suivante(); 
+                    update_display();
+                });
+
                 // ajout d'un bouton plus 1 acte
-                d3.select("button#b_plus_1_acte").on("click", plus_1_acte); 
-
-                function plus_1_acte(){
-                    // cas où on est déjà dans le dernier acte
-                    if(current_line>tableau_actes[tableau_actes.length-1]){
-                    }
-                      // cas où on est dans le premier acte
-                    else if(current_line<tableau_actes[0]){
-                        position_slider.value(tableau_actes[0]-1);
-                        current_line++;                        
-                    }
-                    // cas des actes intermédiaires
-                    else{  
-                      for(var i=0; i<tableau_actes.length-1;i++){
-                        // on détermine l'intervalle
-                        if(current_line>=tableau_actes[i] && current_line<tableau_actes[i+1]){
-                            // on met à jour et on quitte la boucle
-                            position_slider.value(tableau_actes[i+1]-1);
-                            current_line++; 
-                            break;
-                        }
-                      }    
-                    }
-                };
-
-                 // ajout d'un bouton moins 1 acte
-                d3.select("button#b_moins_1_acte").on("click", moins_1_acte)                            
- 
-                function moins_1_acte(){
-                    // cas où on est dans le dernier acte
-                    if(current_line>tableau_actes[tableau_actes.length-1]){
-                        position_slider.value(tableau_actes[tableau_actes.length-1]-1);
-                        current_line++;
-                    }
-                      // cas où on est dans le premier acte
-                    else if(current_line<=tableau_actes[0]){
-                        position_slider.value(0);
-                        current_line = 0;                       
-                    }
-                    // cas des actes intermédiaires
-                    else{  
-                      for(var i=tableau_actes.length-1; i>0;i--){
-                        // on détermine l'intervalle
-                        if(current_line<=tableau_actes[i] && current_line>tableau_actes[i-1]){
-                            // on met à jour et on quitte la boucle
-                            position_slider.value(tableau_actes[i-1]-1);
-                            current_line++; 
-                            break;
-                        }
-                      }    
-                    }
-                }
-
-
-                // ajout d'un bouton plus 1 scène
-                d3.select("button#b_plus_1_scene").on("click", plus_1_scene);
-
-                function plus_1_scene(){   
-                    // cas où on est déjà dans la dernière scène
-                    if(current_line>tableau_scenes[tableau_scenes.length-1]){
-                    }
-                      // cas où on est dans la première scène
-                    else if(current_line<tableau_scenes[0]){
-                        position_slider.value(tableau_scenes[0]-1);
-                        current_line++;                        
-                    }
-                    // cas des scènes intermédiaires
-                    else{  
-                      for(var i=0; i<tableau_scenes.length-1;i++){
-                        // on détermine l'intervalle
-                        if(current_line>=tableau_scenes[i] && current_line<tableau_scenes[i+1]){
-                            // on met à jour et on quitte la boucle
-                            position_slider.value(tableau_scenes[i+1]-1);
-                            current_line++; 
-                            break;
-                        }
-                      }    
-                    }
-                   } 
-
-                 // ajout d'un bouton moins 1 scène
-                d3.select("button#b_moins_1_scene").on("click", moins_1_scene);
-
-                function moins_1_scene(){
-                    // cas où on est dans la dernière scène
-                    if(current_line>tableau_scenes[tableau_scenes.length-1]){
-                        position_slider.value(tableau_scenes[tableau_scenes.length-1]-1);
-                        current_line++;
-                    }
-                      // cas où on est dans la première scène
-                    else if(current_line<=tableau_scenes[0]){
-                        position_slider.value(0);
-                        current_line = 0;                        
-                    }
-                    // cas des scènes intermédiaires
-                    else{ 
-                      for(var i=tableau_scenes.length-1; i>0;i--){
-                        // on détermine l'intervalle
-                        if(current_line<=tableau_scenes[i] && current_line>tableau_scenes[i-1]){
-                            // on met à jour et on quitte la boucle
-                            position_slider.value(tableau_scenes[i-1]-1);
-                            current_line++; 
-                            break;
-                        }
-                      }    
-                    }
-                };      
+                d3.select("button#b_plus_1_acte").on("click", function(){
+                    current_line = acte_suivant(); 
+                    update_display();
+                });
 
                 // ajout d'un bouton fin
                 d3.select("button#b_fin").on("click", function(){
-                    position_slider.value(current_line = number_of_lines-1);
                     current_line = number_of_lines-1;
+                    update_display();
                 }); 
+
+               function acte_suivant(){
+                    // cas où on est déjà dans le dernier acte
+                    if(current_line >= tableau_actes[tableau_actes.length-1]){
+                        return(number_of_lines-1);
+                    }
+                      // cas où on est dans le premier acte
+                    else if(current_line < tableau_actes[0]){
+                        return(tableau_actes[0]);                        
+                    }
+                    // cas des actes intermédiaires
+                    else{  
+                        for(var i = 0; i < tableau_actes.length-1; i++){
+                            // on détermine l'intervalle
+                            if(current_line >= tableau_actes[i] && current_line < tableau_actes[i+1]){
+                                // on met à jour et on quitte la boucle
+                                return(tableau_actes[i+1]);
+                            }
+                        }    
+                    }
+                };
+
+                function acte_precedent(){
+                    // cas où on est dans le dernier acte
+                    if(current_line > tableau_actes[tableau_actes.length-1]){
+                        return(tableau_actes[tableau_actes.length-1]);
+                    }
+                      // cas où on est dans le premier acte
+                    else if(current_line <= tableau_actes[0]){
+                        return(0);                       
+                    }
+                    // cas des actes intermédiaires
+                    else{  
+                        for(var i = tableau_actes.length-1; i > 0; i--){
+                            // on détermine l'intervalle
+                            if(current_line <= tableau_actes[i] && current_line > tableau_actes[i-1]){
+                                // on met à jour et on quitte la boucle
+                                return(tableau_actes[i-1]);
+                            }
+                        }    
+                    }
+                }
+
+                function scene_suivante(){   
+                    // cas où on est déjà dans la dernière scène
+                    if(current_line >= tableau_scenes[tableau_scenes.length-1]){
+                        return(number_of_lines-1)
+                    }
+                      // cas où on est dans la première scène
+                    else if(current_line < tableau_scenes[0]){
+                        return(tableau_scenes[0]);                        
+                    }
+                    // cas des scènes intermédiaires
+                    else{  
+                        for(var i = 0; i < tableau_scenes.length-1; i++){
+                            // on détermine l'intervalle
+                            if(current_line >= tableau_scenes[i] && current_line < tableau_scenes[i+1]){
+                                // on met à jour et on quitte la boucle
+                                return(tableau_scenes[i+1]);
+                            }
+                        }    
+                    }
+                } 
+
+                function scene_precedente(){
+                    // cas où on est dans la dernière scène
+                    if(current_line > tableau_scenes[tableau_scenes.length-1]){
+                        return(tableau_scenes[tableau_scenes.length-1])
+                    }
+                      // cas où on est dans la première scène
+                    else if(current_line <= tableau_scenes[0]){
+                        return(0);                        
+                    }
+                    // cas des scènes intermédiaires
+                    else{ 
+                        for(var i = tableau_scenes.length-1; i > 0; i--){
+                            // on détermine l'intervalle
+                            if(current_line <= tableau_scenes[i] && current_line > tableau_scenes[i-1]){
+                                // on met à jour et on quitte la boucle
+                                return(tableau_scenes[i-1]);
+                            }
+                        }    
+                    }
+                };      
 
                 // Creation des aretes comme lignes...
                 var edges = svg.selectAll("line")
@@ -720,12 +720,12 @@
                     .on("dragstart", dragstart);
 
                 function dblclick(d) {
-					d3.select(this).classed("fixed", d.fixed = false);
-				}
+                    d3.select(this).classed("fixed", d.fixed = false);
+                }
 
-				function dragstart(d) {
-  					d3.select(this).classed("fixed", d.fixed = true);
-				}                       
+                function dragstart(d) {
+                    d3.select(this).classed("fixed", d.fixed = true);
+                }                       
 
                 // Creation des noeuds comme cercles...
                 var nodes = svg.selectAll("circle")
@@ -798,8 +798,6 @@
                 if (animation_is_on != 0){
                     if (current_line < number_of_lines-1) {
                         current_line++;
-                        position_slider.value(current_line);
-                        tableau_scenes.find(debut_scene);
                         update_display();
                         setTimeout(
                             play_animation, 
@@ -808,6 +806,7 @@
                     }
                     else {
                         current_line = 0;
+                        update_display();
                     }
                 }
             }
@@ -823,6 +822,7 @@
                 // regard des répliques (sans le nom de la pièce).
                 ///////////////////////////////////////////////////////////////
 
+                position_slider.value(current_line);
                 // "Adresse" de la replique...
                 var line_reference = document.getElementById("line_reference");
                 line_reference.innerHTML = 
