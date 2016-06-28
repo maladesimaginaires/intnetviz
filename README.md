@@ -2,7 +2,7 @@
 
 Dynamic visualisation of character networks from fictional works.
 
-[Try it here!](http://langtech.ch/intnetviz)
+[Try it here!](https://maladesimaginaires.github.io/intnetviz/)
 
 ## Visual overview
 
