@@ -79,7 +79,7 @@ hr{
 }
 
 #barre_boutons button{
-	width: 71.5px;
+	width: 63px;
 	height: 25px;
 	background-color: white;
 	border: 1px solid black;
@@ -94,6 +94,11 @@ hr{
 #barre_boutons{
 	display: inline-block;
 	float: left;
+}
+
+#b_play_pause{
+	color: #ff6600;
+	border: 1px solid #ff6600;
 }
 
 .debut_scene{
