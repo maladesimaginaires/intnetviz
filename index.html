@@ -965,6 +965,17 @@
                                   .replace(/<didascalie>/g, "<p><i>")
                                   .replace(/<\/didascalie>/g, "</p></i>")
                 }
+                // Marquage du début des scènes et actes
+                if (line_num == 0 || tableau_scenes.indexOf(line_num) !== -1 ){
+                    output_text = dataset.lines[line_num].div2_nom 
+                                + "<hr>" 
+                                + output_text;
+                }
+                if (line_num == 0 || tableau_actes.indexOf(line_num) !== -1 ){
+                    output_text = dataset.lines[line_num].div1_nom 
+                                + ", " 
+                                + output_text;
+                }
                 return output_text
             }
         // egg
