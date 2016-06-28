@@ -1,0 +1,177 @@
+﻿::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+.txt{
+	display: block;
+	width: 375px;
+	margin-bottom: 20px;
+	overflow: auto;
+	text-overflow: ellipsis;
+	background-color: #FAFAFA;		
+}
+
+a, a:hover, a:visited{
+	text-decoration : none;
+	color: rgb(199,148,54);
+}
+
+#dhlab{
+
+	font-size: 18pt;
+	font-family: impact;
+	float: right;
+	color: rgb(199,148,54);
+}
+
+#previous_line_container{
+	height: 70px;	
+}
+
+#current_line_container{
+	height: 200px;
+}
+
+#next_line_container{
+	height: 166px;
+}
+
+/* tentative de centrage du texte */
+span.nom_personnage{
+	text-align: center;
+	width: 60px;
+	margin: 0 auto;
+}
+
+#entete{
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	width: 100%;
+	height: 15px;
+	padding: 10px;
+	display: inline-block;
+}
+
+hr{ 
+	height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+
+#titre{
+	font-size: 18px;
+	margin-left: -10px;
+	float: left;
+}
+#navigation_piece{
+	float: right;
+}
+
+#conteneur_principal{
+	
+	background-color: black;
+}
+
+#barre_boutons button{
+	width: 71.5px;
+	height: 25px;
+	background-color: white;
+	border: 1px solid black;
+}
+
+#barre_boutons button:hover{
+	color: white;
+	border: 1px solid #ff6600;
+	background-color: #ff6600;
+}
+
+#barre_boutons{
+	display: inline-block;
+	float: left;
+}
+
+.debut_scene{
+	border-left : thick solid orange;
+}
+
+#slider {
+	width: 30em;
+	margin: 1em;
+}
+svg#playgraph{
+	font-size: 10px;
+	font-family: sans-serif;
+	border: solid 1px;
+}
+
+svg#graduations{
+	width: 580px;
+	height: 50px;
+	margin-top: -43px;
+	margin-left: 17.6px;
+	float: left;
+	position: relative;
+}
+
+p{
+//	font-weight: bold;
+//	display: inline;
+	margin: 3px;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+/* code pour la solution avec ajout de classes CSS
+
+// initialisation des noeuds, pour la solution
+circle{
+	fill: #1177bb;
+}
+
+// classes en fonction de l'état
+
+// couleurs des lignes
+.never_live{
+	stroke-width: 0;
+}
+.not_yet_live{
+	stroke: #eeeeee;
+}
+.live{
+	stroke: #ff6600;
+}
+.previously_live{
+	stroke: #1177bb;
+}
+
+// remplissage des noeuds
+
+.fill_live{
+	fill:  #ff6600;
+}
+.fill_previously_live{
+	stroke: #1177bb;
+}
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+/* stlyes pour rendre la page responsive */
+/*@media (min-width: 1000px){*/
+#reseau{
+	width: 600px;
+	float: left;
+}
+#repliques{
+	margin-top: 28px;
+	width: 380px;
+	margin-left: 620px;
+}
+#conteneurPrincipal{
+	width: 1000px;
+	margin: 0 auto;
+/*}*/
