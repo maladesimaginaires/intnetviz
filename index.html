@@ -24,7 +24,6 @@
                     <select id="selection_piece" onChange="javascript:selection_piece(this)">
                         <option id="author=moliere&play=l_avare">Molière - L'Avare</option>
                         <option id="author=moliere&play=l_ecole_des_femmes">Molière - L'Ecole des femmes</option>
-                        <option id="author=moliere&play=le_malade_imaginaire">Molière - Le Malade imaginaire</option>
                         <option id="author=moliere&play=le_medecin_malgre_lui">Molière - Le Médecin malgré lui</option>
                         <option id="author=moliere&play=le_misanthrope">Molière - Le Misanthrope</option>
                         <option id="author=jean_racine&play=phedre">Jean Racine - Phèdre</option>
@@ -58,6 +57,15 @@
             </div>               
         </div>
         <script type="text/javascript">
+        
+            // Play scaling factors...
+            var scaling_for = {
+                "author=moliere&play=l_avare": 2,
+                "author=moliere&play=l_ecole_des_femmes": 1.8,
+                "author=moliere&play=le_medecin_malgre_lui": 1.7,
+                "author=moliere&play=le_misanthrope": 1.8,
+                "author=jean_racine&play=phedre": 2,
+            };
 
             // variables de path...
             var base_data_path = "data/"
@@ -93,9 +101,16 @@
                 play = "l_ecole_des_femmes"
                 author = "moliere"
             }
+                        
             var query_string = "author=" + author + "&play=" + play
             document.getElementById(query_string).selected=true
-            
+
+            // Scaling factor
+            var scaling = scaling_for[query_string]
+            if (scaling === undefined) {
+                scaling = 1.5
+            }
+
             // Chemin des fichiers d'input...
             var play_path = author + "/" + play
             var path_characters = base_data_path + play_path + char_file_suffix
@@ -130,7 +145,6 @@
             var label_x_offset = 5
             var label_y_offset = 5
             
-            //ISAAC : DESACTIVE POUR EVITER UN CONFLIT AVEC LES REPLIQUES
             // Traitement de l'événement "wheel"...             
             document.getElementById("reseau").addEventListener("wheel", wheel_up_or_down);
             document.getElementById("ligne_reference").addEventListener("wheel", wheel_up_or_down);
@@ -477,11 +491,29 @@
             function play_pause() {
                 d3.event.preventDefault();
                 if (animation_is_on === 0) {
+                    if (current_line == number_of_lines-1) {
+                        current_line = 0
+                        update_display()
+                    }
                     animation_is_on = 1;
                     play_animation();
                 }
                 else {
                     animation_is_on = 0;
+                }
+            }
+
+            // Animation de la piece depuis la position actuelle...
+            function play_animation() {
+                if (animation_is_on != 0){
+                    if (current_line < number_of_lines-1) {
+                        current_line++;
+                        update_display();
+                        setTimeout(
+                            play_animation, 
+                            step_duration
+                        );
+                    }
                 }
             }
 
@@ -523,10 +555,14 @@
                     }     
                     // alt + flèche, pour reculer/avancer d'une scene
                     else if(d3.event.altKey){
-                        if(d3.event.keyCode == "37"){   
+                        if(d3.event.keyCode == "37"){
+                            d3.event.preventDefault();
+                            d3.event.stopPropagation();
                             current_line = scene_precedente();
                         }
-                        else if(d3.event.keyCode == "39"){   
+                        else if(d3.event.keyCode == "39"){
+                            d3.event.preventDefault();
+                            d3.event.stopPropagation();
                             current_line = scene_suivante(); 
                         }
                         update_display();
@@ -549,6 +585,22 @@
                     // SUSPENDU : suppression des comportements par défaut des navigateurs
                     // e.preventDefault();                    
                 });
+
+                // Clic sur réplique précédente = -1 réplique
+                d3.select("div#previous_line_container").on("click", function(){
+                    if (current_line > 0) {
+                        current_line--;
+                        update_display();
+                    }
+                }); 
+
+                // Clic sur réplique suivante = +1 réplique
+                d3.select("div#next_line_container").on("click", function(){
+                    if (current_line < number_of_lines-1) {
+                        current_line++;
+                        update_display();
+                    }
+                }); 
 
                 // ajout d'un bouton début
                 d3.select("button#b_debut").on("click", function(){
@@ -704,7 +756,7 @@
                      .links(dataset.edges)
                      .size([0.9*w, 0.98*h])
                      .linkDistance(function(data_nodes) { 
-                        return 1.5 * h / d_fact * (1-data_nodes.value); 
+                        return scaling * h / d_fact * (1-data_nodes.value); 
                      })
                      .linkStrength(1)
                      .charge(-h/2)
@@ -789,24 +841,6 @@
                 }
             }
 
-            // Animation de la piece depuis la position actuelle...
-            function play_animation() {
-                if (animation_is_on != 0){
-                    if (current_line < number_of_lines-1) {
-                        current_line++;
-                        update_display();
-                        setTimeout(
-                            play_animation, 
-                            step_duration
-                        );
-                    }
-                    else {
-                        current_line = 0;
-                        update_display();
-                    }
-                }
-            }
-
             //console.log(situer_actes());
 
             // Mise a jour de l'affichage...
@@ -822,8 +856,8 @@
                 // "Adresse" de la replique...
                 var line_reference = document.getElementById("line_reference");
                 line_reference.innerHTML = 
-                      dataset.lines[current_line].piece  
-                    + ", " + dataset.lines[current_line].div1_nom  
+                      //dataset.lines[current_line].piece + ", " + 
+                      dataset.lines[current_line].div1_nom  
                     + ", " + dataset.lines[current_line].div2_nom  
                     + ", line " + dataset.lines[current_line].pos  
                     ;
@@ -963,13 +997,20 @@
                 // Marquage du début des scènes et actes
                 if (line_num == 0 || tableau_scenes.indexOf(line_num) !== -1 ){
                     output_text = dataset.lines[line_num].div2_nom 
-                                + "<hr>" 
+                                + "</div><hr>" 
                                 + output_text;
                 }
                 if (line_num == 0 || tableau_actes.indexOf(line_num) !== -1 ){
                     output_text = dataset.lines[line_num].div1_nom 
                                 + ", " 
                                 + output_text;
+                }
+                if (
+                    line_num == 0 || 
+                    tableau_scenes.indexOf(line_num) !== -1 || 
+                    tableau_actes.indexOf(line_num) !== -1 
+                ) {
+                    output_text = "<div align='center'>" + output_text
                 }
                 return output_text
             }
