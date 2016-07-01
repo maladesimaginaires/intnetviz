@@ -476,6 +476,10 @@
             function play_pause() {
                 d3.event.preventDefault();
                 if (animation_is_on === 0) {
+                    if (current_line == number_of_lines-1) {
+                        current_line = 0
+                        update_display()
+                    }
                     animation_is_on = 1;
                     play_animation();
                 }
@@ -495,10 +499,12 @@
                             step_duration
                         );
                     }
-                    else {
-                        current_line = 0;
-                        update_display();
-                    }
+                    // Desactivé afin que l'animation s'arrête sur la 
+                    // dernière ligne et non la première.
+                    //else {
+                    //    current_line = 0;
+                    //    update_display();
+                    //}
                 }
             }
 
