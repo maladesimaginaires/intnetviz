@@ -61,9 +61,9 @@
             // Play scaling factors...
             var scaling_for = {
                 "author=moliere&play=l_avare": 2,
-                "author=moliere&play=l_ecole_des_femmes": 1.5,
-                "author=moliere&play=le_medecin_malgre_lui": 1.5,
-                "author=moliere&play=le_misanthrope": 2,
+                "author=moliere&play=l_ecole_des_femmes": 1.8,
+                "author=moliere&play=le_medecin_malgre_lui": 1.7,
+                "author=moliere&play=le_misanthrope": 1.8,
                 "author=jean_racine&play=phedre": 2,
             };
 
@@ -107,7 +107,7 @@
 
             // Scaling factor
             var scaling = scaling_for[query_string]
-            if (scaling == false) {
+            if (scaling === undefined) {
                 scaling = 1.5
             }
 
