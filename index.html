@@ -57,6 +57,15 @@
             </div>               
         </div>
         <script type="text/javascript">
+        
+            // Play scaling factors...
+            var scaling_for = {
+                "author=moliere&play=l_avare": 2,
+                "author=moliere&play=l_ecole_des_femmes": 1.5,
+                "author=moliere&play=le_medecin_malgre_lui": 1.5,
+                "author=moliere&play=le_misanthrope": 2,
+                "author=jean_racine&play=phedre": 2,
+            };
 
             // variables de path...
             var base_data_path = "data/"
@@ -92,9 +101,16 @@
                 play = "l_ecole_des_femmes"
                 author = "moliere"
             }
+                        
             var query_string = "author=" + author + "&play=" + play
             document.getElementById(query_string).selected=true
-            
+
+            // Scaling factor
+            var scaling = scaling_for[query_string]
+            if (scaling == false) {
+                scaling = 1.5
+            }
+
             // Chemin des fichiers d'input...
             var play_path = author + "/" + play
             var path_characters = base_data_path + play_path + char_file_suffix
@@ -129,7 +145,6 @@
             var label_x_offset = 5
             var label_y_offset = 5
             
-            //ISAAC : DESACTIVE POUR EVITER UN CONFLIT AVEC LES REPLIQUES
             // Traitement de l'événement "wheel"...             
             document.getElementById("reseau").addEventListener("wheel", wheel_up_or_down);
             document.getElementById("ligne_reference").addEventListener("wheel", wheel_up_or_down);
@@ -741,7 +756,7 @@
                      .links(dataset.edges)
                      .size([0.9*w, 0.98*h])
                      .linkDistance(function(data_nodes) { 
-                        return 1.5 * h / d_fact * (1-data_nodes.value); 
+                        return scaling * h / d_fact * (1-data_nodes.value); 
                      })
                      .linkStrength(1)
                      .charge(-h/2)
