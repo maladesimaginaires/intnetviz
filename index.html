@@ -24,7 +24,6 @@
                     <select id="selection_piece" onChange="javascript:selection_piece(this)">
                         <option id="author=moliere&play=l_avare">Molière - L'Avare</option>
                         <option id="author=moliere&play=l_ecole_des_femmes">Molière - L'Ecole des femmes</option>
-                        <option id="author=moliere&play=le_malade_imaginaire">Molière - Le Malade imaginaire</option>
                         <option id="author=moliere&play=le_medecin_malgre_lui">Molière - Le Médecin malgré lui</option>
                         <option id="author=moliere&play=le_misanthrope">Molière - Le Misanthrope</option>
                         <option id="author=jean_racine&play=phedre">Jean Racine - Phèdre</option>
@@ -485,6 +484,24 @@
                 }
             }
 
+            // Animation de la piece depuis la position actuelle...
+            function play_animation() {
+                if (animation_is_on != 0){
+                    if (current_line < number_of_lines-1) {
+                        current_line++;
+                        update_display();
+                        setTimeout(
+                            play_animation, 
+                            step_duration
+                        );
+                    }
+                    else {
+                        current_line = 0;
+                        update_display();
+                    }
+                }
+            }
+
             // Initialisation du reseau...
             function init_svg() {
             
@@ -549,6 +566,22 @@
                     // SUSPENDU : suppression des comportements par défaut des navigateurs
                     // e.preventDefault();                    
                 });
+
+                // Clic sur réplique précédente = -1 réplique
+                d3.select("div#previous_line_container").on("click", function(){
+                    if (current_line > 0) {
+                        current_line--;
+                        update_display();
+                    }
+                }); 
+
+                // Clic sur réplique suivante = +1 réplique
+                d3.select("div#next_line_container").on("click", function(){
+                    if (current_line < number_of_lines-1) {
+                        current_line++;
+                        update_display();
+                    }
+                }); 
 
                 // ajout d'un bouton début
                 d3.select("button#b_debut").on("click", function(){
@@ -789,24 +822,6 @@
                 }
             }
 
-            // Animation de la piece depuis la position actuelle...
-            function play_animation() {
-                if (animation_is_on != 0){
-                    if (current_line < number_of_lines-1) {
-                        current_line++;
-                        update_display();
-                        setTimeout(
-                            play_animation, 
-                            step_duration
-                        );
-                    }
-                    else {
-                        current_line = 0;
-                        update_display();
-                    }
-                }
-            }
-
             //console.log(situer_actes());
 
             // Mise a jour de l'affichage...
@@ -963,13 +978,20 @@
                 // Marquage du début des scènes et actes
                 if (line_num == 0 || tableau_scenes.indexOf(line_num) !== -1 ){
                     output_text = dataset.lines[line_num].div2_nom 
-                                + "<hr>" 
+                                + "</div><hr>" 
                                 + output_text;
                 }
                 if (line_num == 0 || tableau_actes.indexOf(line_num) !== -1 ){
                     output_text = dataset.lines[line_num].div1_nom 
                                 + ", " 
                                 + output_text;
+                }
+                if (
+                    line_num == 0 || 
+                    tableau_scenes.indexOf(line_num) !== -1 || 
+                    tableau_actes.indexOf(line_num) !== -1 
+                ) {
+                    output_text = "<div align='center'>" + output_text
                 }
                 return output_text
             }
