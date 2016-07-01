@@ -499,12 +499,6 @@
                             step_duration
                         );
                     }
-                    // Desactivé afin que l'animation s'arrête sur la 
-                    // dernière ligne et non la première.
-                    //else {
-                    //    current_line = 0;
-                    //    update_display();
-                    //}
                 }
             }
 
@@ -546,10 +540,14 @@
                     }     
                     // alt + flèche, pour reculer/avancer d'une scene
                     else if(d3.event.altKey){
-                        if(d3.event.keyCode == "37"){   
+                        if(d3.event.keyCode == "37"){
+                            d3.event.preventDefault();
+                            d3.event.stopPropagation();
                             current_line = scene_precedente();
                         }
-                        else if(d3.event.keyCode == "39"){   
+                        else if(d3.event.keyCode == "39"){
+                            d3.event.preventDefault();
+                            d3.event.stopPropagation();
                             current_line = scene_suivante(); 
                         }
                         update_display();
@@ -843,8 +841,8 @@
                 // "Adresse" de la replique...
                 var line_reference = document.getElementById("line_reference");
                 line_reference.innerHTML = 
-                      dataset.lines[current_line].piece  
-                    + ", " + dataset.lines[current_line].div1_nom  
+                      //dataset.lines[current_line].piece + ", " + 
+                      dataset.lines[current_line].div1_nom  
                     + ", " + dataset.lines[current_line].div2_nom  
                     + ", line " + dataset.lines[current_line].pos  
                     ;
