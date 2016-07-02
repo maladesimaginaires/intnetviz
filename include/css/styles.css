@@ -1,4 +1,4 @@
-﻿::-webkit-scrollbar {
+::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 7px;
 }
@@ -9,7 +9,7 @@
 }
 
 .txt{
-	display: block;
+	display: block;f
 	width: 375px;
 	margin-bottom: 20px;
 	overflow: auto;
@@ -19,7 +19,7 @@
 
 a, a:hover, a:visited{
 	text-decoration : none;
-	color: rgb(51,153,204);
+	color: rgb(0,0,0);
 }
 
 #dhlab{
@@ -75,17 +75,23 @@ hr{
 	margin-right: 10px;
 	float: right;
 }
-
 #navigation_piece{
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 10pt;
 	float: right;
+}
+#ligne_reference{
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 #conteneur_principal{
-	
+
 	background-color: black;
 }
 
 #barre_boutons button{
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 8pt;
 	width: 63px;
 	height: 25px;
 	background-color: white;
@@ -132,7 +138,8 @@ svg#graduations{
 }
 
 p{
-//	font-weight: bold;
+//	
+
 //	display: inline;
 	margin: 3px;
 }
@@ -179,6 +186,8 @@ circle{
 	float: left;
 }
 #repliques{
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 10pt;
 	margin-top: 28px;
 	width: 380px;
 	margin-left: 620px;
