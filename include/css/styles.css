@@ -102,6 +102,10 @@ hr{
 	border: 1px solid black;
 }
 
+#barre_legende{
+	font-size: 10pt;
+}
+
 #barre_boutons button:hover{
 	color: white;
 	border: 1px solid #ff6600;
