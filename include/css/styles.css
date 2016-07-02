@@ -17,7 +17,11 @@
 	background-color: #FAFAFA;		
 }
 
-a, a:hover, a:visited{
+a, a:visited{
+	text-decoration : none;
+	color: #ff6600;
+}
+a:hover{
 	text-decoration : none;
 	color: rgb(0,0,0);
 }
@@ -91,8 +95,8 @@ hr{
 
 #barre_boutons button{
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: 8pt;
-	width: 63px;
+	font-size: 7pt;
+	width: 62px;
 	height: 25px;
 	background-color: white;
 	border: 1px solid black;
