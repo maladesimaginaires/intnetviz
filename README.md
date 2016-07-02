@@ -1,10 +1,10 @@
 # A DH unil–epfl d3.js network visualisation project
 
 
-IntNetViz | Dynamic visualisation of character networks from fictional works
------------- | -------------
-<a href="https://maladesimaginaires.github.io/intnetviz/">
-<img src="https://raw.githubusercontent.com/maladesimaginaires/intnetviz/gh-pages/img/intnetviz_graph.png" alt="IntNetViz" width="200">  | [Try it here!](https://maladesimaginaires.github.io/intnetviz/)
+## Dynamic visualisation of character networks from fictional works
+
+## <a href="https://maladesimaginaires.github.io/intnetviz/">
+<img src="https://raw.githubusercontent.com/maladesimaginaires/intnetviz/gh-pages/img/intnetviz_graph.png" alt="IntNetViz" width="200"> [Try it here!](https://maladesimaginaires.github.io/intnetviz/)
 
 ## Visual overview
 
