@@ -1,7 +1,7 @@
 # A DH unil–epfl d3.js network visualisation project
 
-Dynamic visualisation of character networks from fictional works.
-
+Dynamic visualisation of character networks from fictional works
+------------
 [Try it here!](https://maladesimaginaires.github.io/intnetviz/)
 
 ## Visual overview
