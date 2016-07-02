@@ -19,7 +19,7 @@
 
 a, a:hover, a:visited{
 	text-decoration : none;
-	color: rgb(199,148,54);
+	color: rgb(51,153,204);
 }
 
 #dhlab{
@@ -27,7 +27,7 @@ a, a:hover, a:visited{
 	font-size: 18pt;
 	font-family: impact;
 	float: right;
-	color: rgb(199,148,54);
+	color: rgb(51,153,204);
 }
 
 #previous_line_container{
