@@ -69,6 +69,13 @@ hr{
 	margin-left: -10px;
 	float: left;
 }
+
+#menu{
+	font-size: 16px;
+	margin-right: 10px;
+	float: right;
+}
+
 #navigation_piece{
 	float: right;
 }
