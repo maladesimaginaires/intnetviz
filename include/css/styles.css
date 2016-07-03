@@ -43,7 +43,7 @@ a:hover{
 }
 
 #next_line_container{
-	height: 166px;
+	height: 144px;
 }
 
 /* tentative de centrage du texte */
@@ -82,10 +82,12 @@ hr{
 #navigation_piece{
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 10pt;
-	float: right;
+	margin-left: 10px;
+	float: left;
 }
 #ligne_reference{
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	text-align: center;
 }
 
 #conteneur_principal{
