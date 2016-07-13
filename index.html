@@ -6,11 +6,17 @@
         <title>Visualising the dynamics of character networks</title>
         <script src="include/js/d3.v3.js" charset="utf-8"></script>
         <script src="include/js/d3.slider.js" charset="utf-8"></script>
+        <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://cdn.rawgit.com/mikeflynn/egg.js/master/egg.min.js"></script>
         <script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
         <link rel="stylesheet" href="include/css/d3.slider.css" />
         <link rel="stylesheet" href="include/css/styles.css" />
         <link rel="icon" href="include/images/maladesImaginairesIcone.png">
+        <style>
+            #egg{
+                display: none;
+            }
+        </style>
     </head>
     <body>
     <a href="https://github.com/maladesimaginaires/intnetviz"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on Github" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
@@ -39,6 +45,7 @@
                 <div id='line_reference'></div>
             </div>
             <div id="reseau">
+                <img id='egg' src="img/pikachu.png"></img>
                 <div id='conteneurReseau'></div>
                 <div id="barre_boutons">
                         <button id="b_debut">Start</button>
@@ -1020,9 +1027,18 @@
                 }
                 return output_text
             }
-        // egg
+        // egg 1
         var egg = new Egg("e,x,i,t", function() {
-            window.location='http://r.fod4.com/http://a.fod4.com/images/user_photos/1305402/bee81a0eebdae11fe03f7c5462d35fcc_original.jpg';
+            window.location='img/pikachu.png';
+        }).listen();
+
+        // egg 2
+        var egg = new Egg("c,a,t,c,h", function() {
+          var sample = new Audio("include/pika.mp3");
+          sample.play();
+          $('#egg').fadeIn(200, function() {
+            window.setTimeout(function() { $('#egg').fadeOut(400) }, 2000);
+          });
         }).listen();
 
         </script>
